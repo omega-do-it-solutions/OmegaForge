@@ -22,16 +22,17 @@ scaffold applications.
 
 ## Guided Conversation
 
-1. Inspect the current document and briefly say what is already known and what
-   the next small topic is. Explain that the owner can answer in ordinary
-   language, say "I don't know", skip a topic, or correct an earlier answer.
+1. Inspect the current document, show the progress card, and briefly say what
+   is already known and what the next small topic is. Explain that the owner
+   can answer in ordinary language, say "I don't know", skip a topic, or
+   correct an earlier answer.
 2. Ask one short, focused business question at a time using the required
    question card below. Do not bundle a full questionnaire into one message.
 3. After each answer, write the relevant section of `docs/product.md` using a
    targeted edit. Preserve the owner's words and convert them into clear,
    concise business statements.
-4. Give a one- or two-sentence confirmation of what was recorded, then ask the
-   next highest-value unanswered question.
+4. Give a one- or two-sentence confirmation of what was recorded, show the
+   updated progress card, then ask the next highest-value unanswered question.
 5. Continue until every required heading has a product-specific entry or an
    explicit first-release boundary such as "No current requirement." Do not
    invent behavior to fill a blank.
@@ -53,6 +54,31 @@ Suggestion:
 - **Suggestion:** Offer one practical starting direction based on what the owner
   has already said. Mark it as a suggestion they can change, never as an
   assumed decision.
+
+## Progress Card
+
+Show a progress card before every question, including the first question. Use
+the owner's conversation language. Base it on the 11 required `docs/product.md`
+sections, and use this structure:
+
+```text
+Progress:
+- Completed: <number> of 11 sections — <completed section names>
+- In progress: <section name and concise status, if applicable>
+- Current question: <section name>
+- Remaining: <remaining section names, or “None — ready for review”>
+```
+
+- Count a section as complete only when it has product-specific content or an
+  explicit first-release boundary.
+- Keep the completed and remaining names short. For example, say `Purpose` or
+  `Data and Files`, not a long summary of their contents.
+- For a multi-part section such as `Main Workflows`, state the useful local
+  status, for example `2 workflows recorded; checking for more`. Do not pretend
+  there is a fixed number of workflows before the owner has described them.
+- Show `0 of 11` at the beginning so the owner always knows the interview's
+  size. When all sections are complete, show `11 of 11` and replace the next
+  question with the completion and handoff summary.
 
 ## Conversation Language
 
