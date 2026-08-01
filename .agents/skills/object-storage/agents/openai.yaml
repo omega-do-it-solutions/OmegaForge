@@ -1,0 +1,4 @@
+interface:
+  display_name: "Object Storage"
+  short_description: "Build secure S3-compatible file workflows"
+  default_prompt: "Use $object-storage to implement this upload, download, or managed-file workflow with S3-compatible storage."

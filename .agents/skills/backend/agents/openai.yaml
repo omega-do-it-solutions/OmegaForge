@@ -1,0 +1,4 @@
+interface:
+  display_name: "Backend"
+  short_description: "Build modular APIs and background workflows"
+  default_prompt: "Use $backend to implement this API or background workflow within the established backend architecture."

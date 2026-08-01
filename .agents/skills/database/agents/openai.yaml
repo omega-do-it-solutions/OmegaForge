@@ -1,0 +1,4 @@
+interface:
+  display_name: "Database"
+  short_description: "Design safe relational persistence changes"
+  default_prompt: "Use $database to implement this schema or persistence change safely."

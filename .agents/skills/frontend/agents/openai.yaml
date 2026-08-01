@@ -1,0 +1,4 @@
+interface:
+  display_name: "Frontend"
+  short_description: "Build consistent, accessible frontend features"
+  default_prompt: "Use $frontend to implement this user-facing feature within the established frontend architecture."

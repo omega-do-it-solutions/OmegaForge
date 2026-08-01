@@ -1,0 +1,4 @@
+interface:
+  display_name: "Implement Feature"
+  short_description: "Turn business requests into vertical slices"
+  default_prompt: "Use $implement-feature to implement this business request as the smallest complete vertical slice."

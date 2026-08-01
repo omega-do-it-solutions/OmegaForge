@@ -1,0 +1,4 @@
+interface:
+  display_name: "Delivery"
+  short_description: "Maintain Docker and CI/CD delivery paths"
+  default_prompt: "Use $delivery to containerize, verify, or prepare this project for CI/CD delivery."
