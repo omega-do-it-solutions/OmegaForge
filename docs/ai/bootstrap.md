@@ -41,7 +41,7 @@ version.
 | `.gitignore` | Append new generated or local-only paths | Existing secret, dependency, build, and runtime exclusions |
 | `.dockerignore` | Append build-context exclusions | Existing dependency, VCS, secret, and runtime exclusions |
 | `.npmrc` | Add a required pnpm setting | Existing pnpm behavior |
-| `README.md` | Update identity and product-specific commands | Still-relevant setup and agent guidance |
+| `README.md` | Replace template-oriented content with a project-specific README after the runnable baseline is verified | Accurate project setup, operations, and contributor guidance |
 
 `pnpm-lock.yaml` is tool-managed. Change it only by running pnpm from the
 repository root; never edit it manually. Stop for technical approval if a
@@ -223,7 +223,8 @@ any accessibility or contrast risk the agent identified.
 ### Phase 4: Set Project Identity
 
 After approval, apply targeted project-name and identifier edits to root metadata,
-Compose, the environment example, and README. Preserve framework-owned content.
+Compose, and the environment example. Preserve framework-owned content. Write
+the final project README in Phase 9 after the runnable baseline is verified.
 
 ### Phase 5: Scaffold The Boilerplate
 
@@ -260,11 +261,28 @@ Compose validation where available. Confirm:
 - targeted files retained their required content;
 - the selected daisyUI theme centrally uses the approved primary and secondary
   color codes and no component duplicates them as raw values;
+- `README.md` describes the bootstrapped product rather than OmegaForge, and its
+  setup and commands match the generated applications;
 - no secret or local runtime data is staged;
 - `.claude/skills` still resolves;
 - the runnable applications exactly match the approved profile.
 
-### Phase 9: Hand Off
+### Phase 9: Write The Project README
+
+Replace the template README with a project-owned README. It must identify the
+product and its purpose, explain the selected application shape, list real
+prerequisites and non-secret environment setup, document local development,
+verification, and operational commands that actually exist, and cover any
+required local services or migrations.
+
+Do not retain OmegaForge's template overview, template-copying instructions,
+generic application-shape examples, or framework-specific commands that do not
+apply to the bootstrapped project. Do not invent deployment instructions,
+integrations, features, or commands that were not created. Never include
+secrets. This README rewrite is a deliberate project-identity change, not a
+generator-owned file replacement.
+
+### Phase 10: Hand Off
 
 Report the approved profile, created and targeted-edited files, commands run,
 verification results, local run commands, assumptions, and remaining risks.

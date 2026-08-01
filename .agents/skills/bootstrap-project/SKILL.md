@@ -56,7 +56,7 @@ run generators, or write application code before explicit technical approval.
 
 ### 4. Bootstrap The Runnable Baseline
 
-After approval, follow Phases 4 through 7 in order.
+After approval, follow Phases 4 through 9 in order.
 Keep protected files untouched, use targeted edits instead of whole-file
 replacement, and run generators only in verified empty application directories.
 Use pnpm from the repository root and never permit a generator to initialize Git
@@ -68,8 +68,9 @@ not implement product features during bootstrap.
 
 ### 5. Verify And Report
 
-Follow Phases 8 and 9. Verify runnable applications, protected files, workspace
-checks, Compose configuration, the skills link, lockfiles, and secret hygiene.
+Follow Phases 8 through 10. After verification, replace the template README with
+a project-owned README that reflects the generated product, real commands, and
+local setup; it must not retain OmegaForge onboarding or template instructions.
 Report generated files separately from targeted edits and state anything that
 could not be verified. Do not push or deploy.
 
