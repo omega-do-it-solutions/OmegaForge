@@ -69,7 +69,9 @@ Create only an up-and-running technical baseline. Configure a central daisyUI
 theme whose `primary` and `secondary` tokens use the approved brand colors. Run
 the approved local-service, migration, and seed commands where they exist, then
 start and smoke-test the application before handoff. Do not invent product data
-or implement product features during bootstrap.
+or implement product features during bootstrap. Provide separate validated
+development, build, and production-start commands, with a production-safe
+migration path and no automatic production seed behavior.
 
 ### 5. Verify And Report
 
@@ -77,7 +79,9 @@ Follow Phases 8 through 10. Confirm the local dependencies, migrations, and
 app startup actually succeed; do not merely document commands. Keep the managed
 development process available when the environment supports it, otherwise stop
 it cleanly after the smoke test and report the restart command. After
-verification, replace the template README with a project-owned README that
+verification, start the built application once with its production command,
+health-check it, and stop that production-mode process cleanly. Then replace the
+template README with a project-owned README that
 reflects the generated product, real commands, and local setup; it must not
 retain OmegaForge onboarding or template instructions. Report generated files
 separately from targeted edits and state anything that could not be verified. Do

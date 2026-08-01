@@ -126,6 +126,8 @@ Establish:
 - integrations, webhooks, scheduled or long-running work;
 - structured data, uploads, generated files, and retention needs;
 - expected scale, deployment constraints, and success criteria.
+- development workflow and production operational constraints, including any
+  required hosting, access, uptime, backup, or release expectations.
 
 Update only `docs/product.md`. Do not ask the business owner to choose frameworks
 and do not scaffold code yet.
@@ -182,6 +184,14 @@ the known product instead of defaulting every project to the same stack.
   selecting a managed cloud storage provider.
 - Decide Docker, CI, and deployment from the actual runtime and hosting needs,
   while keeping deployable applications independently containerizable.
+- Every deployable application must define development and production runtime
+  commands, validated `APP_ENV` configuration, health/readiness behavior, and a
+  production-safe release path. Development uses the development server;
+  production uses a built artifact and production start command.
+- Local database services, migrations, and safe synthetic seeds may support
+  development. Production migrations run once as an observable release step;
+  production must never run seeds automatically or run migrations opportunistically
+  during normal application startup.
 
 Framework limitations and version-specific behavior must be verified against
 official documentation before the profile is proposed.
@@ -207,6 +217,8 @@ Package manager:
 UI system:
 Local infrastructure:
 Bootstrap runtime commands:
+Development runtime:
+Production release:
 CI:
 Deployment target:
 
@@ -234,7 +246,9 @@ The profile must state the supplied primary and secondary hex codes, including
 any accessibility or contrast risk the agent identified.
 It must also list the expected bootstrap runtime commands, including only the
 database, migration, seed, local-service, and application-start commands that
-the approved profile actually requires.
+the approved profile actually requires. It must identify the development command,
+production build and start commands, production migration behavior, health or
+readiness endpoint, and how production secrets are injected.
 
 ### Phase 4: Set Project Identity
 
@@ -254,7 +268,9 @@ environment validation, approved database/storage connectivity, Docker support,
 and basic verification. Define one central daisyUI product theme that maps the
 approved primary and secondary brand color codes to the corresponding semantic
 theme tokens. Do not scatter those raw values through UI components. Do not
-implement product features in this phase.
+implement product features in this phase. For each deployable application,
+provide distinct development, build, and production-start commands; never use a
+development server as the production command.
 
 ### Phase 6: Integrate The Profile
 
@@ -263,7 +279,9 @@ pieces. Keep secrets in environment variables. Update only `Selected Project
 Profile` in `docs/ai/architecture.md`. When the profile has a database or other
 local dependency, add idempotent root scripts for the required lifecycle, such
 as `db:up`, `db:down`, `db:migrate`, and `db:seed`. Do not add a migration or
-seed command when no baseline schema or seed data exists.
+seed command when no baseline schema or seed data exists. Validate `APP_ENV` and
+all required configuration at process startup. Keep local defaults in `.env.example`;
+production configuration and secrets must be injected outside the repository.
 
 ### Phase 7: Install And Provision The Local Baseline
 
@@ -284,6 +302,12 @@ Wait for a health endpoint or a successful application response and verify that
 it can connect to every required local dependency. Starting the process is
 required; documenting the command without running it is not sufficient.
 
+After the development smoke test, start the built application once with its
+production start command and non-secret production-equivalent local
+configuration. Verify its health or readiness response, then stop that
+production-mode process cleanly. A successful build alone does not validate the
+production startup contract.
+
 Keep the successfully started development process available to the person
 bootstrapping while the agent session can manage it. If the environment cannot
 retain a managed process, stop it cleanly after the smoke test and report the
@@ -295,6 +319,9 @@ exact command that starts it. Confirm:
 - approved local services are healthy, and every applicable migration and seed
   command completed successfully;
 - the application started successfully and its health or readiness check passed;
+- the production build and production start command were smoke-tested without
+  using development-only settings, and production seeds are not part of the
+  release path;
 - the selected daisyUI theme centrally uses the approved primary and secondary
   color codes and no component duplicates them as raw values;
 - `README.md` describes the bootstrapped product rather than OmegaForge, and its
@@ -310,6 +337,11 @@ product and its purpose, explain the selected application shape, list real
 prerequisites and non-secret environment setup, document local development,
 verification, and operational commands that actually exist, and cover any
 required local services, migrations, seeds, and startup health checks.
+
+Document development and production separately. State the production build and
+start commands, runtime configuration and secret-injection expectations, health
+or readiness check, and one-shot migration release step. Do not document a
+production seed command or imply that the development server runs in production.
 
 Do not retain OmegaForge's template overview, template-copying instructions,
 generic application-shape examples, or framework-specific commands that do not

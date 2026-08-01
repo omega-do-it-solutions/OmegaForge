@@ -18,6 +18,7 @@ feature.
 - Worker: Not currently required
 - Database: Unselected
 - Object storage: Self-hosted SeaweedFS; deployed topology unselected
+- Runtime environments: Development and production; configuration unselected
 - CI: Unselected
 - Deployment: Unselected
 
@@ -61,6 +62,15 @@ identifiers, not large payloads or file bytes.
 - Share only stable contracts or utilities used by at least two applications.
 - Prefer a modular monolith until separate services have an operational owner and
   a demonstrated scaling, reliability, security, or deployment need.
+
+## Environment Boundaries
+
+Each deployable application has distinct development and production commands and
+validated runtime configuration. Development may use local Compose dependencies,
+safe synthetic seeds, and a development server. Production uses built artifacts,
+runtime-injected secrets, health/readiness checks, and an observable one-shot
+migration release step. Never run automatic seeds or a development server in
+production.
 
 ## UI Architecture
 

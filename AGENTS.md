@@ -163,6 +163,25 @@ Use `$delivery` for Docker, Compose, CI/CD, releases, and deployment work.
 Production deployment and destructive infrastructure operations require explicit
 user authorization.
 
+## Development And Production Environments
+
+Every deployable application must distinguish development from production through
+validated runtime configuration. Use `APP_ENV=development` for local work and
+`APP_ENV=production` for deployed processes, alongside framework-required
+environment settings. Do not use development servers in production: development
+uses `pnpm dev`; production builds with `pnpm build` and runs the application's
+production start command.
+
+Keep local non-secret defaults in `.env.example` and create `.env` only for local
+development. Inject production configuration and secrets at runtime through the
+selected host or secret store; never commit, print, or bake them into an image.
+
+Start local dependencies through documented, idempotent scripts. Run database
+migrations once as an observable production release step, never at arbitrary app
+startup. Development and test seeds may contain only safe synthetic data; never
+automatically seed production. Every deployable service needs a health or
+readiness check suitable for startup and post-deployment verification.
+
 ## Verification
 
 Run verification proportional to the change:

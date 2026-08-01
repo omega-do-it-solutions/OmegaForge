@@ -15,6 +15,23 @@ containers.
 Treat Docker Compose as a local and integration topology unless production use
 is explicitly selected and designed.
 
+## Environment Contract
+
+Every deployable application distinguishes `APP_ENV=development` and
+`APP_ENV=production` through validated startup configuration. Development runs
+with the documented development command and may use local Compose dependencies.
+Production runs a built artifact through its production start command; never
+deploy a development server.
+
+Keep local, non-secret configuration in `.env.example` and `.env`. Inject
+production configuration and secrets at runtime from the selected host or secret
+store. Do not commit or bake secrets into images. Define health or readiness
+behavior for startup and post-deployment checks.
+
+Run schema migrations as an observable, one-shot production release task, not
+as normal application startup behavior. Seeds are limited to safe development or
+test data and must never be automatic in production.
+
 ## Build Production Images
 
 - Use reproducible dependency installation from the committed lockfile.
