@@ -6,9 +6,12 @@ This repository is a reusable technical foundation for AI-developed products.
 Treat user prompts as business intent and choose implementation details from the
 existing project architecture, this contract, and the relevant project skills.
 
-Do not require users to name frameworks, layers, patterns, or libraries. Ask a
-question only when different answers would materially change business behavior,
-permissions, money, external side effects, security, or irreversible data.
+Do not require users to name frameworks, layers, patterns, libraries, capacity,
+hosting, availability, recovery, or data-residency targets. Infer the smallest
+suitable technical posture from the product description and present the selected
+defaults for approval. Ask one plain-language question only when the stated
+product behavior is ambiguous or contradictory; do not turn technical planning
+into an interview for a non-technical owner.
 
 ## Sources Of Truth
 

@@ -18,6 +18,7 @@ feature.
 - Worker: Not currently required
 - Database: Unselected
 - Object storage: Self-hosted SeaweedFS; deployed topology unselected
+- Scale forecast: Unselected
 - Data flow and real-time delivery: Unselected
 - Capacity and data lifecycle: Unselected
 - Runtime environments: Development and production; configuration unselected
@@ -87,6 +88,27 @@ files.
 Treat the product's expected volume, peak load, retention, reporting needs, and
 freshness requirement as architecture inputs. Capture them in `docs/product.md`
 in business terms and select the smallest delivery pattern that meets them.
+
+Bootstrap classifies the product as **small**, **medium**, **large**, or
+**huge** from its documented workflows, clients, permissions, integrations,
+long-running work, data history, and future direction. This is an agent-owned
+planning forecast, not a question for the business owner to answer with technical
+numbers. The technical profile states the selected forecast and conservative
+defaults for capacity, availability, recovery, hosting, region, and operations;
+the owner approves or revises that recommendation as one coherent proposal.
+
+- **Small:** one client and modest data or operational workflow; favor one
+  deployable application and ordinary request/response.
+- **Medium:** multiple roles, recurring operational records, or limited external
+  integration; use clear feature boundaries and add independent infrastructure
+  only where currently needed.
+- **Large:** multiple clients, substantial permissions, integrations, data
+  flows, or important timeliness needs; separate deployable responsibilities and
+  durable processing where the workflow requires them.
+- **Huge:** multi-tenant, high-volume, time-sensitive, or regulated operations
+  with multiple independent consumers; establish reliable event flow, explicit
+  capacity and retention strategy, real-time delivery where needed, and
+  independently scalable applications.
 
 - Use request/response with bounded polling when data need not appear while a
   user is viewing a screen.

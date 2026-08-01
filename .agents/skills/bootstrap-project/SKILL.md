@@ -33,12 +33,17 @@ identify the first incomplete phase and resume without regenerating files.
 
 ### 2. Interview The Business Owner
 
-Ask one plain-language question at a time. Capture product purpose, users,
-workflows, public versus internal screens, roles and permissions, payments or
-irreversible actions, clients, SEO needs, integrations, background work, data,
-files, expected outcomes, and primary and secondary brand colors as hex codes.
-Update `docs/product.md` while preserving its required headings. Do not ask the
-business owner to choose frameworks.
+Read the product document first and derive the technical posture from its
+business facts. Do not conduct a technical interview. Ask at most one
+plain-language question only when product behavior is ambiguous or contradictory.
+Infer scale, availability, recovery, hosting, region, provider, and data-flow
+defaults; present them in the technical profile for approval instead of asking a
+non-technical owner for estimates. Capture product purpose, users, workflows,
+public versus internal screens, roles and permissions, payments or irreversible
+actions, clients, SEO needs, integrations, background work, data, files, expected
+outcomes, and primary and secondary brand colors as hex codes. Update
+`docs/product.md` while preserving its required headings. Do not ask the business
+owner to choose frameworks.
 
 ### 3. Decide And Print The Technical Profile
 
@@ -50,10 +55,11 @@ Vue or Nuxt only for an explicit user choice or a concrete established advantage
 and explain that advantage in the profile. Add an API and worker only where their
 durable responsibilities require them.
 
-Derive real-time delivery and data-flow architecture from the product's forecast
-volume, freshness requirement, and reliability needs. State whether bounded
-polling, SSE, WebSockets, or a durable event flow is selected, why it fits, and
-why larger alternatives are not yet needed.
+Classify the product as small, medium, large, or huge from the documented scope,
+then derive real-time delivery and data-flow architecture from that forecast.
+State the conservative operating defaults, whether bounded polling, SSE,
+WebSockets, or a durable event flow is selected, why it fits, and why larger
+alternatives are not yet needed.
 
 Verify version-sensitive framework claims using official documentation. Print
 the complete `PROJECT TECHNICAL PROFILE` from Phase 3, including approved brand

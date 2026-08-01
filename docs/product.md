@@ -38,10 +38,10 @@ What problem does this product solve, and for whom?
 
 ## Scale And Freshness
 
-- Expected users, organizations, records, requests, or events at launch and as
-  the product grows
-- Business information that must be current while a user is viewing it, and how
-  quickly it must appear
+- Any business clues about expected size, growth, peak periods, or high-volume
+  work; exact technical numbers are not required
+- Business information that must be current while a user is viewing it, such as
+  “live,” “soon,” or “daily”; exact latency targets are not required
 - Peak periods, high-volume imports, exports, or live operational workflows
 - Data history, reporting, retention, archival, and recovery expectations
 

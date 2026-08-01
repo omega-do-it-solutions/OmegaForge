@@ -121,8 +121,12 @@ During bootstrap, never:
 
 ### Phase 1: Capture Business Needs
 
-Interview the business owner in plain language, one material question at a time.
-Establish:
+Read `docs/product.md` and derive the product posture from its business facts.
+Do not run a broad technical interview. Ask at most one plain-language question
+only when the documented product behavior is ambiguous or contradictory. Never
+ask the owner to estimate technical capacity, event volume, latency, hosting,
+uptime, recovery, data residency, providers, or architecture. Establish from the
+product description:
 
 - product purpose, users, and main workflows;
 - future business direction, including known customer, operational, market, and
@@ -136,9 +140,7 @@ Establish:
 - integrations, webhooks, scheduled or long-running work;
 - structured data, uploads, generated files, and retention needs;
 - expected users, records, requests, event volume, peak periods, data history,
-  and retention needs at launch and as the product grows;
-- information that must appear while a user is viewing it, how quickly it must
-  be current, and whether clients also need to send real-time messages;
+  retention, and freshness needs at launch and as the product grows;
 - expected scale, deployment constraints, and success criteria;
 - development workflow and production operational constraints, including any
   required hosting, access, uptime, backup, or release expectations.
@@ -154,11 +156,13 @@ the known product instead of defaulting every project to the same stack.
 Treat known future business direction as current architecture input. Choose the
 required technologies, extensible boundaries, operational posture, and launch
 defaults before presenting the profile; do not label foreseeable decisions as
-"later," "unresolved," assumptions, or risks. When a missing business commitment
-would materially alter permissions, legal obligations, money, irreversible data,
-or external side effects, ask the owner one plain-language question before the
-profile instead of deferring it. Establish the foundation now, but do not build
-future product workflows, fake integrations, or empty abstractions.
+"later," "unresolved," assumptions, or risks. Infer a small, medium, large, or
+huge scale forecast from the documented workflows, users, integrations, data,
+and future direction. Select conservative technical, operational, availability,
+recovery, hosting, provider, and regional defaults appropriate to that forecast;
+present them for approval rather than requesting technical estimates. Establish
+the foundation now, but do not build future product workflows, fake integrations,
+or empty abstractions.
 
 #### Frontend decision
 
@@ -215,8 +219,9 @@ future product workflows, fake integrations, or empty abstractions.
   backpressure. Do not add Kafka, an event bus, or streaming infrastructure
   without documented volume, reliability, or independent-consumer needs.
 - Choose data partitioning, indexes, retention, archiving, aggregation, and
-  pagination from the stated record volume, access patterns, freshness target,
-  and reporting needs. Explain the selected approach in business terms.
+  pagination from the stated or inferred record volume, access patterns,
+  freshness target, and reporting needs. Explain the selected approach in
+  business terms.
 
 #### Data and delivery decision
 
@@ -260,6 +265,7 @@ External integrations:
 Package manager:
 UI system:
 Frontend foundation:
+Scale forecast:
 Data flow and real-time delivery:
 Capacity and data lifecycle:
 Local infrastructure:
@@ -302,10 +308,12 @@ The `Product trajectory and future readiness` section must use business language
 to state the known future outcome and the concrete foundation established now.
 It must not defer a material product or technical decision as an assumption or
 risk.
-The `Data flow and real-time delivery` and `Capacity and data lifecycle` sections
-must state the forecast volume and freshness outcome, selected delivery and
-durability pattern, scaling boundary, and why polling, SSE, WebSockets, or a
-durable event flow was selected or rejected.
+The `Scale forecast`, `Data flow and real-time delivery`, and `Capacity and data
+lifecycle` sections must state the inferred small, medium, large, or huge tier;
+the selected default volume and freshness outcome; delivery and durability
+pattern; scaling boundary; and why polling, SSE, WebSockets, or a durable event
+flow was selected or rejected. They must not ask the owner for technical
+estimates.
 
 ### Phase 4: Set Project Identity
 
