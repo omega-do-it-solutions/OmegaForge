@@ -54,9 +54,10 @@ are mandatory.
 Capture business requirements first. The agent must decide and print the
 smallest suitable technical profile, explain the choices and rejected larger
 alternatives, list exact intended file mutations, and wait for technical-owner
-approval. Only after approval may it scaffold a runnable boilerplate. Generators
-may write only into verified empty application directories and must never
-replace root framework files. Bootstrap does not include product features.
+approval. Only after approval may it scaffold, provision, and start a runnable
+baseline. Generators may write only into verified empty application directories
+and must never replace root framework files. Bootstrap does not include product
+features.
 
 ## Application Shape
 

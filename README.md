@@ -18,8 +18,9 @@ project to use the same frontend or backend framework.
 4. Codex prints the recommended technical profile, its reasons, and the exact
    files it intends to create or edit. No code is generated yet.
 5. The technical owner approves or revises the proposal.
-6. Only after approval, Codex scaffolds the runnable boilerplate, installs with
-   pnpm, and runs the framework checks.
+6. Only after approval, Codex scaffolds the runnable baseline, installs with
+   pnpm, starts required local services, runs applicable migrations and seeds,
+   then starts and smoke-tests the project before handoff.
 
 The mutation boundaries and resumable startup phases are defined in
 `docs/ai/bootstrap.md`. Bootstrap does not include product features, push, or

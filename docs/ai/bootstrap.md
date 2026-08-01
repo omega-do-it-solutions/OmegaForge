@@ -206,6 +206,7 @@ External integrations:
 Package manager:
 UI system:
 Local infrastructure:
+Bootstrap runtime commands:
 CI:
 Deployment target:
 
@@ -231,6 +232,9 @@ explicitly approves the profile and mutation list.
 
 The profile must state the supplied primary and secondary hex codes, including
 any accessibility or contrast risk the agent identified.
+It must also list the expected bootstrap runtime commands, including only the
+database, migration, seed, local-service, and application-start commands that
+the approved profile actually requires.
 
 ### Phase 4: Set Project Identity
 
@@ -256,21 +260,41 @@ implement product features in this phase.
 
 Connect only the approved database, object storage, Docker, CI, API, and worker
 pieces. Keep secrets in environment variables. Update only `Selected Project
-Profile` in `docs/ai/architecture.md`.
+Profile` in `docs/ai/architecture.md`. When the profile has a database or other
+local dependency, add idempotent root scripts for the required lifecycle, such
+as `db:up`, `db:down`, `db:migrate`, and `db:seed`. Do not add a migration or
+seed command when no baseline schema or seed data exists.
 
-### Phase 7: Install Once
+### Phase 7: Install And Provision The Local Baseline
 
 Run `pnpm install` from the repository root. Resolve workspace integration
-without creating additional lockfiles.
+without creating additional lockfiles. Create `.env` from `.env.example` only if
+it does not already exist. Start every approved local dependency through its
+documented root command, wait for its health check, then run the required
+migrations and seed scripts. Run a seed only when the approved baseline defines
+one; bootstrap must not invent product records or feature behavior merely to
+seed data.
 
-### Phase 8: Verify
+### Phase 8: Verify And Start The Project
 
 Run relevant application checks, then root lint, typecheck, tests, build, and
-Compose validation where available. Confirm:
+Compose validation where available. Start the project with its documented root
+development command, normally `pnpm dev`, as a managed background process.
+Wait for a health endpoint or a successful application response and verify that
+it can connect to every required local dependency. Starting the process is
+required; documenting the command without running it is not sufficient.
+
+Keep the successfully started development process available to the person
+bootstrapping while the agent session can manage it. If the environment cannot
+retain a managed process, stop it cleanly after the smoke test and report the
+exact command that starts it. Confirm:
 
 - no nested `.git` directory or extra lockfile exists;
 - protected files and architecture rules are unchanged;
 - targeted files retained their required content;
+- approved local services are healthy, and every applicable migration and seed
+  command completed successfully;
+- the application started successfully and its health or readiness check passed;
 - the selected daisyUI theme centrally uses the approved primary and secondary
   color codes and no component duplicates them as raw values;
 - `README.md` describes the bootstrapped product rather than OmegaForge, and its
@@ -285,7 +309,7 @@ Replace the template README with a project-owned README. It must identify the
 product and its purpose, explain the selected application shape, list real
 prerequisites and non-secret environment setup, document local development,
 verification, and operational commands that actually exist, and cover any
-required local services or migrations.
+required local services, migrations, seeds, and startup health checks.
 
 Do not retain OmegaForge's template overview, template-copying instructions,
 generic application-shape examples, or framework-specific commands that do not
@@ -297,8 +321,9 @@ generator-owned file replacement.
 ### Phase 10: Hand Off
 
 Report the approved profile, created and targeted-edited files, commands run,
-verification results, local run commands, assumptions, and remaining risks.
-Include `git status` and a concise diff summary. Do not push or deploy.
+verification results, the running-process state or the exact restart command,
+assumptions, and remaining risks. Include `git status` and a concise diff
+summary. Do not push or deploy.
 
 ## Approval And Resume Rules
 
