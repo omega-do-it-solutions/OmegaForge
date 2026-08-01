@@ -34,8 +34,9 @@ work, identify the first incomplete phase and resume without regenerating files.
 Ask one plain-language question at a time. Capture product purpose, users,
 workflows, public versus internal screens, roles and permissions, payments or
 irreversible actions, clients, SEO needs, integrations, background work, data,
-files, and expected outcomes. Update `docs/product.md` while preserving its
-required headings. Do not ask the business owner to choose frameworks.
+files, expected outcomes, and primary and secondary brand colors as hex codes.
+Update `docs/product.md` while preserving its required headings. Do not ask the
+business owner to choose frameworks.
 
 ### 3. Decide And Print The Technical Profile
 
@@ -45,9 +46,10 @@ Next.js application, a rendering-focused Nuxt or Next.js frontend with a separat
 API, and a worker where durable background work requires it.
 
 Verify version-sensitive framework claims using official documentation. Print
-the complete `PROJECT TECHNICAL PROFILE` from Phase 3, including reasons,
-rejected larger alternatives, applications to create, and every targeted file
-edit. daisyUI and the S3-compatible file contract are fixed choices.
+the complete `PROJECT TECHNICAL PROFILE` from Phase 3, including approved brand
+colors, reasons, rejected larger alternatives, applications to create, and every
+targeted file edit. daisyUI and the S3-compatible file contract are fixed
+choices.
 
 End with a direct approval request. Do not edit configuration, install packages,
 run generators, or write application code before explicit technical approval.
@@ -60,8 +62,9 @@ replacement, and run generators only in verified empty application directories.
 Use pnpm from the repository root and never permit a generator to initialize Git
 or create another lockfile.
 
-Create only an up-and-running technical baseline. Do not implement product
-features during bootstrap.
+Create only an up-and-running technical baseline. Configure a central daisyUI
+theme whose `primary` and `secondary` tokens use the approved brand colors. Do
+not implement product features during bootstrap.
 
 ### 5. Verify And Report
 

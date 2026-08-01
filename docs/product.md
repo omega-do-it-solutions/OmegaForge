@@ -7,6 +7,11 @@ not implementation preferences.
 
 What problem does this product solve, and for whom?
 
+## Brand Identity
+
+- Primary color (hex): the main brand and action color, for example `#1D4ED8`
+- Secondary color (hex): the complementary brand color, for example `#F97316`
+
 ## Users And Roles
 
 - Role: responsibilities and access

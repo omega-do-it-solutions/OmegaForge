@@ -116,6 +116,8 @@ Interview the business owner in plain language, one material question at a time.
 Establish:
 
 - product purpose, users, and main workflows;
+- primary and secondary brand colors as six-digit hex codes, for example
+  `#1D4ED8` and `#F97316`;
 - public pages versus authenticated or internal screens;
 - roles, permissions, payments, and irreversible actions;
 - expected clients such as web, mobile, partner API, or automation;
@@ -187,6 +189,7 @@ Worker:
 Database and data access:
 Object storage:
 Authentication:
+Brand colors:
 External integrations:
 Package manager:
 UI system:
@@ -214,6 +217,9 @@ End with a direct approval request. The agent may revise the proposal after
 feedback, but must not scaffold, install, or implement until the technical owner
 explicitly approves the profile and mutation list.
 
+The profile must state the supplied primary and secondary hex codes, including
+any accessibility or contrast risk the agent identified.
+
 ### Phase 4: Set Project Identity
 
 After approval, apply targeted project-name and identifier edits to root metadata,
@@ -228,7 +234,10 @@ installing dependencies, initializing Git, or overwriting root files.
 The boilerplate must be runnable, but contain only foundation work: framework
 entry points, health behavior where applicable, Tailwind and daisyUI setup,
 environment validation, approved database/storage connectivity, Docker support,
-and basic verification. Do not implement product features in this phase.
+and basic verification. Define one central daisyUI product theme that maps the
+approved primary and secondary brand color codes to the corresponding semantic
+theme tokens. Do not scatter those raw values through UI components. Do not
+implement product features in this phase.
 
 ### Phase 6: Integrate The Profile
 
@@ -249,6 +258,8 @@ Compose validation where available. Confirm:
 - no nested `.git` directory or extra lockfile exists;
 - protected files and architecture rules are unchanged;
 - targeted files retained their required content;
+- the selected daisyUI theme centrally uses the approved primary and secondary
+  color codes and no component duplicates them as raw values;
 - no secret or local runtime data is staged;
 - `.claude/skills` still resolves;
 - the runnable applications exactly match the approved profile.
