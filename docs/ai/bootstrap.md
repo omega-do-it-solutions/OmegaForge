@@ -129,6 +129,11 @@ uptime, recovery, data residency, providers, or architecture. Establish from the
 product description:
 
 - product purpose, users, and main workflows;
+- first-release browser, iOS, Android, partner, or automation clients, and any
+  phone-specific workflow need such as camera, scanning, location,
+  notifications, or offline work;
+- known business, customer, legal, trust, safety, data-quality, and provider
+  risks, plus the outcome or harm the product must avoid;
 - future business direction, including known customer, operational, market, and
   regulatory needs that should influence today's foundation;
 - primary and secondary brand colors as six-digit hex codes, for example
@@ -153,16 +158,22 @@ and do not scaffold code yet.
 The agent owns the technical recommendation. Choose the smallest shape that fits
 the known product instead of defaulting every project to the same stack.
 
-Treat known future business direction as current architecture input. Choose the
-required technologies, extensible boundaries, operational posture, and launch
-defaults before presenting the profile; do not label foreseeable decisions as
-"later," "unresolved," assumptions, or risks. Infer a small, medium, large, or
+Treat known future business direction and documented business risks as current
+architecture input. Choose the required technologies, safeguards, extensible
+boundaries, operational posture, and launch defaults before presenting the
+profile; do not label foreseeable decisions as "later," "unresolved,"
+or unowned technical assumptions or risks. Infer a small, medium, large, or
 huge scale forecast from the documented workflows, users, integrations, data,
 and future direction. Select conservative technical, operational, availability,
 recovery, hosting, provider, and regional defaults appropriate to that forecast;
 present them for approval rather than requesting technical estimates. Establish
 the foundation now, but do not build future product workflows, fake integrations,
 or empty abstractions.
+
+This does not suppress a documented product risk. Turn each material business,
+customer, legal, trust, safety, data-quality, or provider risk into an owned
+launch safeguard and describe its business outcome, rather than presenting it
+as an undecided technical risk.
 
 #### Frontend decision
 
@@ -187,6 +198,28 @@ or empty abstractions.
   when its rendering, routing, or backend-for-frontend benefits are still useful;
   otherwise choose the simpler Vite SPA.
 - Use Tailwind CSS with daisyUI for every selected web frontend.
+
+#### Mobile decision
+
+- Add `apps/mobile` only when the documented first release needs an iOS or
+  Android client, or when a workflow needs phone capabilities. Do not scaffold
+  a mobile app for a hypothetical future channel.
+- Default to one React Native application using Expo for a shared iOS and
+  Android product, with TypeScript and Expo Router. Choose separate
+  platform-native applications only when a documented capability, platform
+  policy, or existing native code makes the cross-platform approach unsuitable;
+  explain that concrete reason.
+- Use the mobile foundation in `docs/ai/architecture.md`: Axios and TanStack
+  Query for server state, Zustand only for shared client-only state, React Hook
+  Form with Zod, CASL UI checks, `expo-secure-store` for small auth secrets,
+  native tokenized components, and React Native Testing Library. Install each
+  dependency only when its product capability is in scope.
+- When a mobile client shares product data or server behavior, give it an
+  explicit authenticated server contract. Add or retain `apps/api` when that
+  shared behavior cannot safely remain inside a web-only server lifecycle.
+- Treat store accounts, signing, and store publication as separate owner
+  authorization. Bootstrap may create and run the local mobile baseline, but
+  must not publish an app or create store credentials.
 
 #### Backend decision
 
@@ -236,7 +269,9 @@ or empty abstractions.
 - Every deployable application must define development and production runtime
   commands, validated `APP_ENV` configuration, health/readiness behavior, and a
   production-safe release path. Development uses the development server;
-  production uses a built artifact and production start command.
+  server production uses a built artifact and production start command. Native
+  mobile production uses an Android and/or iOS release artifact, not a server
+  start command.
 - Local database services, migrations, and safe synthetic seeds may support
   development. Production migrations run once as an observable release step;
   production must never run seeds automatically or run migrations opportunistically
@@ -254,6 +289,7 @@ PROJECT TECHNICAL PROFILE
 
 Product shape:
 Frontend:
+Mobile:
 Rendering mode:
 Backend:
 Worker:
@@ -297,13 +333,17 @@ explicitly approves the profile and mutation list.
 
 The profile must state the supplied primary and secondary hex codes, including
 any accessibility or contrast risk the agent identified.
+When `Mobile` is selected, it must state the iOS and Android targets, the chosen
+mobile approach, the phone-specific capabilities in scope, and the server
+contract that supports them.
 It must also list the expected bootstrap runtime commands, including only the
 database, migration, seed, local-service, and application-start commands that
 the approved profile actually requires. It must identify the development command,
-production build and start commands, production migration behavior, health or
-readiness endpoint, and how production secrets are injected. It must name every
-root or application configuration file and state how each running process
-receives its development configuration.
+server production build and start commands, mobile development-build and release
+artifact commands when applicable, production migration behavior, health or
+readiness endpoint where applicable, and how production secrets are injected.
+It must name every root or application configuration file and state how each
+running process receives its development configuration.
 The `Product trajectory and future readiness` section must use business language
 to state the known future outcome and the concrete foundation established now.
 It must not defer a material product or technical decision as an assumption or
@@ -328,17 +368,21 @@ pnpm-compatible, non-interactive options where safe. Prevent generators from
 installing dependencies, initializing Git, or overwriting root files.
 
 The boilerplate must be runnable, but contain only foundation work: framework
-entry points, health behavior where applicable, Tailwind and daisyUI setup,
-environment validation, approved database/storage connectivity, Docker support,
-and basic verification. Define one central daisyUI product theme that maps the
+entry points, health behavior where applicable, Tailwind and daisyUI setup for
+web, mobile token setup for native applications, environment validation,
+approved database/storage connectivity, Docker support where applicable, and
+basic verification. Define one central daisyUI product theme that maps the
 approved primary and secondary brand color codes to the corresponding semantic
-theme tokens. Do not scatter those raw values through UI components. Do not
-implement product features in this phase. For each deployable application,
+web theme tokens, and map those colors to the mobile token layer when a mobile
+application exists. Do not scatter those raw values through UI components. Do
+not implement product features in this phase. For each server application,
 provide distinct development, build, and production-start commands; never use a
-development server as the production command. Create a matching `.env.example`
-at every approved configuration location. Install the approved frontend
-foundation libraries only when their corresponding product capability is in
-scope; do not add unused packages merely for a hypothetical future feature.
+development server as the production command. For a native mobile application,
+provide its development-server command, Android/iOS development-build command,
+and release-artifact build command instead. Create a matching `.env.example` at
+every approved configuration location. Install the approved frontend foundation
+libraries only when their corresponding product capability is in scope; do not
+add unused packages merely for a hypothetical future feature.
 
 ### Phase 6: Integrate The Profile
 
@@ -376,11 +420,18 @@ Wait for a health endpoint or a successful application response and verify that
 it can connect to every required local dependency. Starting the process is
 required; documenting the command without running it is not sufficient.
 
-After the development smoke test, start the built application once with its
-production start command and non-secret production-equivalent local
+When `apps/mobile` is approved, start its development command and verify the
+mobile bundle can launch. Run it on an available Android emulator, iOS simulator,
+or physical device when one is available; otherwise report that device-level
+verification was unavailable rather than claiming it passed.
+
+After the development smoke test, start each built server application once with
+its production start command and non-secret production-equivalent local
 configuration. Verify its health or readiness response, then stop that
-production-mode process cleanly. A successful build alone does not validate the
-production startup contract.
+production-mode process cleanly. For a native mobile application, build the
+approved Android and/or iOS release artifact and report the available emulator,
+simulator, or device verification. A successful build alone does not validate a
+server production startup contract or a mobile release artifact.
 
 Keep the successfully started development process available to the person
 bootstrapping while the agent session can manage it. If the environment cannot
@@ -393,13 +444,16 @@ exact command that starts it. Confirm:
   absent, verify this through targeted file inspection rather than a Git diff;
 - targeted files retained their required content;
 - every approved local `.env` file exists, and root lifecycle commands provide
-  its required configuration to every web, API, and worker process;
+  its required configuration to every web, API, worker, and mobile process;
 - approved local services are healthy, and every applicable migration and seed
   command completed successfully;
 - the application started successfully and its health or readiness check passed;
-- the production build and production start command were smoke-tested without
-  using development-only settings, and production seeds are not part of the
-  release path;
+- each approved mobile baseline started successfully, with its available
+  emulator, simulator, or device verification reported separately;
+- server production builds and production start commands were smoke-tested
+  without development-only settings, mobile release artifacts were built and
+  their device verification was reported, and production seeds are not part of
+  the release path;
 - the selected daisyUI theme centrally uses the approved primary and secondary
   color codes and no component duplicates them as raw values;
 - `README.md` describes the bootstrapped product rather than OmegaForge, and its
@@ -422,10 +476,11 @@ local `.env` location, and how root commands make shared settings available to
 each application. Do not ask a developer to manually export a local environment
 file before ordinary development commands work.
 
-Document development and production separately. State the production build and
-start commands, runtime configuration and secret-injection expectations, health
-or readiness check, and one-shot migration release step. Do not document a
-production seed command or imply that the development server runs in production.
+Document development and production separately. State server production build
+and start commands, native mobile development and release-artifact commands,
+runtime configuration and secret-injection expectations, health or readiness
+check where applicable, and the one-shot migration release step. Do not document
+a production seed command or imply that a development server runs in production.
 
 Do not retain OmegaForge's template overview, template-copying instructions,
 generic application-shape examples, or framework-specific commands that do not

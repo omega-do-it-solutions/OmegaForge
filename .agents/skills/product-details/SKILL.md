@@ -51,19 +51,21 @@ Suggestion:
   mentioning architecture or implementation.
 - **Example answer:** Give one short, fictional answer tailored to the product;
   make clear that it is only an example, not a required answer.
-- **Suggestion:** Offer one practical starting direction based on what the owner
-  has already said. Mark it as a suggestion they can change, never as an
-  assumed decision.
+- **Suggestion:** Give a ready-to-use suggested answer in the owner's voice,
+  based on what they have already said. Write it as their possible choice—for
+  example, "For the first release, I want shop managers to approve refunds"—not
+  as agent advice such as "I suggest you..." Mark it as an editable starting
+  point, never as an assumed decision.
 
 ## Progress Card
 
 Show a progress card before every question, including the first question. Use
-the owner's conversation language. Base it on the 11 required `docs/product.md`
+the owner's conversation language. Base it on the 13 required `docs/product.md`
 sections, and use this structure:
 
 ```text
 Progress:
-- Completed: <number> of 11 sections — <completed section names>
+- Completed: <number> of 13 sections — <completed section names>
 - In progress: <section name and concise status, if applicable>
 - Current question: <section name>
 - Remaining: <remaining section names, or “None — ready for review”>
@@ -76,8 +78,8 @@ Progress:
 - For a multi-part section such as `Main Workflows`, state the useful local
   status, for example `2 workflows recorded; checking for more`. Do not pretend
   there is a fixed number of workflows before the owner has described them.
-- Show `0 of 11` at the beginning so the owner always knows the interview's
-  size. When all sections are complete, show `11 of 11` and replace the next
+- Show `0 of 13` at the beginning so the owner always knows the interview's
+  size. When all sections are complete, show `13 of 13` and replace the next
   question with the completion and handoff summary.
 
 ## Conversation Language
@@ -93,11 +95,22 @@ the owner asks for a different document language.
 Use this natural order, skipping a topic already covered:
 
 - Purpose: who has the problem and what outcome they need.
+- Platforms: ask which people need to use the product in a browser, on an
+  iPhone, or on Android in the first release. When mobile is needed, ask what
+  they must do from a phone, such as receive a notification, use the camera,
+  scan a code, share their location, or work without a connection. Do not ask
+  the owner to choose a mobile framework or distinguish native from
+  cross-platform development.
 - Users and roles: who uses it and what each person may do.
 - Main workflows: ask about one user journey at a time, including the expected
   result and important exceptions.
 - Business rules: permissions, approvals, money, deadlines, ownership, or
   other rules that must always hold.
+- Risks: ask about understandable things that could harm customers or the
+  business, such as people not adopting the product, misuse or fraud, incorrect
+  information, legal obligations, loss of trust, or an essential provider being
+  unavailable. Ask what outcome they want to avoid and what the product should
+  do to reduce the harm. A response of "No current concern" is valid.
 - Data and files: information the product keeps, documents or media involved,
   and any business privacy or deletion expectation.
 - External systems: services the product must connect to and what should happen

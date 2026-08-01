@@ -204,6 +204,50 @@ install them in the owning web application. The project may add a new foundation
 library only through an explicit architecture decision that explains why the
 standard choice is insufficient.
 
+## Mobile Product Foundation
+
+Apply these standards only when `apps/mobile` is approved. They are not a reason
+to create a mobile application or install every mobile package in advance.
+
+- **Runtime and navigation:** Use TypeScript, React Native, Expo, and
+  `expo-router`. Keep routes in the router-owned directory and do not add a
+  second navigation system.
+- **HTTP and server state:** Use the same project-owned `axios` API client and
+  `@tanstack/react-query` contract as the React web application. Configure
+  refetch behavior around app foregrounding and connectivity where the mobile
+  workflow needs current information. TanStack Query remains the owner of server
+  state.
+- **Client state, forms, and permissions:** Use `zustand` only for shared
+  client-only state, `react-hook-form` with `zod` for forms, and
+  `@casl/ability` with `@casl/react` for UI capability checks. Server-side
+  authorization remains authoritative.
+- **Secure local values:** Use `expo-secure-store` only for small secret values
+  such as session tokens. Never place credentials, long-lived provider secrets,
+  or large application data there; never use an unencrypted client store for
+  authentication tokens.
+- **Design system:** Use React Native primitives and a project-owned mobile
+  token layer for color, typography, spacing, radius, and light/dark behavior.
+  Map the product's approved primary and secondary colors into those tokens.
+  Do not use daisyUI, browser DOM components, or a web UI kit in native screens.
+- **Mobile patterns:** Prefer accessible lists, cards, search, filters, and
+  detail screens over desktop-style tables. TanStack Table, Tiptap, and
+  ApexCharts are web-only defaults, not mobile baseline dependencies.
+- **Device capabilities:** Add Expo modules for notifications, camera, code
+  scanning, location, files, or offline behavior only when documented product
+  workflows need them. Push notifications require a development or release
+  build; do not treat Expo Go as complete device verification.
+- **Testing:** Use `@testing-library/react-native` for mobile component and
+  workflow tests. Test device-specific behavior on an available emulator,
+  simulator, or physical device.
+- **Release updates:** Do not make over-the-air updates a default dependency or
+  release path. Choose an update service only after the product has an approved
+  release, rollback, and ownership policy.
+
+During bootstrap, install only the applicable packages in `apps/mobile` and list
+the selected mobile standards in the technical profile. Mobile and web may share
+typed contracts or feature-agnostic utilities only when both applications use
+them; do not force UI components or application state into `packages/`.
+
 ## Dependency Direction
 
 Dependencies should point toward business behavior:

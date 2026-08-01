@@ -17,12 +17,17 @@ ships it or the task touches version-sensitive behavior.
 
 ## Use The Required UI System
 
-Use Tailwind CSS with daisyUI as the only visual component system. Before adding
-or changing UI primitives, read [references/daisyui.md](references/daisyui.md).
+For web applications, use Tailwind CSS with daisyUI as the only visual component
+system. Before adding or changing web UI primitives, read
+[references/daisyui.md](references/daisyui.md).
 
-Do not add another visual UI kit. A headless primitive is acceptable only for an
-accessible interaction daisyUI does not implement; keep all presentation in the
-project's daisyUI theme and Tailwind utilities.
+Do not add another web visual UI kit. A headless primitive is acceptable only
+for an accessible interaction daisyUI does not implement; keep all presentation
+in the project's daisyUI theme and Tailwind utilities.
+
+For `apps/mobile`, use React Native primitives and the project's mobile token
+layer. Reuse brand and semantic tokens, but do not import daisyUI, browser DOM
+components, or a second mobile UI kit by default.
 
 ## Use The Product Foundation
 
@@ -44,6 +49,14 @@ These are default choices, not a reason to install every package. Keep TanStack
 Query as the owner of server state, keep authorization authoritative on the
 server, and do not add a competing library in any of these categories without an
 explicit architecture decision.
+
+For `apps/mobile`, also follow the mobile foundation in
+`docs/ai/architecture.md`: use Expo, React Native, TypeScript, and Expo Router;
+use the same Axios and `@tanstack/react-query` server-state contract; use
+Zustand, React Hook Form, Zod, and CASL only when their capability is in scope;
+and use `expo-secure-store` for small authentication secrets. Use lists and
+cards instead of desktop tables. Add Expo device modules only for documented
+workflows, and use `@testing-library/react-native` for changed mobile behavior.
 
 ## Structure By Feature
 

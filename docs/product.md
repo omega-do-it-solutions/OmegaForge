@@ -7,6 +7,12 @@ not implementation preferences.
 
 What problem does this product solve, and for whom?
 
+## Platforms
+
+- First-release interfaces: browser, iOS app, Android app, or another client
+- Which users need each interface and any phone-specific need, such as camera,
+  scanning, location, notifications, or offline work
+
 ## Future Direction
 
 - Business outcome the product is expected to support as it grows
@@ -29,6 +35,12 @@ What problem does this product solve, and for whom?
 ## Business Rules
 
 - State rules that must remain true regardless of the technical implementation.
+
+## Risks
+
+- Business, customer, legal, trust, safety, data-quality, or provider problems
+  that could harm the product or its users
+- The effect to avoid and the product behavior or safeguard that would help
 
 ## Data And Files
 

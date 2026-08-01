@@ -7,6 +7,8 @@ The framework standardizes repository boundaries, feature implementation, data
 handling, object storage, verification, and delivery without forcing every
 project to use the same frontend or backend framework.
 
+Release history is maintained in [CHANGELOG.md](CHANGELOG.md).
+
 ## Start A Project
 
 1. Create or unpack the product repository from the OmegaForge template. Git is

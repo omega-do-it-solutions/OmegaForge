@@ -21,7 +21,9 @@ Every deployable application distinguishes `APP_ENV=development` and
 `APP_ENV=production` through validated startup configuration. Development runs
 with the documented development command and may use local Compose dependencies.
 Production runs a built artifact through its production start command; never
-deploy a development server.
+deploy a development server. A native mobile application is different: its
+production output is a signed Android and/or iOS release artifact, not a
+long-running server process.
 
 Keep local, non-secret configuration in `.env.example` and `.env`. Inject
 production configuration and secrets at runtime from the selected host or secret
@@ -33,7 +35,7 @@ a root `.env` for shared workspace configuration; use application-owned
 environment files only for genuinely app-specific values or framework needs.
 Create each missing `.env` from its matching `.env.example` without overwriting
 an existing file. Ensure root lifecycle commands explicitly load or propagate
-the chosen files to every web, API, and worker process. Do not rely on automatic
+the chosen files to every web, API, worker, and mobile process. Do not rely on automatic
 environment loading by one framework to configure sibling processes.
 
 Run schema migrations as an observable, one-shot production release task, not
@@ -52,6 +54,20 @@ test data and must never be automatic in production.
 - Define startup, shutdown, and health behavior appropriate to the application.
 - Pin intentionally and document the update path for base and infrastructure
   images.
+
+## Native Mobile Builds
+
+Do not containerize `apps/mobile` by default. Use Expo development builds for
+real device-capability testing; Expo Go is suitable only for early compatibility
+checks. Build the approved Android and/or iOS release artifacts in a compatible
+local or CI environment, verify the requested targets, and report any unavailable
+emulator, simulator, or device separately.
+
+Keep mobile runtime configuration limited to non-secret values such as an API
+base URL. Keep access tokens in `expo-secure-store`; never embed server, object
+storage, signing, store, or provider credentials in the app. Do not create store
+accounts, signing credentials, publish builds, or enable an over-the-air update
+service without explicit owner authorization.
 
 ## Compose Local Infrastructure
 

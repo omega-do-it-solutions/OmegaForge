@@ -40,8 +40,10 @@ Infer scale, availability, recovery, hosting, region, provider, and data-flow
 defaults; present them in the technical profile for approval instead of asking a
 non-technical owner for estimates. Capture product purpose, users, workflows,
 public versus internal screens, roles and permissions, payments or irreversible
-actions, clients, SEO needs, integrations, background work, data, files, expected
-outcomes, and primary and secondary brand colors as hex codes. Update
+actions, known business risks and the harm they must avoid, browser, iOS,
+Android, or other first-release clients, any phone-specific needs, SEO needs,
+integrations, background work, data, files, expected outcomes, and primary and
+secondary brand colors as hex codes. Update
 `docs/product.md` while preserving its required headings. Do not ask the business
 owner to choose frameworks.
 
@@ -55,6 +57,14 @@ Vue or Nuxt only for an explicit user choice or a concrete established advantage
 and explain that advantage in the profile. Add an API and worker only where their
 durable responsibilities require them.
 
+Add `apps/mobile` only when the documented first release needs iOS, Android, or
+phone-specific capabilities. Default to React Native with Expo for one shared
+iOS and Android application, with TypeScript and Expo Router; select separate
+native applications only for a documented platform-specific need. Apply the
+mobile foundation in `docs/ai/architecture.md`, give mobile its own line in the
+technical profile, and do not publish to an app store or create store
+credentials.
+
 Classify the product as small, medium, large, or huge from the documented scope,
 then derive real-time delivery and data-flow architecture from that forecast.
 State the conservative operating defaults, whether bounded polling, SSE,
@@ -65,9 +75,10 @@ Verify version-sensitive framework claims using official documentation. Print
 the complete `PROJECT TECHNICAL PROFILE` from Phase 3, including approved brand
 colors, reasons, rejected larger alternatives, applications to create, and every
 targeted file edit. daisyUI and the S3-compatible file contract are fixed
-choices. Resolve known material launch and growth decisions before the profile;
-describe their business outcome and the foundation established now instead of
-listing assumptions, risks, or unresolved future choices.
+choices. Resolve known material launch, growth, and business-risk safeguards
+before the profile. Describe their business outcome and the foundation
+established now instead of listing unowned technical assumptions, undecided
+technical risks, or unresolved future choices.
 
 End with a direct approval request. Do not edit configuration, install packages,
 run generators, or write application code before explicit technical approval.
@@ -85,11 +96,12 @@ theme whose `primary` and `secondary` tokens use the approved brand colors. Run
 the approved local-service, migration, and seed commands where they exist, then
 start and smoke-test the application before handoff. Do not invent product data
 or implement product features during bootstrap. Provide separate validated
-development, build, and production-start commands, with a production-safe
-migration path and no automatic production seed behavior. Create every missing
-root or application `.env` from its matching `.env.example`, explicitly wire
-those files into every spawned process, and verify their configuration before
-handoff.
+development, build, and production-start commands for server applications, plus
+development-build and Android/iOS release-artifact commands for mobile, with a
+production-safe migration path and no automatic production seed behavior. Create
+every missing root or application `.env` from its matching `.env.example`,
+explicitly wire those files into every spawned process, and verify their
+configuration before handoff.
 
 ### 5. Verify And Report
 
@@ -97,9 +109,10 @@ Follow Phases 8 through 10. Confirm the local dependencies, migrations, and
 app startup actually succeed; do not merely document commands. Keep the managed
 development process available when the environment supports it, otherwise stop
 it cleanly after the smoke test and report the restart command. After
-verification, start the built application once with its production command,
-health-check it, and stop that production-mode process cleanly. Then replace the
-template README with a project-owned README that
+verification, start each built server application once with its production
+command, health-check it, and stop that production-mode process cleanly. Build
+the selected mobile release artifacts and report available device verification.
+Then replace the template README with a project-owned README that
 reflects the generated product, real commands, and local setup; it must not
 retain OmegaForge onboarding or template instructions. Report generated files
 separately from targeted edits and state anything that could not be verified. Do

@@ -79,6 +79,11 @@ substantial domain logic, complex permissions, a stable public API, independent
 scaling, or many integrations. Add `apps/worker` only for asynchronous,
 scheduled, retryable, or long-running work.
 
+Add `apps/mobile` when the documented first release requires an iOS or Android
+application, or a workflow genuinely needs phone capabilities such as camera,
+scanning, location, notifications, or offline use. Do not create it merely
+because a mobile app may be useful later.
+
 Default to a modular monolith. Do not introduce microservices, event buses, or
 distributed infrastructure without demonstrated operational need.
 
@@ -137,6 +142,10 @@ interfaces. Do not install or mix another visual UI kit. Headless behavior
 primitives are allowed only when daisyUI does not provide the required accessible
 interaction; style them exclusively with the project's daisyUI theme and tokens.
 
+For `apps/mobile`, use React Native primitives and project-owned mobile design
+tokens. Reuse the approved brand colors and semantic meaning, but do not import
+daisyUI, web DOM components, or a competing mobile UI kit by default.
+
 Keep product-specific composed components in application code instead of editing
 or duplicating library internals. Use `$frontend` and read its daisyUI reference
 for any user-interface work.
@@ -187,7 +196,10 @@ validated runtime configuration. Use `APP_ENV=development` for local work and
 `APP_ENV=production` for deployed processes, alongside framework-required
 environment settings. Do not use development servers in production: development
 uses `pnpm dev`; production builds with `pnpm build` and runs the application's
-production start command.
+production start command. A native mobile app is the exception: it runs through
+an Expo development server and development build locally, then produces a
+tested Android and/or iOS release artifact instead of a production server
+process.
 
 Keep local non-secret defaults in `.env.example` and create `.env` only for local
 development. Inject production configuration and secrets at runtime through the
