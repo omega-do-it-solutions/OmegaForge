@@ -136,14 +136,23 @@ the known product instead of defaulting every project to the same stack.
 
 #### Frontend decision
 
-- Prefer a Vue or React SPA built with Vite for an authenticated internal admin,
-  dashboard, or back-office UI when SEO and server rendering have no value and
-  the backend is separate.
-- Prefer Nuxt for Vue or Next.js for React when public pages need server or
-  hybrid rendering, SEO, content pre-rendering, or server-side composition.
-- A small single-client product may use Nuxt or Next.js as a full-stack web
-  application when its server work is request/response oriented and can share a
-  deployment lifecycle with the UI.
+- React is the default frontend choice when the product has no existing
+  framework constraint or explicit user preference. Prefer a React SPA built
+  with Vite for an authenticated internal admin, dashboard, or back-office UI
+  when SEO and server rendering have no value and the backend is separate.
+- Prefer Next.js for React when public pages need server or hybrid rendering,
+  SEO, content pre-rendering, or server-side composition. A small single-client
+  product may use Next.js as a full-stack web application when its server work
+  is request/response oriented and can share a deployment lifecycle with the
+  UI.
+- Choose Vue and Nuxt only when the user explicitly requests them or there is a
+  concrete advantage such as an established Vue codebase, a Vue-skilled team,
+  a required Vue/Nuxt integration, or a compatible existing component system.
+  A generic preference for Vue templates or an agent's subjective assessment of
+  a simpler mental model is not sufficient.
+- When Nuxt is selected, the technical profile must name the concrete advantage
+  and explain why React and Next.js do not meet it as well. Otherwise select the
+  corresponding React option.
 - A separate API does not automatically forbid Nuxt or Next.js. Keep one only
   when its rendering, routing, or backend-for-frontend benefits are still useful;
   otherwise choose the simpler Vite SPA.

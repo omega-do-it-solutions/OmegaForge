@@ -41,9 +41,12 @@ business owner to choose frameworks.
 ### 3. Decide And Print The Technical Profile
 
 Derive the smallest suitable stack using Phase 2 of the bootstrap contract.
-Choose deliberately between a Vite-based Vue or React SPA, a full-stack Nuxt or
-Next.js application, a rendering-focused Nuxt or Next.js frontend with a separate
-API, and a worker where durable background work requires it.
+Default to React when neither the user nor the existing project establishes a
+concrete Vue advantage: choose a Vite React SPA, full-stack Next.js application,
+or rendering-focused Next.js frontend according to the product's needs. Select
+Vue or Nuxt only for an explicit user choice or a concrete established advantage,
+and explain that advantage in the profile. Add an API and worker only where their
+durable responsibilities require them.
 
 Verify version-sensitive framework claims using official documentation. Print
 the complete `PROJECT TECHNICAL PROFILE` from Phase 3, including approved brand
