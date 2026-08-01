@@ -18,6 +18,8 @@ feature.
 - Worker: Not currently required
 - Database: Unselected
 - Object storage: Self-hosted SeaweedFS; deployed topology unselected
+- Data flow and real-time delivery: Unselected
+- Capacity and data lifecycle: Unselected
 - Runtime environments: Development and production; configuration unselected
 - CI: Unselected
 - Deployment: Unselected
@@ -72,6 +74,45 @@ runtime-injected secrets, health/readiness checks, and an observable one-shot
 migration release step. Never run automatic seeds or a development server in
 production.
 
+Choose and record whether local development configuration is shared at the
+workspace root or owned by individual applications. Root configuration is the
+default for shared dependencies and cross-application values. Every spawned
+process must explicitly receive the configuration it needs; automatic loading by
+one framework does not satisfy another process. Bootstrap creates missing local
+environment files from their matching examples without overwriting existing
+files.
+
+## Data Flow, Scale, And Real-Time Delivery
+
+Treat the product's expected volume, peak load, retention, reporting needs, and
+freshness requirement as architecture inputs. Capture them in `docs/product.md`
+in business terms and select the smallest delivery pattern that meets them.
+
+- Use request/response with bounded polling when data need not appear while a
+  user is viewing a screen.
+- Use Server-Sent Events (SSE) for timely, one-way updates from the server to
+  connected browsers. Authenticate subscriptions, authorize every stream, scope
+  each event to its tenant or audience, support reconnect using a stable cursor
+  or event identifier, and bound connection and fan-out resources.
+- Use WebSockets only when browser-to-server real-time messages are a genuine
+  product requirement. Do not use them as a default replacement for polling or
+  SSE.
+- Use a worker and durable event flow when events must survive request
+  termination, provider outages, retries, scheduled work, or independent
+  consumers. Persist database-originated events through a transactional outbox
+  or equivalent durable publication path; consumers must be idempotent,
+  observable, retryable, and protected by bounded concurrency and backpressure.
+- Do not introduce an event bus, Kafka, or streaming platform merely because
+  data volume may grow. Add it only when documented throughput, retention,
+  replay, fan-out, or independent-consumer requirements exceed the selected
+  database-backed queue or worker design.
+
+Design high-volume records for their observed access path: cursor pagination,
+selective projections, indexes, retention and archival policies, aggregates for
+reports, and bounded exports. Keep real-time notifications small and reference
+stable record identifiers; clients fetch authoritative current state through the
+normal API when necessary.
+
 ## UI Architecture
 
 Tailwind CSS with daisyUI is the required visual system for every web interface.
@@ -96,6 +137,50 @@ Tailwind environment, but the visual system remains daisyUI.
 Changing away from daisyUI is an architecture migration, not a feature-level
 dependency choice. It requires explicit technical approval and removal of the
 previous system rather than running two systems in parallel.
+
+## Frontend Product Foundation
+
+Use the following libraries as the standard implementation choices when the
+corresponding capability is in scope. Do not substitute overlapping libraries
+without an explicit architecture decision, and do not install unused packages
+into a baseline merely because a future feature is conceivable.
+
+- **HTTP and server state:** Use `axios` through a project-owned API client. Use
+  TanStack Query for fetching, caching, mutations, invalidation, pagination, and
+  other server state: `@tanstack/react-query` for React/Next and
+  `@tanstack/vue-query` for Vue/Nuxt. Do not store server state in a client-state
+  store.
+- **Data tables:** Use the TanStack Table adapter for every interactive product
+  table: `@tanstack/react-table` for React/Next and `@tanstack/vue-table` for
+  Vue/Nuxt. It is headless; render it with semantic HTML, daisyUI, and project
+  components rather than a competing visual table library.
+- **Authorization experience:** Use `@casl/ability` and the matching
+  `@casl/react` or `@casl/vue` integration for UI capability checks when roles
+  or permissions are in scope. Browser checks improve the experience only; every
+  action remains authorized by a server-side policy.
+- **Icons:** Use `@phosphor-icons/react` or `@phosphor-icons/vue` as the sole
+  icon library. Use accessible labels where an icon has an action or meaning.
+- **Forms:** Use Zod as the shared validation schema language. In React/Next use
+  `react-hook-form` with `zod`; in Vue/Nuxt use `vee-validate` with `zod`.
+  Validate again at the server boundary.
+- **Rich text:** Use `@tiptap/react` or `@tiptap/vue-3` when a product requires
+  a rich Markdown/document editor. Keep stored content, sanitization,
+  authorization, and upload behavior in the owning feature.
+- **Charts:** Use `apexcharts` with `react-apexcharts` or `vue3-apexcharts` for
+  product analytics visualizations. Do not use a chart where a small accessible
+  summary table communicates the result more clearly.
+- **Dates:** Use `dayjs`, including its timezone support where the product has
+  timezone-aware behavior. Keep canonical timestamps and business rules outside
+  presentation components.
+- **Client state:** Use `pinia` for Vue/Nuxt client state and `zustand` for
+  React/Next client state only when client-only state is shared beyond a
+  component or feature-local model. TanStack Query remains the owner of server
+  state.
+
+During bootstrap, list the applicable selections in the technical profile and
+install them in the owning web application. The project may add a new foundation
+library only through an explicit architecture decision that explains why the
+standard choice is insufficient.
 
 ## Dependency Direction
 

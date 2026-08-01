@@ -24,10 +24,12 @@ mandatory. This skill is not permission to alter protected framework files.
 
 ### 1. Preflight
 
-Confirm the repository root and inspect `git status --short`, existing lockfiles,
-workspace configuration, and intended application directories. Stop and report
-unexplained changes or a non-empty scaffold target. For known partial bootstrap
-work, identify the first incomplete phase and resume without regenerating files.
+Confirm the repository root, existing lockfiles, workspace configuration, and
+intended application directories. Inspect `git status --short` only when root
+Git metadata exists; otherwise record its absence and continue. Never initialize
+or alter Git during bootstrap. Stop for unexplained changes when Git exists or a
+non-empty scaffold target in every workspace. For known partial bootstrap work,
+identify the first incomplete phase and resume without regenerating files.
 
 ### 2. Interview The Business Owner
 
@@ -48,11 +50,18 @@ Vue or Nuxt only for an explicit user choice or a concrete established advantage
 and explain that advantage in the profile. Add an API and worker only where their
 durable responsibilities require them.
 
+Derive real-time delivery and data-flow architecture from the product's forecast
+volume, freshness requirement, and reliability needs. State whether bounded
+polling, SSE, WebSockets, or a durable event flow is selected, why it fits, and
+why larger alternatives are not yet needed.
+
 Verify version-sensitive framework claims using official documentation. Print
 the complete `PROJECT TECHNICAL PROFILE` from Phase 3, including approved brand
 colors, reasons, rejected larger alternatives, applications to create, and every
 targeted file edit. daisyUI and the S3-compatible file contract are fixed
-choices.
+choices. Resolve known material launch and growth decisions before the profile;
+describe their business outcome and the foundation established now instead of
+listing assumptions, risks, or unresolved future choices.
 
 End with a direct approval request. Do not edit configuration, install packages,
 run generators, or write application code before explicit technical approval.
@@ -71,7 +80,10 @@ the approved local-service, migration, and seed commands where they exist, then
 start and smoke-test the application before handoff. Do not invent product data
 or implement product features during bootstrap. Provide separate validated
 development, build, and production-start commands, with a production-safe
-migration path and no automatic production seed behavior.
+migration path and no automatic production seed behavior. Create every missing
+root or application `.env` from its matching `.env.example`, explicitly wire
+those files into every spawned process, and verify their configuration before
+handoff.
 
 ### 5. Verify And Report
 

@@ -57,7 +57,8 @@ alternatives, list exact intended file mutations, and wait for technical-owner
 approval. Only after approval may it scaffold, provision, and start a runnable
 baseline. Generators may write only into verified empty application directories
 and must never replace root framework files. Bootstrap does not include product
-features.
+features. Git metadata is optional: bootstrap must not initialize, alter, or
+require a Git repository unless the user separately asks for Git work.
 
 ## Application Shape
 
@@ -74,6 +75,13 @@ distributed infrastructure without demonstrated operational need.
 
 Read `docs/ai/architecture.md` when selecting or changing the application shape,
 adding a module, or implementing a non-trivial feature across multiple layers.
+
+Derive data-flow architecture from the scale and freshness requirements in
+`docs/product.md`. Use polling for ordinary, non-urgent refreshes; use SSE for
+one-way timely updates to connected clients; use WebSockets only when clients
+must also exchange real-time messages. Use durable event processing and workers
+when events must survive retries, outages, or request termination. Do not add a
+streaming transport or event bus without a stated business need.
 
 ## Feature Implementation
 
@@ -176,6 +184,15 @@ Keep local non-secret defaults in `.env.example` and create `.env` only for loca
 development. Inject production configuration and secrets at runtime through the
 selected host or secret store; never commit, print, or bake them into an image.
 
+During bootstrap, choose and document the local configuration layout. Use a root
+`.env` for values shared by workspace applications; add an application-owned
+`.env` only when that application has genuinely distinct configuration or its
+framework requires it. Create every missing local `.env` from its matching
+`.env.example` without overwriting existing files. Root lifecycle commands must
+explicitly load or propagate the chosen environment files to every process.
+Do not assume a framework's automatic `.env` loading also configures sibling
+Node, API, or worker processes.
+
 Start local dependencies through documented, idempotent scripts. Run database
 migrations once as an observable production release step, never at arbitrary app
 startup. Development and test seeds may contain only safe synthetic data; never
@@ -207,5 +224,6 @@ Do not run unrelated expensive suites for a small isolated change.
 
 ## Completion
 
-Report what changed, what was verified, assumptions made, and remaining risks.
-Do not claim success when required verification failed or was not possible.
+Report what changed, what was verified, decisions made for the documented product
+trajectory, and any externally imposed constraints. Do not claim success when
+required verification failed or was not possible.

@@ -28,6 +28,14 @@ production configuration and secrets at runtime from the selected host or secret
 store. Do not commit or bake secrets into images. Define health or readiness
 behavior for startup and post-deployment checks.
 
+Choose and document the local configuration layout during bootstrap. Default to
+a root `.env` for shared workspace configuration; use application-owned
+environment files only for genuinely app-specific values or framework needs.
+Create each missing `.env` from its matching `.env.example` without overwriting
+an existing file. Ensure root lifecycle commands explicitly load or propagate
+the chosen files to every web, API, and worker process. Do not rely on automatic
+environment loading by one framework to configure sibling processes.
+
 Run schema migrations as an observable, one-shot production release task, not
 as normal application startup behavior. Seeds are limited to safe development or
 test data and must never be automatic in production.

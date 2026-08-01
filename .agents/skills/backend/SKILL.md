@@ -40,6 +40,23 @@ independent. Persist enough state for the user to observe progress and failures.
 Queue payloads should be small, versionable, and safe to retry. Prefer stable
 record identifiers over snapshots of mutable business data.
 
+## Deliver Real-Time Data Deliberately
+
+Use SSE for authorized, one-way server-to-client updates when the product needs
+information to appear while a user is viewing a screen. Scope subscriptions by
+tenant and audience, support reconnect with a cursor or event identifier, and
+bound fan-out, connection lifetime, and event size. Send a stable record
+identifier or compact state change; let the client retrieve authoritative data
+through its normal API client.
+
+Use WebSockets only when clients must also send real-time messages. Keep polling
+when its freshness is sufficient. SSE and WebSockets do not make backend events
+durable: when delivery must survive retries, outages, or independent consumers,
+publish through a transactional outbox or equivalent durable mechanism and
+process it with idempotent, observable workers. Do not introduce an event bus or
+streaming platform without demonstrated throughput, replay, fan-out, or consumer
+independence requirements.
+
 ## Verify
 
 Test business services independently and add integration coverage at database,

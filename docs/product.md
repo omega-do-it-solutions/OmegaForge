@@ -7,6 +7,12 @@ not implementation preferences.
 
 What problem does this product solve, and for whom?
 
+## Future Direction
+
+- Business outcome the product is expected to support as it grows
+- Future customer, operational, market, or regulatory need known at launch
+- Capabilities intentionally planned for a later product release
+
 ## Brand Identity
 
 - Primary color (hex): the main brand and action color, for example `#1D4ED8`
@@ -29,6 +35,15 @@ What problem does this product solve, and for whom?
 - Structured records the product owns
 - Files users upload or the system generates
 - Retention, privacy, residency, or deletion requirements
+
+## Scale And Freshness
+
+- Expected users, organizations, records, requests, or events at launch and as
+  the product grows
+- Business information that must be current while a user is viewing it, and how
+  quickly it must appear
+- Peak periods, high-volume imports, exports, or live operational workflows
+- Data history, reporting, retention, archival, and recovery expectations
 
 ## External Systems
 

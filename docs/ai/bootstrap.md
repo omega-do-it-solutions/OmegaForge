@@ -24,6 +24,11 @@ Bootstrap work must not modify, replace, move, or delete:
 Do not create alternate copies of agent rules or skills. A protected-file change
 requires a separate framework-maintenance task and technical review.
 
+Git metadata is optional. When a root `.git` directory exists, bootstrap may
+inspect it but must not modify it. When it is absent, bootstrap must continue
+normally and must not initialize a repository, create a nested repository, or
+treat the absence as a verification blocker.
+
 ### Targeted Edit Only
 
 Read these files before editing, change only the necessary fields or sections,
@@ -87,7 +92,7 @@ an environment file or print its secrets.
 During bootstrap, never:
 
 - Force a scaffold into a non-empty directory.
-- Initialize nested Git repositories or alter repository history.
+- Initialize, alter, or create nested Git repositories during bootstrap.
 - Discard, reset, clean, or overwrite unexplained working-tree changes.
 - Introduce npm, Yarn, Bun, or another JavaScript lockfile.
 - Hardcode secrets, production credentials, or customer data.
@@ -104,12 +109,15 @@ During bootstrap, never:
 
 1. Read `AGENTS.md`, this contract, `docs/product.md`, and
    `docs/ai/architecture.md`.
-2. Confirm the repository root and run `git status --short`.
+2. Confirm the repository root. When `.git` exists, run `git status --short`;
+   otherwise record that Git metadata is absent and continue.
 3. Confirm pnpm and the selected framework's required runtime are available.
 4. Inspect every intended scaffold target before running a generator.
-5. Stop and report an unexplained change, non-empty target, nested repository,
-   or competing lockfile. For known partial bootstrap work, resume from the first
-   incomplete phase instead of regenerating.
+5. When Git metadata exists, stop and report an unexplained working-tree change.
+   In every workspace, stop for a non-empty scaffold target, nested repository,
+   or competing lockfile. The absence of Git metadata is not a reason to stop.
+   For known partial bootstrap work, resume from the first incomplete phase
+   instead of regenerating.
 
 ### Phase 1: Capture Business Needs
 
@@ -117,6 +125,8 @@ Interview the business owner in plain language, one material question at a time.
 Establish:
 
 - product purpose, users, and main workflows;
+- future business direction, including known customer, operational, market, and
+  regulatory needs that should influence today's foundation;
 - primary and secondary brand colors as six-digit hex codes, for example
   `#1D4ED8` and `#F97316`;
 - public pages versus authenticated or internal screens;
@@ -125,7 +135,11 @@ Establish:
 - search-engine visibility and content-rendering needs;
 - integrations, webhooks, scheduled or long-running work;
 - structured data, uploads, generated files, and retention needs;
-- expected scale, deployment constraints, and success criteria.
+- expected users, records, requests, event volume, peak periods, data history,
+  and retention needs at launch and as the product grows;
+- information that must appear while a user is viewing it, how quickly it must
+  be current, and whether clients also need to send real-time messages;
+- expected scale, deployment constraints, and success criteria;
 - development workflow and production operational constraints, including any
   required hosting, access, uptime, backup, or release expectations.
 
@@ -136,6 +150,15 @@ and do not scaffold code yet.
 
 The agent owns the technical recommendation. Choose the smallest shape that fits
 the known product instead of defaulting every project to the same stack.
+
+Treat known future business direction as current architecture input. Choose the
+required technologies, extensible boundaries, operational posture, and launch
+defaults before presenting the profile; do not label foreseeable decisions as
+"later," "unresolved," assumptions, or risks. When a missing business commitment
+would materially alter permissions, legal obligations, money, irreversible data,
+or external side effects, ask the owner one plain-language question before the
+profile instead of deferring it. Establish the foundation now, but do not build
+future product workflows, fake integrations, or empty abstractions.
 
 #### Frontend decision
 
@@ -173,6 +196,27 @@ the known product instead of defaulting every project to the same stack.
   choose by habit.
 - Add `apps/worker` only for durable scheduled, retryable, queue-based, or
   long-running work. Do not run such work inside web request handlers.
+
+#### Data flow and real-time decision
+
+- Use ordinary request/response and bounded polling when the business does not
+  require updates to appear while a user is viewing a screen.
+- Use SSE when connected clients need timely, one-way server-to-browser updates,
+  such as live shipment status, dispatch exceptions, progress, or operational
+  alerts. SSE is a delivery mechanism, not a replacement for durable backend
+  event processing.
+- Use WebSockets only when the product requires bidirectional real-time client
+  messages, such as collaboration, presence, or interactive control. Do not use
+  them merely to refresh a dashboard.
+- Add a durable event flow and worker when a state change must survive retries,
+  outages, independent consumers, scheduled processing, or request termination.
+  Use transactional outbox or equivalent durable publication for database-backed
+  events, idempotent consumers, bounded retries, dead-letter visibility, and
+  backpressure. Do not add Kafka, an event bus, or streaming infrastructure
+  without documented volume, reliability, or independent-consumer needs.
+- Choose data partitioning, indexes, retention, archiving, aggregation, and
+  pagination from the stated record volume, access patterns, freshness target,
+  and reporting needs. Explain the selected approach in business terms.
 
 #### Data and delivery decision
 
@@ -215,7 +259,12 @@ Brand colors:
 External integrations:
 Package manager:
 UI system:
+Frontend foundation:
+Data flow and real-time delivery:
+Capacity and data lifecycle:
 Local infrastructure:
+Local configuration layout:
+Product trajectory and future readiness:
 Bootstrap runtime commands:
 Development runtime:
 Production release:
@@ -234,8 +283,6 @@ Applications to create:
 Existing files to edit (targeted only):
 - path: exact intended change
 
-Assumptions and risks:
-- ...
 ```
 
 End with a direct approval request. The agent may revise the proposal after
@@ -248,7 +295,17 @@ It must also list the expected bootstrap runtime commands, including only the
 database, migration, seed, local-service, and application-start commands that
 the approved profile actually requires. It must identify the development command,
 production build and start commands, production migration behavior, health or
-readiness endpoint, and how production secrets are injected.
+readiness endpoint, and how production secrets are injected. It must name every
+root or application configuration file and state how each running process
+receives its development configuration.
+The `Product trajectory and future readiness` section must use business language
+to state the known future outcome and the concrete foundation established now.
+It must not defer a material product or technical decision as an assumption or
+risk.
+The `Data flow and real-time delivery` and `Capacity and data lifecycle` sections
+must state the forecast volume and freshness outcome, selected delivery and
+durability pattern, scaling boundary, and why polling, SSE, WebSockets, or a
+durable event flow was selected or rejected.
 
 ### Phase 4: Set Project Identity
 
@@ -270,7 +327,10 @@ approved primary and secondary brand color codes to the corresponding semantic
 theme tokens. Do not scatter those raw values through UI components. Do not
 implement product features in this phase. For each deployable application,
 provide distinct development, build, and production-start commands; never use a
-development server as the production command.
+development server as the production command. Create a matching `.env.example`
+at every approved configuration location. Install the approved frontend
+foundation libraries only when their corresponding product capability is in
+scope; do not add unused packages merely for a hypothetical future feature.
 
 ### Phase 6: Integrate The Profile
 
@@ -282,16 +342,22 @@ as `db:up`, `db:down`, `db:migrate`, and `db:seed`. Do not add a migration or
 seed command when no baseline schema or seed data exists. Validate `APP_ENV` and
 all required configuration at process startup. Keep local defaults in `.env.example`;
 production configuration and secrets must be injected outside the repository.
+Root lifecycle commands must explicitly load or propagate the chosen root and
+application environment files to every spawned application process; do not rely
+on one framework's automatic environment loading to configure a sibling API or
+worker.
 
 ### Phase 7: Install And Provision The Local Baseline
 
 Run `pnpm install` from the repository root. Resolve workspace integration
-without creating additional lockfiles. Create `.env` from `.env.example` only if
-it does not already exist. Start every approved local dependency through its
-documented root command, wait for its health check, then run the required
-migrations and seed scripts. Run a seed only when the approved baseline defines
-one; bootstrap must not invent product records or feature behavior merely to
-seed data.
+without creating additional lockfiles. At every approved root or application
+configuration location, create `.env` from its matching `.env.example` only if
+the `.env` does not already exist. Do not overwrite existing environment files
+or duplicate shared values into application files without a documented need.
+Start every approved local dependency through its documented root command, wait
+for its health check, then run the required migrations and seed scripts. Run a
+seed only when the approved baseline defines one; bootstrap must not invent
+product records or feature behavior merely to seed data.
 
 ### Phase 8: Verify And Start The Project
 
@@ -313,9 +379,13 @@ bootstrapping while the agent session can manage it. If the environment cannot
 retain a managed process, stop it cleanly after the smoke test and report the
 exact command that starts it. Confirm:
 
-- no nested `.git` directory or extra lockfile exists;
-- protected files and architecture rules are unchanged;
+- no nested `.git` directory or extra lockfile exists; when root Git metadata
+  exists, its status was reviewed, otherwise its absence was recorded;
+- protected files and architecture rules are unchanged; when Git metadata is
+  absent, verify this through targeted file inspection rather than a Git diff;
 - targeted files retained their required content;
+- every approved local `.env` file exists, and root lifecycle commands provide
+  its required configuration to every web, API, and worker process;
 - approved local services are healthy, and every applicable migration and seed
   command completed successfully;
 - the application started successfully and its health or readiness check passed;
@@ -326,7 +396,8 @@ exact command that starts it. Confirm:
   color codes and no component duplicates them as raw values;
 - `README.md` describes the bootstrapped product rather than OmegaForge, and its
   setup and commands match the generated applications;
-- no secret or local runtime data is staged;
+- no secret or local runtime data is staged when Git metadata exists, or present
+  in files intended for handoff when it does not;
 - `.claude/skills` still resolves;
 - the runnable applications exactly match the approved profile.
 
@@ -337,6 +408,11 @@ product and its purpose, explain the selected application shape, list real
 prerequisites and non-secret environment setup, document local development,
 verification, and operational commands that actually exist, and cover any
 required local services, migrations, seeds, and startup health checks.
+
+Document the local configuration layout, every required `.env.example` and
+local `.env` location, and how root commands make shared settings available to
+each application. Do not ask a developer to manually export a local environment
+file before ordinary development commands work.
 
 Document development and production separately. State the production build and
 start commands, runtime configuration and secret-injection expectations, health
@@ -354,8 +430,10 @@ generator-owned file replacement.
 
 Report the approved profile, created and targeted-edited files, commands run,
 verification results, the running-process state or the exact restart command,
-assumptions, and remaining risks. Include `git status` and a concise diff
-summary. Do not push or deploy.
+product trajectory decisions made, and any externally imposed constraints.
+Include `git status` and a concise diff summary when Git metadata exists;
+otherwise state that the workspace has no Git metadata and summarize inspected
+file changes. Do not push or deploy.
 
 ## Approval And Resume Rules
 

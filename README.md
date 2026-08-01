@@ -9,8 +9,8 @@ project to use the same frontend or backend framework.
 
 ## Start A Project
 
-1. Create the product repository from the OmegaForge GitHub template and clone
-   it locally.
+1. Create or unpack the product repository from the OmegaForge template. Git is
+   optional and is not required for bootstrap.
 2. Open Codex at the repository root and ask it to use `$bootstrap-project`.
 3. Answer the business questions, including primary and secondary brand colors
    as hex codes; Codex records them in `docs/product.md` and uses them for the

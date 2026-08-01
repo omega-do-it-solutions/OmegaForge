@@ -24,6 +24,27 @@ Do not add another visual UI kit. A headless primitive is acceptable only for an
 accessible interaction daisyUI does not implement; keep all presentation in the
 project's daisyUI theme and Tailwind utilities.
 
+## Use The Product Foundation
+
+Read `docs/ai/architecture.md` before selecting frontend dependencies. Use the
+approved foundation for the capability in scope: Axios with TanStack Query for
+API server state; TanStack Table for interactive tables; CASL for permission-aware
+UI; Phosphor Icons; Zod with React Hook Form or VeeValidate for forms; Tiptap for
+rich text; ApexCharts for analytics; Day.js for dates; and Pinia or Zustand for
+shared client-only state according to the selected framework.
+
+Use the exact adapter packages documented in the architecture: `axios`,
+`@tanstack/react-query` or `@tanstack/vue-query`, `@tanstack/react-table` or
+`@tanstack/vue-table`, `@casl/ability` with `@casl/react` or `@casl/vue`,
+`@phosphor-icons/react` or `@phosphor-icons/vue`, `react-hook-form` or
+`vee-validate` with `zod`, `@tiptap/react` or `@tiptap/vue-3`, `apexcharts` with
+`react-apexcharts` or `vue3-apexcharts`, `dayjs`, `pinia`, and `zustand`.
+
+These are default choices, not a reason to install every package. Keep TanStack
+Query as the owner of server state, keep authorization authoritative on the
+server, and do not add a competing library in any of these categories without an
+explicit architecture decision.
+
 ## Structure By Feature
 
 - Keep route files focused on route concerns, data wiring, and composition.
