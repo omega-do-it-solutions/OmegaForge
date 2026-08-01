@@ -128,9 +128,13 @@ for any user-interface work.
 Use a relational database for structured, queryable business records unless the
 project documents a different choice. Change schemas through reviewed migrations.
 
-Store uploaded or generated binary content in S3-compatible object storage. Keep
-only metadata, ownership, object keys, checksums, and lifecycle state in the
-database. Do not store file bytes or base64 payloads in relational tables.
+Store uploaded or generated binary content in self-hosted S3-compatible object
+storage. SeaweedFS is the default for local and deployed environments; another
+self-hosted compatible service requires a concrete operational reason. Keep only
+metadata, ownership, object keys, checksums, and lifecycle state in the database.
+Do not store file bytes or base64 payloads in relational tables. Do not select a
+managed cloud storage provider unless the technical owner explicitly changes this
+policy.
 
 Object storage is private by default. Never expose storage credentials to a
 client. Use short-lived presigned operations or an authorized server endpoint.

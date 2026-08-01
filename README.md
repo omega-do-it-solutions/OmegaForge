@@ -70,10 +70,10 @@ cp .env.example .env
 pnpm storage:up
 ```
 
-The local S3 endpoint is `http://localhost:18333`. SeaweedFS is a development
-default, not an automatic production architecture. Production may use AWS S3,
-Cloudflare R2, SeaweedFS, or another compatible provider after operational
-requirements are evaluated.
+The local S3 endpoint is `http://localhost:18333`. SeaweedFS is the default
+self-hosted S3-compatible service for both local and deployed environments.
+Production deployment requires an explicit SeaweedFS topology for capacity,
+replication, backup, monitoring, upgrades, security, and recovery.
 
 ## Agent Compatibility
 

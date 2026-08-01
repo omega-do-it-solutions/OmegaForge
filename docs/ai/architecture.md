@@ -17,7 +17,7 @@ feature.
 - API: Not currently required
 - Worker: Not currently required
 - Database: Unselected
-- Object storage: SeaweedFS locally; production provider unselected
+- Object storage: Self-hosted SeaweedFS; deployed topology unselected
 - CI: Unselected
 - Deployment: Unselected
 

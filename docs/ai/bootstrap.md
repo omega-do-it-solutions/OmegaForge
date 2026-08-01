@@ -36,7 +36,7 @@ version.
 | `docs/ai/architecture.md` | Edit only `Selected Project Profile` | Every architecture rule below it |
 | `package.json` | Project name, description, and necessary root scripts | `private`, `packageManager`, workspace checks, and storage commands |
 | `pnpm-workspace.yaml` | Add required globs or catalog entries | Existing `apps/*` and `packages/*` coverage |
-| `compose.yaml` | Change project identifier and add approved local services | SeaweedFS profile and S3-compatible contract |
+| `compose.yaml` | Change project identifier and add approved local services | Self-hosted SeaweedFS profile and S3-compatible contract |
 | `.env.example` | Change project identifier and append non-secret variables | Existing storage variables and still-used keys |
 | `.gitignore` | Append new generated or local-only paths | Existing secret, dependency, build, and runtime exclusions |
 | `.dockerignore` | Append build-context exclusions | Existing dependency, VCS, secret, and runtime exclusions |
@@ -93,7 +93,8 @@ During bootstrap, never:
 - Hardcode secrets, production credentials, or customer data.
 - Push, deploy, provision production infrastructure, or run shared migrations.
 - Replace daisyUI with another visual system.
-- Replace the S3-compatible file contract or store file bytes in the database.
+- Replace the self-hosted S3-compatible storage policy or store file bytes in
+  the database.
 - Create speculative applications, packages, services, or abstractions.
 - Start feature implementation before the technical profile is approved.
 
@@ -175,8 +176,10 @@ the known product instead of defaulting every project to the same stack.
 
 - Select a relational database when structured business records exist and name
   the ORM or query layer only if it is needed.
-- Select S3-compatible object storage when users or the system create files;
-  SeaweedFS remains the local default and the production provider is explicit.
+- Select self-hosted S3-compatible object storage when users or the system
+  create files. SeaweedFS is the default locally and in deployed environments;
+  document the production topology, backup, and recovery plan rather than
+  selecting a managed cloud storage provider.
 - Decide Docker, CI, and deployment from the actual runtime and hosting needs,
   while keeping deployable applications independently containerizable.
 

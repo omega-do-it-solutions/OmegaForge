@@ -1,6 +1,6 @@
 ---
 name: object-storage
-description: Implement S3-compatible storage for user uploads, generated assets, attachments, media, imports, exports, presigned access, retention, and deletion. Use whenever binary files enter, leave, or are managed by the product, including SeaweedFS, AWS S3, Cloudflare R2, and compatible providers.
+description: Implement self-hosted S3-compatible storage for user uploads, generated assets, attachments, media, imports, exports, presigned access, retention, and deletion. Use whenever binary files enter, leave, or are managed by the product, including SeaweedFS and other self-hosted compatible deployments.
 ---
 
 # Object Storage
@@ -71,7 +71,7 @@ retryable job. Monitor and reconcile orphaned database records and objects.
 Use provider lifecycle policies for temporary uploads, incomplete multipart
 uploads, generated intermediates, and retention tiers where appropriate.
 
-## Local SeaweedFS
+## SeaweedFS Deployment
 
 Use the included SeaweedFS Compose service for local development and integration
 testing:
@@ -86,9 +86,11 @@ The default endpoint is `http://localhost:18333` with path-style access enabled.
 Read credentials and the bucket from `.env`; never reuse local defaults in a
 deployed environment.
 
-Treat the single-node `weed mini` service as local infrastructure. A production
-SeaweedFS topology requires separate capacity, replication, backup, monitoring,
-upgrade, security, and recovery decisions.
+Treat the single-node `weed mini` service as local infrastructure. Deployed
+environments use a self-hosted SeaweedFS topology by default. That topology
+requires separate capacity, replication, backup, monitoring, upgrade, security,
+and recovery decisions. Do not substitute a managed cloud object-storage
+provider unless the technical owner explicitly changes the storage policy.
 
 ## Verify
 
