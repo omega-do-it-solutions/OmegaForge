@@ -1,0 +1,4 @@
+interface:
+  display_name: "Product Details"
+  short_description: "Guide a business owner through product details"
+  default_prompt: "Use $product-details to help me create docs/product.md step by step."

@@ -11,10 +11,11 @@ project to use the same frontend or backend framework.
 
 1. Create or unpack the product repository from the OmegaForge template. Git is
    optional and is not required for bootstrap.
-2. Open Codex at the repository root and ask it to use `$bootstrap-project`.
-3. Answer the business questions, including primary and secondary brand colors
-   as hex codes; Codex records them in `docs/product.md` and uses them for the
-   initial daisyUI theme.
+2. For a guided, non-technical conversation that builds the product brief, ask
+   Codex to use `$product-details`. It updates `docs/product.md` one small
+   business topic at a time, including confirmed primary and secondary brand
+   colors.
+3. Ask Codex to use `$bootstrap-project`.
 4. Codex prints the recommended technical profile, its reasons, and the exact
    files it intends to create or edit. No code is generated yet.
 5. The technical owner approves or revises the proposal.

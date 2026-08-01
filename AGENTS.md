@@ -49,6 +49,12 @@ become a dumping ground for code used by only one application.
 
 ## Project Bootstrap
 
+Use `$product-details` when a non-technical owner wants a guided, iterative
+conversation to create or improve `docs/product.md`. That dedicated product
+discovery flow may ask one short business question at a time. Do not turn
+`$bootstrap-project` itself into that interview: it must use the completed
+document and infer technical defaults.
+
 Use `$bootstrap-project` when starting or resuming a repository from this
 template. Read `docs/ai/bootstrap.md` completely before changing any project
 file. Its protected, targeted-edit, generated, and local-only mutation classes
@@ -217,6 +223,7 @@ Do not run unrelated expensive suites for a small isolated change.
 
 ## Skills
 
+- `$product-details`: guided business interview to create or improve `docs/product.md`
 - `$bootstrap-project`: interview, stack proposal, approval, and safe scaffolding
 - `$implement-feature`: business request to smallest complete vertical slice
 - `$frontend`: pages, components, forms, client state, accessibility, and UX
