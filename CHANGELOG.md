@@ -4,6 +4,28 @@ All notable OmegaForge blueprint changes are recorded here. Version numbers use
 semantic versioning. The historical entries below are reconstructed from the
 repository's commit history, beginning with the original template.
 
+## [0.4.0] - 2026-08-02
+
+### Added
+
+- Framework-specific frontend structure references for React, Next.js, Vue,
+  and Nuxt, with feature-owned component, state, request, and test boundaries.
+- Alignment rules for mixed peer components, including consistent outer
+  geometry, headings, content start lines, padding, responsive behavior, and
+  expanded or collapsed states in both LTR and RTL layouts.
+
+### Changed
+
+- Route and page files are now explicitly composition entry points; substantial
+  one-use sections must be extracted when they own a distinct responsibility,
+  interaction, state, validation, request, failure state, or focused test.
+- Fieldsets are reserved for genuinely named groups of related controls.
+  Standalone labeled fields may use cards or sections when those containers
+  preserve the surrounding composition and alignment more clearly.
+- Shared component locations are reserved for stable cross-feature primitives
+  and product patterns instead of becoming the default destination for every
+  page-specific component.
+
 ## [0.3.0] - 2026-08-02
 
 ### Added

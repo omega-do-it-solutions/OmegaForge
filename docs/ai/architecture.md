@@ -286,11 +286,46 @@ features/<feature>/
 
 Do not create empty folders to imitate this example.
 
+### Frontend Feature Ownership
+
+Router-owned page files are adapters between the routing framework and a
+feature. Keep them focused on route parameters, route-level loading or metadata,
+feature entry composition, and framework-required boundaries. Do not allow a
+page file to accumulate every section, form, request, state transition, and
+interaction merely because the pieces are not reused elsewhere.
+
+Create feature-local components for independently understandable visual or
+interactive responsibilities, including one-use sections. Extract hooks,
+contexts or providers, composables, schemas, models, API modules, and tests when
+they own distinct logic or state. Reuse may justify promotion to a shared
+location, but it is not required for separation of concerns. Conversely, do not
+split trivial static markup or create empty organizational folders solely to
+match an example tree.
+
+Use these framework defaults unless the installed router or an established
+project convention requires a compatible variation:
+
+- **React and Next.js:** colocate feature-owned components, hooks, context,
+  models, API modules, and tests under the feature. Keep Vite or React Router
+  route entries thin; keep Next.js `page`, `layout`, loading, and error files
+  focused on their framework roles. Route-private folders are acceptable when
+  the framework supports them.
+- **Vue and Nuxt:** implement visual units as Single-File Components and extract
+  logical concerns into feature-owned composables or modules. Keep Vue Router or
+  Nuxt page files focused on routing and feature composition. Put page-specific
+  components under the feature namespace; use a global or auto-imported
+  components directory only for established framework conventions or genuinely
+  cross-feature components.
+
+The frontend skill's React and Vue references define the default directory
+trees. Shared UI contains stable cross-feature product patterns and primitives;
+it must not become a collection of every component in the application.
+
 Split a file or module when one or more of these are true:
 
 - It owns multiple workflows or changes for unrelated reasons.
 - A section has independent state, I/O, validation, or failure behavior.
-- A unit can be named, tested, or reused independently.
+- A unit can be named or tested independently, even if it is used only once.
 - Understanding a change requires navigating unrelated implementation details.
 - The file repeatedly causes merge conflicts between unrelated work.
 

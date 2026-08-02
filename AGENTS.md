@@ -132,6 +132,24 @@ has independently testable state or I/O, or has become difficult to navigate.
 Do not split code solely to satisfy a line-count target. Keep dependencies flowing
 toward business logic and prevent circular or deep cross-feature imports.
 
+Treat frontend route and page files as composition entry points, not as the
+default home for an entire screen implementation. Extract a feature-owned UI
+component when a section has its own responsibility, interaction, state, data
+request, validation, accessibility behavior, failure state, or focused tests,
+even when that component is used only once. Reuse is not a prerequisite for
+component extraction. Keep page-specific components and logic with their owning
+feature; reserve shared or global component locations for stable primitives and
+patterns used across features. A directory named `components` is optional, but
+clear component boundaries and feature ownership are mandatory.
+
+Follow the installed framework and router's structure through `$frontend`.
+React and Next.js should colocate feature components, hooks, context, models,
+API modules, and tests with the owning feature while keeping router entry files
+thin. Vue and Nuxt should use cohesive Single-File Components, keep route pages
+thin, and place feature-specific components and composables under the owning
+feature or an established feature namespace rather than treating the global
+components directory as the default destination.
+
 Follow the detailed code structure, SOLID, DRY, debuggability, and scalability
 rules in `docs/ai/architecture.md`.
 
@@ -177,6 +195,19 @@ does not leave a large unused area without purpose. Whitespace is valuable when
 it creates focus or separates groups; remove or redistribute it when it is merely
 dead space caused by poor sizing or placement. Review this balance in both LTR
 and RTL layouts when the product supports them.
+
+When components are peers in the same row or grid, give their owning wrappers a
+shared visual geometry: align their outer edges, headings, content start lines,
+padding, and intended heights or stretches. Do not let the default geometry of
+different daisyUI components, such as an accordion beside a fieldset, produce an
+accidental offset. Choose the semantic element for the content, then compose it
+inside a peer wrapper that preserves the row's alignment. Use a `fieldset` and
+`legend` when multiple related controls genuinely form one named group; a lone
+field normally belongs in a card, section, or other peer container with its own
+label. Do not keep or remove meaningful semantics only to force a visual match.
+When equal heights would create empty space or misrepresent different content,
+align the top edges and internal start lines instead. Verify alignment in LTR,
+RTL, responsive stacked layouts, and expanded and collapsed states.
 
 Use color deliberately and professionally. Keep neutral surfaces dominant and
 apply brand, accent, and semantic colors where they communicate selection,

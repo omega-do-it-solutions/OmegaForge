@@ -52,6 +52,19 @@ Inspect the rendered result and require all of the following:
 - Spacing, sizing, alignment, and typography create an intentional hierarchy.
 - The component remains coherent in supported themes, directions, and widths.
 
+When different components share a row, treat them as one composition instead of
+accepting each component's default box geometry independently. Align the owning
+wrappers' outer edges, headings, content start lines, padding, and intentional
+height or stretch. Prefer top and content alignment over forced equal heights
+when the components contain different amounts of information.
+
+Choose form containers by meaning as well as appearance. Use `fieldset` with a
+`legend` for a named group of related controls. A standalone input or select
+normally needs its own accessible label but not a fieldset; place it in a card,
+section, or another peer container when that produces the correct shared
+geometry. Never discard a meaningful grouping solely to fix styling. Inspect
+mixed-component rows in LTR, RTL, responsive, expanded, and collapsed states.
+
 Do not approve a pale, ambiguous, visually broken, or unfinished result merely
 because it contains daisyUI classes. If it is materially worse than the official
 example, first check the markup, documented variant, active theme tokens,

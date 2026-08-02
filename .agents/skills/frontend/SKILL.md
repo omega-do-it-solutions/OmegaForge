@@ -1,6 +1,6 @@
 ---
 name: frontend
-description: Implement and refactor browser-facing pages, daisyUI components, forms, client state, accessibility, responsive behavior, and user experience in the project's established frontend framework. Use for work under a web or mobile UI application or any task that changes user interaction or presentation.
+description: Implement and refactor browser-facing pages, framework-native feature structure, daisyUI components, forms, client state, accessibility, responsive behavior, and user experience in the project's established frontend framework. Use for work under a web or mobile UI application or any task that changes user interaction, presentation, page composition, or frontend code organization.
 ---
 
 # Frontend
@@ -14,6 +14,11 @@ library, styling system, or HTTP client without an explicit replacement need.
 
 Read version-matched local framework documentation when the installed framework
 ships it or the task touches version-sensitive behavior.
+
+Before creating or reorganizing frontend pages, components, or feature modules,
+read [references/react.md](references/react.md) for React or Next.js and
+[references/vue.md](references/vue.md) for Vue or Nuxt. Follow the installed
+router's required entry-file conventions over generic example paths.
 
 ## Use The Required UI System
 
@@ -60,16 +65,29 @@ workflows, and use `@testing-library/react-native` for changed mobile behavior.
 
 ## Structure By Feature
 
-- Keep route files focused on route concerns, data wiring, and composition.
-- Move substantial sections and interaction state into feature-owned modules.
-- Put reusable primitives in the established shared component location.
+- Keep route and page files focused on framework-required route concerns,
+  feature entry wiring, and composition.
+- Extract a feature-owned component when a visual section has a coherent
+  responsibility, state, interaction, request, validation, accessibility
+  behavior, failure state, or focused tests. Do this even when it is used once;
+  reuse is not a prerequisite for separation of concerns.
+- Keep page-specific components, hooks, context or providers, composables,
+  models, API modules, and tests with the owning feature according to the
+  framework reference.
+- Put only stable cross-feature primitives and product patterns in the
+  established shared component location. Do not move a component there merely
+  because a framework supports global registration or auto-import.
+- Treat `components/`, `hooks/`, `context/`, `composables/`, and `tests/` as
+  optional organization for real responsibilities, not folders every feature
+  must contain.
 - Keep server state, form state, and purely visual state distinct.
 - Fetch authoritative data through the established API or server boundary.
 - Do not duplicate backend business rules in UI-only checks.
 
 Extract code when a section owns its own state, requests, filters, forms,
-pagination, or failure behavior. Do not extract trivial one-use markup solely to
-reduce line count.
+pagination, failure behavior, or independently understandable UI responsibility.
+Do not keep an oversized page intact just because its sections are used once,
+and do not extract trivial static markup solely to reduce line count.
 
 ## User Experience
 
@@ -83,6 +101,15 @@ reduce line count.
   panels than to preceding content and provide an unmistakable active state.
 - Balance each responsive layout and avoid unexplained dead space caused by
   unnecessarily narrow, one-sided, or poorly spanned content.
+- Give peer panels in the same row or grid a shared outer geometry. Align their
+  edges, headings, content start lines, padding, and intentional height or
+  stretch even when they use different daisyUI components.
+- Use a fieldset only for a genuinely named group of related controls. Put a
+  standalone field, with its accessible label intact, in a card, section, or
+  other peer container when that better matches the surrounding composition.
+- Do not force equal heights when peer content is meaningfully different; align
+  top edges and internal start lines instead. Check LTR, RTL, responsive,
+  expanded, and collapsed states for offsets.
 - Use color with restraint and purpose: neutral surfaces for structure and theme
   colors for brand, status, selection, feedback, and important actions. Preserve
   contrast without making the interface either visually loud or washed out.
