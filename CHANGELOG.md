@@ -4,6 +4,28 @@ All notable OmegaForge blueprint changes are recorded here. Version numbers use
 semantic versioning. The historical entries below are reconstructed from the
 repository's commit history, beginning with the original template.
 
+## [0.3.0] - 2026-08-02
+
+### Added
+
+- Permanent page-composition and UX rules for meaningful data grouping,
+  proximity, balanced responsive layouts, intentional whitespace, professional
+  color use, restrained container borders, and accessible disclosure motion.
+- Full-page visual review requirements covering hierarchy, density, control-to-
+  content relationships, supported directions, themes, and viewport widths.
+
+### Changed
+
+- Web UI work must check daisyUI first, use its premade components wherever they
+  fit, and create custom visual elements only when no suitable daisyUI element
+  exists.
+- Frontend work must start from the closest version-matched official daisyUI
+  example and preserve or improve its visual clarity instead of treating class
+  names alone as proof of acceptable design.
+- Frontend skill guidance now rejects pale, ambiguous, visually broken, or
+  unfinished output and requires diagnosis of theme, configuration, CSS order,
+  and override problems before adding one-off styling.
+
 ## [0.2.0] - 2026-08-01
 
 ### Added

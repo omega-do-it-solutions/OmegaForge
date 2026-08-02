@@ -36,6 +36,29 @@ Official references:
 - Do not reproduce a daisyUI component with large custom utility strings when its
   semantic component classes already express the intended result.
 
+## Meet The Visual Quality Bar
+
+Using a daisyUI component name is not evidence that the rendered interface is
+finished or visually acceptable. Before adapting a component, open the current
+official documentation for the installed daisyUI version and begin with the
+closest example for the required behavior. Use its structure, documented
+variants, responsive composition, and semantic treatment as the baseline.
+
+Inspect the rendered result and require all of the following:
+
+- Surfaces, borders, elevation, and interactive regions are visually distinct.
+- Text, icons, controls, and semantic states have readable contrast.
+- Info, success, warning, and error states communicate their meaning visually.
+- Spacing, sizing, alignment, and typography create an intentional hierarchy.
+- The component remains coherent in supported themes, directions, and widths.
+
+Do not approve a pale, ambiguous, visually broken, or unfinished result merely
+because it contains daisyUI classes. If it is materially worse than the official
+example, first check the markup, documented variant, active theme tokens,
+Tailwind and daisyUI configuration, CSS order, and unintended overrides. Prefer
+fixing those causes and using documented daisyUI variants over compensating with
+scattered one-off styles.
+
 ## Keep One Visual Language
 
 Do not install or use another visual component system. Do not paste components
@@ -70,6 +93,8 @@ navigation and visible focus.
 
 - Check supported responsive widths and documented themes.
 - Check loading, empty, validation, success, disabled, and failure states.
+- Compare adapted components with the closest current official daisyUI example
+  and confirm that their visual clarity has not been lost.
 - Run the frontend application's lint, type checking, interaction tests, and
   build when configuration or shared primitives change.
 - Confirm no dependency or class from a second visual UI system was introduced.

@@ -138,9 +138,69 @@ rules in `docs/ai/architecture.md`.
 ## UI System
 
 Use Tailwind CSS with daisyUI as the single visual component system for web
-interfaces. Do not install or mix another visual UI kit. Headless behavior
-primitives are allowed only when daisyUI does not provide the required accessible
-interaction; style them exclusively with the project's daisyUI theme and tokens.
+interfaces. For every new or changed page, section, modal, form, navigation,
+feedback state, or other interface, check daisyUI first and use its premade
+components and elements wherever they can satisfy the requirement. Compose
+product-specific interfaces from daisyUI primitives before creating custom
+visual elements. Create a custom visual element only when daisyUI has no suitable
+component or element, and do not reproduce an existing daisyUI component with
+custom markup and utility classes.
+
+Using daisyUI class names is necessary but not sufficient for acceptable UI.
+Start from the closest official daisyUI example for the installed version and
+preserve or improve its visual clarity when adapting it to the product. The
+rendered result must look intentional and polished, with clear surfaces and
+boundaries, readable contrast, meaningful semantic colors, consistent spacing,
+visible hierarchy, and coherent responsive alignment. Do not accept a pale,
+ambiguous, visually broken, or unfinished component merely because it uses
+daisyUI classes. Prefer daisyUI's documented variants and theme tokens before
+adding one-off utility styling, and fix theme or configuration problems when a
+component renders materially worse than the corresponding documentation example.
+
+Do not install or mix another visual UI kit. Headless behavior primitives are
+allowed only when daisyUI does not provide the required accessible interaction;
+style them exclusively with the project's daisyUI theme and tokens.
+
+### Composition And UX Quality
+
+Organize each page around user tasks and meaningful data relationships, not
+around whichever components are easiest to stack. Use headings, reading order,
+alignment, and proximity to make groups immediately understandable. Elements
+that belong together must be closer to each other than to neighboring groups.
+Controls that change a region must be visually attached to that region: for
+example, tabs must sit directly above their tab panels, with a smaller gap below
+the tabs than above them, a clear active state, and correct tab semantics.
+
+Keep layouts visually balanced at every supported viewport. Use appropriate
+content widths, responsive grids, column spans, and alignment so a narrow stack
+does not leave a large unused area without purpose. Whitespace is valuable when
+it creates focus or separates groups; remove or redistribute it when it is merely
+dead space caused by poor sizing or placement. Review this balance in both LTR
+and RTL layouts when the product supports them.
+
+Use color deliberately and professionally. Keep neutral surfaces dominant and
+apply brand, accent, and semantic colors where they communicate selection,
+status, priority, feedback, or an important action. Do not flood large surfaces
+with competing colors or decorate every card and button, but do not make the page
+so neutral that states, hierarchy, and interaction disappear. Use theme tokens
+and maintain accessible contrast in every supported theme.
+
+Avoid excessive nested boxes. Prefer one clear boundary at the owning wrapper
+level, then group its internal content with spacing, headings, alignment, subtle
+surface changes, or a single divider. Do not place bordered fields inside a
+bordered section inside another bordered card unless each boundary represents a
+distinct interaction or semantic group that users genuinely need to perceive.
+
+For user-triggered expansion or collapse of a meaningful section, panel, or
+disclosure, use a short, restrained transition so surrounding content does not
+appear to jump abruptly. Do not animate every small text change, inline message,
+or minor control. Preserve focus and interaction behavior, avoid delaying the
+task, and honor reduced-motion preferences.
+
+Review the complete rendered page, not only individual components. A page is not
+finished when its components are locally correct but its overall grouping,
+density, whitespace, color balance, hierarchy, or control-to-content
+relationships are unclear.
 
 For `apps/mobile`, use React Native primitives and project-owned mobile design
 tokens. Reuse the approved brand colors and semantic meaning, but do not import
@@ -148,7 +208,8 @@ daisyUI, web DOM components, or a competing mobile UI kit by default.
 
 Keep product-specific composed components in application code instead of editing
 or duplicating library internals. Use `$frontend` and read its daisyUI reference
-for any user-interface work.
+for any user-interface work. Inspect the rendered interface, not only its class
+names, before considering UI work complete.
 
 ## Data And Files
 

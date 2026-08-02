@@ -77,9 +77,27 @@ reduce line count.
 - Preserve keyboard access, labels, focus behavior, and semantic structure.
 - Respect documented locale, direction, timezone, currency, and formatting.
 - Make layouts usable at supported viewport sizes.
+- Group related content and controls by meaning and task. Use proximity,
+  alignment, headings, and reading order so ownership is immediately clear.
+- Place controls next to the content they affect. Keep tabs closer to their
+  panels than to preceding content and provide an unmistakable active state.
+- Balance each responsive layout and avoid unexplained dead space caused by
+  unnecessarily narrow, one-sided, or poorly spanned content.
+- Use color with restraint and purpose: neutral surfaces for structure and theme
+  colors for brand, status, selection, feedback, and important actions. Preserve
+  contrast without making the interface either visually loud or washed out.
+- Avoid nested bordered containers. Use one wrapper boundary, then spacing,
+  headings, alignment, subtle surfaces, or a single divider for internal groups
+  unless an additional border communicates a necessary semantic boundary.
+- Give meaningful expandable sections a brief, smooth transition while keeping
+  minor text and control updates immediate. Preserve focus and honor reduced
+  motion preferences.
 - Present human-readable errors without exposing stack traces or raw provider
   messages.
 - Reuse product tokens and components before inventing local visual rules.
+- Inspect the full rendered page at supported widths and directions; correct
+  page-level grouping, whitespace, density, hierarchy, and balance before
+  considering the UI complete.
 
 ## Contracts And Verification
 
