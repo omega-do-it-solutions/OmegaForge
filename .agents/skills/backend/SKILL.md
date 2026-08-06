@@ -5,11 +5,27 @@ description: Implement and refactor APIs, server-side business workflows, author
 
 # Backend
 
+## Follow The Selected Framework
+
+Before creating or reorganizing a server module, read
+`docs/ai/application-structure.md` and the matching reference:
+[references/nestjs.md](references/nestjs.md) for NestJS or
+[references/fastify.md](references/fastify.md) for a direct Fastify application.
+When NestJS uses the Fastify adapter, follow the NestJS structure because Nest
+owns the application and module boundary.
+
 ## Preserve Boundaries
 
 Default to a modular monolith organized by business feature. Keep controllers,
 route handlers, resolvers, queue consumers, and commands thin. They should
 authenticate, authorize, validate, delegate, and map responses.
+
+Keep process bootstrap, global configuration, technical authentication,
+database clients, observability, and health behavior in application composition.
+Keep identity workflows and business authorization policies with their owning
+feature. Do not create root `controllers`, `services`, `repositories`, or
+`common` catch-alls, and do not call a global plugin, layout, router, or provider
+a feature merely because it lives under the source directory.
 
 Place business decisions in feature-owned services or use cases. Keep transport
 DTOs separate from persistence models when their responsibilities differ. Put

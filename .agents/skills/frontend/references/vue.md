@@ -1,55 +1,96 @@
 # Vue And Nuxt Structure
 
-Use Single-File Components to colocate the template, presentation logic, and
-component-scoped styling that form one cohesive visual responsibility. Extract
-feature-owned child components and composables when a page or component grows
-multiple independent concerns. Reuse is not required for either extraction.
+Read `docs/ai/application-structure.md` before using this reference. Apply the
+matching model; Vue Router and Nuxt reserve different framework directories.
 
-## Default Structure
+## Vue With Vue Router
 
-For Vue Router or another explicit router, prefer:
+Use `src/app/` for application composition, `src/router/` for router setup and
+guards, and `src/features/<domain>/` for product behavior. Keep `main.ts`
+limited to application bootstrap. A route may render a feature SFC directly; a
+`pages/` directory is optional and only belongs where route-level composition is
+real.
 
 ```text
 src/
-├── pages/                              # Thin route pages
-│   └── SearchSettingsPage.vue
+├── main.ts
+├── app/                 # App.vue, providers, session, security, config, layouts
+├── router/              # Router records and navigation guards
 ├── features/
 │   └── search-settings/
+│       ├── SearchSettingsPage.vue
 │       ├── components/
-│       │   └── SearchProfileForm.vue
 │       ├── composables/
-│       │   └── useSearchSettings.ts
 │       ├── api.ts
 │       ├── form-model.ts
-│       └── SearchSettingsPage.test.ts
-└── components/                         # Stable cross-feature product UI only
+│       └── tests/
+├── components/          # Stable cross-feature SFCs and patterns only
+└── lib/                 # Domain-neutral utilities and API client
 ```
 
-For Nuxt, keep `pages/` files focused on routing and composition. Feature-owned
-implementation may remain under `features/<feature>/`. When an established Nuxt
-project deliberately uses component auto-import, keep page-specific components
-under a clear namespace such as `components/search-settings/` rather than mixing
-them with global primitives.
+Use a cohesive Single-File Component for one visual responsibility. Extract a
+feature-owned child SFC or composable when it owns independent state, requests,
+validation, accessibility behavior, or tests. Do not use the global components
+directory as the default destination for feature-specific SFCs.
+
+## Nuxt 4
+
+Nuxt 4's default source directory is `app/`. Its `app/pages`, `app/layouts`,
+`app/middleware`, `app/plugins`, `server`, and `shared` directories have
+framework-defined roles. Do not impose a generic Vite-style app or router tree
+on top of them.
+
+```text
+app/
+├── app.vue
+├── app.config.ts
+├── layouts/
+├── middleware/
+├── plugins/
+├── pages/               # Thin filesystem route composition
+├── core/                # Session, security, config, and app-wide setup
+├── features/
+│   └── search-settings/
+│       ├── ui/
+│       ├── composables/
+│       ├── api/
+│       ├── model/
+│       └── tests/
+├── components/          # Stable auto-imported shared UI only
+└── composables/         # Stable app-wide composables only
+server/
+├── api/                 # Thin Nitro request handlers
+├── routes/
+├── middleware/
+├── plugins/
+└── features/            # Server-only feature services and adapters
+shared/                  # Browser-and-Nitro-safe contracts/utilities only
+```
+
+Keep `app/pages` focused on route parameters, metadata, middleware, and feature
+composition. Import `app/features` explicitly; nested feature composables are
+not a reason to broaden Nuxt's auto-import configuration. Keep client code out
+of `server/`, server-only code out of `app/`, and UI code out of `shared/`.
+
+Use Nuxt Layers only for a genuinely reusable application layer or independently
+composed area, not as the default location for each product feature. Existing
+Nuxt 3 applications retain their established convention until an approved Nuxt
+migration; new Nuxt applications follow Nuxt 4 conventions.
 
 ## Boundaries
 
 - Give each non-trivial visual responsibility its own `.vue` file, including
   one-use sections when that improves cohesion, navigation, or testing.
-- Extract complex stateful logic into feature-owned composables based on logical
-  concern, even when the composable is not reused elsewhere.
 - Keep route pages responsible for route parameters, metadata, middleware, and
   composing the feature UI.
-- Keep page-specific components under the owning feature or explicit namespace;
-  do not treat the root components directory as the default home for all UI.
-- Use consistent PascalCase or kebab-case filenames. Prefix tightly coupled
-  component names with the parent or feature name when it makes ownership clear.
-- Promote a component to shared UI only when it is a stable cross-feature
-  product concept or primitive.
-- Colocate focused tests with the owning feature unless the established test
-  runner requires another location.
+- Promote a component or composable to app-wide/shared only after it represents
+  a stable cross-feature product concept or runtime-neutral utility.
+- Colocate focused tests with the owning feature unless the test runner requires
+  another location.
 
 Official guidance:
 
-- [Single-File Components](https://vuejs.org/guide/scaling-up/sfc)
-- [Composables](https://vuejs.org/guide/reusability/composables)
-- [Strongly Recommended Style Rules](https://vuejs.org/style-guide/rules-strongly-recommended.html)
+- [Vue Single-File Components](https://vuejs.org/guide/scaling-up/sfc)
+- [Vue composables](https://vuejs.org/guide/reusability/composables)
+- [Nuxt 4 directory structure](https://nuxt.com/docs/4.x/directory-structure)
+- [Nuxt 4 layouts](https://nuxt.com/docs/4.x/directory-structure/app/layouts)

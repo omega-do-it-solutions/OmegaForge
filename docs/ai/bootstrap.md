@@ -6,6 +6,10 @@ an up-and-running baseline. The agent must not write application code before the
 approval gate.
 
 A later change to OmegaForge itself is framework maintenance, not bootstrap.
+For a project already bootstrapped from OmegaForge, use `$update-stack` for a
+foundation-only update of allowed guidance, built-in skills, and foundation
+state. It must not re-bootstrap or alter product, application, runtime,
+dependency, delivery, or data files.
 
 ## Mutation Classes
 
@@ -19,6 +23,8 @@ Bootstrap work must not modify, replace, move, or delete:
 - `.agents/skills/**`
 - `.claude/skills`
 - `docs/ai/bootstrap.md`
+- `docs/ai/application-structure.md`
+- `docs/ai/foundation-state.md`
 - Every section of `docs/ai/architecture.md` except `Selected Project Profile`
 
 Do not create alternate copies of agent rules or skills. A protected-file change
@@ -107,8 +113,8 @@ During bootstrap, never:
 
 ### Phase 0: Preflight
 
-1. Read `AGENTS.md`, this contract, `docs/product.md`, and
-   `docs/ai/architecture.md`.
+1. Read `AGENTS.md`, this contract, `docs/product.md`,
+   `docs/ai/architecture.md`, and `docs/ai/application-structure.md`.
 2. Confirm the repository root. When `.git` exists, run `git status --short`;
    otherwise record that Git metadata is absent and continue.
 3. Confirm pnpm and the selected framework's required runtime are available.
@@ -198,6 +204,10 @@ as an undecided technical risk.
   when its rendering, routing, or backend-for-frontend benefits are still useful;
   otherwise choose the simpler Vite SPA.
 - Use Tailwind CSS with daisyUI for every selected web frontend.
+- Select and name the matching source-organization convention from
+  `docs/ai/application-structure.md`. Preserve framework-owned route and runtime
+  directories; do not leave application shells, routers, technical providers,
+  or configuration mislabeled as business features.
 
 #### Mobile decision
 
@@ -214,6 +224,9 @@ as an undecided technical risk.
   Form with Zod, CASL UI checks, `expo-secure-store` for small auth secrets,
   native tokenized components, and React Native Testing Library. Install each
   dependency only when its product capability is in scope.
+- Apply the Expo Router source organization from
+  `docs/ai/application-structure.md`: its `app/` directory remains the mobile
+  route tree, while feature behavior sits in sibling feature-owned modules.
 - When a mobile client shares product data or server behavior, give it an
   explicit authenticated server contract. Add or retain `apps/api` when that
   shared behavior cannot safely remain inside a web-only server lifecycle.
@@ -228,9 +241,13 @@ as an undecided technical risk.
 - Add `apps/api` when multiple clients share business behavior, permissions or
   domain logic are substantial, a stable external API is required, integrations
   are significant, or the backend needs independent deployment or scaling.
-- Select the backend framework based on the approved runtime, domain complexity,
-  ecosystem needs, and operational model. Explain the concrete reason; do not
-  choose by habit.
+- Select the backend framework and source organization based on the approved
+  runtime, domain complexity, ecosystem needs, and operational model. For a
+  direct Node API, prefer Fastify when a lean explicit plugin composition is the
+  smallest fit; select NestJS when its module, dependency-injection, and
+  integration model materially improves a substantial domain. Explain the
+  concrete reason; do not choose by habit. NestJS using the Fastify adapter still
+  follows Nest module ownership.
 - Add `apps/worker` only for durable scheduled, retryable, queue-based, or
   long-running work. Do not run such work inside web request handlers.
 
@@ -292,6 +309,7 @@ Frontend:
 Mobile:
 Rendering mode:
 Backend:
+Application source organization (per application):
 Worker:
 Database and data access:
 Object storage:
@@ -384,6 +402,13 @@ every approved configuration location. Install the approved frontend foundation
 libraries only when their corresponding product capability is in scope; do not
 add unused packages merely for a hypothetical future feature.
 
+After a generator runs, establish only the concrete files needed by the approved
+source organization. Preserve framework-owned route and runtime directories;
+create the application-composition, route or transport, feature/module, and
+shared boundaries only where the baseline has a real responsibility. Do not
+scaffold empty `features`, `pages`, `components`, `controllers`, `services`, or
+`repositories` folders merely to imitate a directory tree.
+
 ### Phase 6: Integrate The Profile
 
 Connect only the approved database, object storage, Docker, CI, API, and worker
@@ -461,6 +486,8 @@ exact command that starts it. Confirm:
 - no secret or local runtime data is staged when Git metadata exists, or present
   in files intended for handoff when it does not;
 - `.claude/skills` still resolves;
+- each application follows its approved source organization, with global
+  composition and route/transport code distinct from business features/modules;
 - the runnable applications exactly match the approved profile.
 
 ### Phase 9: Write The Project README

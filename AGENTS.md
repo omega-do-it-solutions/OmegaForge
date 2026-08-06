@@ -69,6 +69,16 @@ and must never replace root framework files. Bootstrap does not include product
 features. Git metadata is optional: bootstrap must not initialize, alter, or
 require a Git repository unless the user separately asks for Git work.
 
+## Foundation Updates
+
+Use `$update-stack` only to bring a previously bootstrapped project's
+OmegaForge-owned engineering guidance, built-in skills, and foundation state
+forward from a trusted newer OmegaForge source. It is not permission to
+re-bootstrap, refactor application code, upgrade dependencies, or alter product,
+runtime, delivery, or data files. It must preserve the project's selected
+architecture profile and custom guidance, and report unresolved merge conflicts
+instead of overwriting them.
+
 ## Application Shape
 
 Default to `apps/web` only when one web application can safely own the UI and
@@ -122,6 +132,17 @@ Keep code cohesive, loosely coupled, and easy for a human to trace. Organize by
 business feature, then separate UI or transport, application logic, domain rules,
 and infrastructure only where those responsibilities exist.
 
+Classify code by ownership before placing it. Application composition owns
+bootstrap, global providers, session/security setup, configuration, telemetry,
+and root or area layouts; routes and transport entries adapt framework input to
+features; features own recognizable product capabilities; shared locations own
+only stable cross-feature primitives, contracts, and domain-neutral utilities.
+Do not turn `features/` into a catch-all for layouts, routers, technical
+providers, configuration, or generic utilities. A provider-management screen is
+still a feature; a provider that wires the whole application is not. Follow the
+selected framework map in `docs/ai/application-structure.md` when bootstrapping,
+adding a module, or reorganizing application code.
+
 Apply SOLID and DRY as decision tools, not as reasons to add boilerplate. Depend
 on narrow project-owned interfaces at volatile boundaries. Extract duplicated
 business knowledge, but do not unify code that only looks similar and may evolve
@@ -142,13 +163,17 @@ feature; reserve shared or global component locations for stable primitives and
 patterns used across features. A directory named `components` is optional, but
 clear component boundaries and feature ownership are mandatory.
 
-Follow the installed framework and router's structure through `$frontend`.
-React and Next.js should colocate feature components, hooks, context, models,
-API modules, and tests with the owning feature while keeping router entry files
-thin. Vue and Nuxt should use cohesive Single-File Components, keep route pages
-thin, and place feature-specific components and composables under the owning
-feature or an established feature namespace rather than treating the global
-components directory as the default destination.
+Follow the installed frontend framework and router through `$frontend`, and
+follow `$backend` for server framework modules and plugins. Preserve
+framework-reserved directories: Next.js App Router's `app/` and Nuxt's `app/`
+and `server/` retain their native routing and runtime meaning rather than taking
+on a generic Vite-style role; Expo Router's `app/` is also its route tree.
+React/Vite and Vue Router applications use an explicit application-composition
+layer alongside thin router entries; Next, Nuxt, and Expo route files remain
+thin framework adapters; Nest modules and Fastify plugins are feature
+boundaries. Keep feature components, hooks/composables, models, API modules,
+server use cases, and tests with the owning feature while reserving global
+component locations for stable cross-feature UI only.
 
 Follow the detailed code structure, SOLID, DRY, debuggability, and scalability
 rules in `docs/ai/architecture.md`.
@@ -329,6 +354,8 @@ Do not run unrelated expensive suites for a small isolated change.
 
 - `$product-details`: guided business interview to create or improve `docs/product.md`
 - `$bootstrap-project`: interview, stack proposal, approval, and safe scaffolding
+- `$update-stack`: foundation-only guidance and built-in skill updates for a
+  previously bootstrapped project
 - `$implement-feature`: business request to smallest complete vertical slice
 - `$frontend`: pages, components, forms, client state, accessibility, and UX
 - `$backend`: APIs, domain modules, authorization, integrations, and workers

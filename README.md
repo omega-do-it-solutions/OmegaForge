@@ -29,6 +29,16 @@ The mutation boundaries and resumable startup phases are defined in
 `docs/ai/bootstrap.md`. Bootstrap does not include product features, push, or
 deployment.
 
+## Update An Existing OmegaForge Foundation
+
+For a project created from an earlier OmegaForge version, ask Codex to use
+`$update-stack` and name the trusted newer OmegaForge source or release. It
+audits the foundation baseline and updates only OmegaForge-owned engineering
+guidance, built-in skills, and foundation metadata. It preserves application and
+package code, product documentation, dependencies, infrastructure, and existing
+worktree changes; it does not migrate application structure or upgrade runtime
+dependencies.
+
 ## Application Shapes
 
 Small products can use one full-stack web application:

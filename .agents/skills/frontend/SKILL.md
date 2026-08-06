@@ -16,9 +16,11 @@ Read version-matched local framework documentation when the installed framework
 ships it or the task touches version-sensitive behavior.
 
 Before creating or reorganizing frontend pages, components, or feature modules,
-read [references/react.md](references/react.md) for React or Next.js and
-[references/vue.md](references/vue.md) for Vue or Nuxt. Follow the installed
-router's required entry-file conventions over generic example paths.
+read `docs/ai/application-structure.md` and the matching reference:
+[references/react.md](references/react.md) for Vite React, Next.js, or Expo
+Router, or
+[references/vue.md](references/vue.md) for Vue Router or Nuxt. Follow the
+installed router's required entry-file conventions over generic example paths.
 
 ## Use The Required UI System
 
@@ -63,7 +65,20 @@ and use `expo-secure-store` for small authentication secrets. Use lists and
 cards instead of desktop tables. Add Expo device modules only for documented
 workflows, and use `@testing-library/react-native` for changed mobile behavior.
 
-## Structure By Feature
+## Organize By Ownership
+
+Do not use `features/` as a generic source directory. Classify application
+composition, route entries, business features, and shared code first. Put root
+providers, session/security bootstrap, configuration, telemetry, and global or
+area layouts in the applicable application-composition location. Keep a route
+entry focused on framework routing and composition. A feature owns one
+recognizable product capability; a stable shared component or utility earns a
+cross-feature location only after its boundary is clear.
+
+Respect framework-reserved directories. In particular, Next.js App Router's
+`app/` and Nuxt's `app/` and `server/` keep their framework routing/runtime
+semantics; do not overlay a generic Vite-style `app/` tree or add a competing
+route tree to them.
 
 - Keep route and page files focused on framework-required route concerns,
   feature entry wiring, and composition.

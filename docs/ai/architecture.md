@@ -13,6 +13,7 @@ feature.
 
 - Shape: Unselected (`web-only`, `web-api`, or `web-api-worker`)
 - Web: Unselected
+- Application source organization (per application): Unselected
 - UI system: Tailwind CSS with daisyUI
 - API: Not currently required
 - Worker: Not currently required
@@ -60,9 +61,21 @@ identifiers, not large payloads or file bytes.
 ## Boundaries
 
 - Organize application code by business feature or domain.
+- Classify application composition, route or transport adapters, business
+  features, and shared code separately. Application composition owns global
+  providers, session/security setup, configuration, telemetry, and shells;
+  features own product behavior; shared locations contain only stable
+  cross-feature concepts. Do not use `features/` as a home for routing, layouts,
+  technical providers, configuration, or generic utilities.
+- Preserve framework-reserved routing and runtime directories instead of forcing
+  one literal tree across all frameworks. The selected profile must name the
+  applicable source organization from
+  [application-structure.md](application-structure.md).
 - Keep HTTP, UI, queue, and CLI entry points thin.
 - Keep external providers behind narrow application-owned interfaces.
-- Share only stable contracts or utilities used by at least two applications.
+- Put code in `packages/` only when a stable contract or utility is used by at
+  least two applications. Within one application, use shared locations only for
+  stable cross-feature concepts.
 - Prefer a modular monolith until separate services have an operational owner and
   a demonstrated scaling, reliability, security, or deployment need.
 
@@ -286,6 +299,12 @@ features/<feature>/
 
 Do not create empty folders to imitate this example.
 
+The framework-aware ownership model and directory maps are defined in
+[application-structure.md](application-structure.md). They apply to new
+applications and deliberate structural refactors; existing applications retain
+their framework-required entry files and migrate one ownership boundary at a
+time.
+
 ### Frontend Feature Ownership
 
 Router-owned page files are adapters between the routing framework and a
@@ -305,21 +324,51 @@ match an example tree.
 Use these framework defaults unless the installed router or an established
 project convention requires a compatible variation:
 
-- **React and Next.js:** colocate feature-owned components, hooks, context,
-  models, API modules, and tests under the feature. Keep Vite or React Router
-  route entries thin; keep Next.js `page`, `layout`, loading, and error files
-  focused on their framework roles. Route-private folders are acceptable when
-  the framework supports them.
-- **Vue and Nuxt:** implement visual units as Single-File Components and extract
-  logical concerns into feature-owned composables or modules. Keep Vue Router or
-  Nuxt page files focused on routing and feature composition. Put page-specific
-  components under the feature namespace; use a global or auto-imported
-  components directory only for established framework conventions or genuinely
-  cross-feature components.
+- **Vite React and Vue Router:** use an explicit application-composition layer,
+  thin route entries, and feature-owned screens or SFCs. A separate page layer
+  is optional and exists only for genuine multi-feature composition.
+- **Next.js App Router:** treat `app/` as the framework route tree. Keep its
+  `page`, `layout`, loading, error, and route-handler files focused on framework
+  concerns; put reusable product code in feature, component, library, or
+  server-owned locations.
+- **Nuxt 4:** treat `app/` and `server/` as framework-owned source trees. Keep
+  `app/pages` and Nitro handlers thin; use `app/features` for client feature
+  implementation and runtime-neutral `shared/` code only where it is safe for
+  both browser and server.
+- **Expo Router:** treat `app/` as the mobile route tree. Keep route files and
+  navigation layouts focused on framework concerns, and place native feature UI,
+  state, requests, and tests beside it in feature-owned modules.
 
-The frontend skill's React and Vue references define the default directory
-trees. Shared UI contains stable cross-feature product patterns and primitives;
-it must not become a collection of every component in the application.
+The frontend skill's React and Vue references add framework-specific lifecycle
+and rendering constraints. Shared UI contains stable cross-feature product
+patterns and primitives; it must not become a collection of every component in
+the application.
+
+### Backend Module Ownership
+
+Keep process bootstrap, global configuration, technical security, database
+clients, observability, and health behavior in application composition. Keep
+one business capability's transport adapters, use cases, domain rules,
+infrastructure adapters, and tests in its feature or module. Authentication
+mechanisms are application infrastructure; identity workflows and business
+authorization policies stay with their owning feature.
+
+- **NestJS:** `main.ts` and `AppModule` are composition roots. A Nest module is
+  the feature boundary: controllers and DTOs adapt HTTP, providers are private
+  by default, and exports form the module's small public surface. Do not make
+  ordinary feature modules global, duplicate providers across modules, or rely
+  on routine circular imports.
+- **Fastify:** a registered feature plugin is the feature boundary. Register
+  application plugins before feature plugins, preserve encapsulation, and use
+  `fastify-plugin` only for deliberately shared technical infrastructure. Keep
+  `buildServer()` testable without listening; only the process entry point starts
+  the server.
+- **Nest with the Fastify adapter:** use Nest module ownership, not a second
+  raw-Fastify plugin tree.
+
+The backend skill's NestJS and Fastify references define the matching directory
+maps. Do not create root `controllers`, `services`, `repositories`, or `common`
+catch-alls outside a framework's deliberate application-composition area.
 
 Split a file or module when one or more of these are true:
 

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Update Stack"
+  short_description: "Safely update legacy OmegaForge guidance"
+  default_prompt: "Use $update-stack to update this older OmegaForge project's docs, built-in skills, and foundation state without changing application code or runtime files."

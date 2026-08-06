@@ -4,6 +4,30 @@ All notable OmegaForge blueprint changes are recorded here. Version numbers use
 semantic versioning. The historical entries below are reconstructed from the
 repository's commit history, beginning with the original template.
 
+## [Unreleased]
+
+## [0.5.0] - 2026-08-06
+
+### Added
+
+- A framework-aware application-structure guide covering Vite React, Next.js
+  App Router, Vue Router, Nuxt 4, Expo Router, NestJS, and Fastify.
+- NestJS and Fastify backend skill references covering module/plugin ownership,
+  framework composition roots, and testable server boundaries.
+- `$update-stack`, a foundation-only workflow for safely bringing an older
+  OmegaForge project's guidance, built-in skills, and foundation metadata
+  forward without changing application code or runtime configuration.
+
+### Changed
+
+- Bootstrap technical profiles must now name the selected application source
+  organization alongside the framework.
+- Global application composition—layouts, routing, technical providers,
+  session/security setup, configuration, and telemetry—is explicitly separated
+  from business features across supported frameworks.
+- Bootstrap now directs existing projects to `$update-stack` for framework
+  maintenance and protects the resulting foundation-state record.
+
 ## [0.4.0] - 2026-08-02
 
 ### Added

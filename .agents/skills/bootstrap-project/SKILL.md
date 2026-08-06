@@ -16,6 +16,7 @@ Before any action, read these files completely:
 2. `docs/ai/bootstrap.md`
 3. `docs/product.md`
 4. `docs/ai/architecture.md`
+5. `docs/ai/application-structure.md`
 
 The mutation classes, decision rules, and phases in `docs/ai/bootstrap.md` are
 mandatory. This skill is not permission to alter protected framework files.
@@ -57,6 +58,16 @@ Vue or Nuxt only for an explicit user choice or a concrete established advantage
 and explain that advantage in the profile. Add an API and worker only where their
 durable responsibilities require them.
 
+Select the matching source organization from
+`docs/ai/application-structure.md` at the same time as the framework. The
+technical profile must name it and distinguish application composition, route or
+transport entries, business features/modules, and shared code. Preserve
+framework-owned route/runtime directories rather than applying a generic tree to
+Next.js or Nuxt. For an independent Node API, select Fastify when explicit plugin
+composition is the smallest fit and NestJS when its module and dependency-
+injection model materially helps the documented domain; if Nest uses Fastify as
+its adapter, it still follows Nest module ownership.
+
 Add `apps/mobile` only when the documented first release needs iOS, Android, or
 phone-specific capabilities. Default to React Native with Expo for one shared
 iOS and Android application, with TypeScript and Expo Router; select separate
@@ -64,6 +75,11 @@ native applications only for a documented platform-specific need. Apply the
 mobile foundation in `docs/ai/architecture.md`, give mobile its own line in the
 technical profile, and do not publish to an app store or create store
 credentials.
+
+Treat Expo Router's `app/` as the mobile route tree and apply its matching
+feature ownership map from `docs/ai/application-structure.md`; do not add a
+competing generic route tree or put app-wide navigation setup in a business
+feature.
 
 Classify the product as small, medium, large, or huge from the documented scope,
 then derive real-time delivery and data-flow architecture from that forecast.
@@ -102,6 +118,12 @@ production-safe migration path and no automatic production seed behavior. Create
 every missing root or application `.env` from its matching `.env.example`,
 explicitly wire those files into every spawned process, and verify their
 configuration before handoff.
+
+After a generator runs, establish only the concrete application-composition,
+route/transport, feature/module, and shared files required by the approved
+baseline. Do not create placeholder trees. Keep Next.js and Nuxt framework
+directories in their native roles, and do not label global layouts, routers,
+technical providers, or configuration as features.
 
 ### 5. Verify And Report
 
