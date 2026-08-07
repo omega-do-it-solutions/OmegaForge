@@ -1,8 +1,8 @@
 {
-  "name": "omega-forge",
+  "name": "omega-forge-handbook",
   "version": "0.5.0",
   "private": true,
-  "description": "A lean technical foundation for AI-developed products",
+  "description": "Farsi-first internal handbook for using OmegaForge",
   "packageManager": "pnpm@11.11.0",
   "scripts": {
     "dev": "pnpm -r --parallel --if-present run dev",

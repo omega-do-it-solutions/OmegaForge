@@ -1,98 +1,69 @@
-# OmegaForge
+# راهنمای داخلی OmegaForge
 
-A lean, stack-flexible foundation for projects implemented by coding agents from
-business-focused prompts.
+این مخزن در شاخهٔ `manual` یک وب‌سایت ساده و فارسی‌زبان برای همکاران غیر فنی
+است. راهنما به آن‌ها کمک می‌کند برای ساخت، به‌روزرسانی و نگه‌داری پروژه‌های
+ساخته‌شده با OmegaForge، دستور مناسب را کپی و در Codex یا Claude وارد کنند.
 
-The framework standardizes repository boundaries, feature implementation, data
-handling, object storage, verification, and delivery without forcing every
-project to use the same frontend or backend framework.
+وب‌سایت هیچ حساب کاربری، پایگاه داده، فایل آپلودی یا اتصال مستقیم به سرویس‌های
+هوش مصنوعی ندارد.
 
-Release history is maintained in [CHANGELOG.md](CHANGELOG.md).
+## پیش‌نیازها
 
-## Start A Project
+- Node.js 20.19 یا جدیدتر
+- pnpm 11.11 یا جدیدتر
 
-1. Create or unpack the product repository from the OmegaForge template. Git is
-   optional and is not required for bootstrap.
-2. For a guided, non-technical conversation that builds the product brief, ask
-   Codex to use `$product-details`. It updates `docs/product.md` one small
-   business topic at a time, including confirmed primary and secondary brand
-   colors.
-3. Ask Codex to use `$bootstrap-project`.
-4. Codex prints the recommended technical profile, its reasons, and the exact
-   files it intends to create or edit. No code is generated yet.
-5. The technical owner approves or revises the proposal.
-6. Only after approval, Codex scaffolds the runnable baseline, installs with
-   pnpm, starts required local services, runs applicable migrations and seeds,
-   then starts and smoke-tests the project before handoff.
-
-The mutation boundaries and resumable startup phases are defined in
-`docs/ai/bootstrap.md`. Bootstrap does not include product features, push, or
-deployment.
-
-## Update An Existing OmegaForge Foundation
-
-For a project created from an earlier OmegaForge version, ask Codex to use
-`$update-stack` and name the trusted newer OmegaForge source or release. It
-audits the foundation baseline and updates only OmegaForge-owned engineering
-guidance, built-in skills, and foundation metadata. It preserves application and
-package code, product documentation, dependencies, infrastructure, and existing
-worktree changes; it does not migrate application structure or upgrade runtime
-dependencies.
-
-## Application Shapes
-
-Small products can use one full-stack web application:
-
-```text
-apps/web
-```
-
-Products with an independent backend can add an API, and only add a worker when
-asynchronous processing is required:
-
-```text
-apps/web
-apps/api
-apps/worker    # optional
-```
-
-## Commands
+## اجرای محلی
 
 ```sh
+pnpm install
 pnpm dev
-pnpm lint
-pnpm typecheck
-pnpm test
-pnpm check
-pnpm build
-
-pnpm storage:up
-pnpm storage:logs
-pnpm storage:down
 ```
 
-Recursive workspace commands run only scripts that an application or package
-actually defines.
+سپس وب‌سایت را در `http://localhost:5173` باز کنید.
 
-## Object Storage
+## بررسی و ساخت
 
-Application code targets an S3-compatible contract. The included Compose service
-uses SeaweedFS for local development and integration testing:
+```sh
+pnpm lint
+pnpm typecheck
+pnpm check
+pnpm build
+pnpm --filter @omega-forge/handbook preview
+```
+
+خروجی استاتیک تولیدشده در `apps/web/dist` قرار می‌گیرد. دستور `preview` فقط برای
+بررسی محلی خروجی تولید است و سرویس تولید نیست.
+
+## پیکربندی محلی
+
+یک `.env.example` در ریشهٔ مخزن وجود دارد. برای توسعهٔ محلی، در صورت نبودن فایل
+`.env`، آن را از نمونه بسازید:
 
 ```sh
 cp .env.example .env
-pnpm storage:up
 ```
 
-The local S3 endpoint is `http://localhost:18333`. SeaweedFS is the default
-self-hosted S3-compatible service for both local and deployed environments.
-Production deployment requires an explicit SeaweedFS topology for capacity,
-replication, backup, monitoring, upgrades, security, and recovery.
+وب‌سایت راهنما متغیر محیطی یا راز مخصوص به خود ندارد. مقادیر موجود در `.env`
+فقط برای پروفایل اختیاری SeaweedFS در قالب OmegaForge هستند؛ راهنمای فعلی از آن
+استفاده نمی‌کند. `.env` را commit نکنید.
 
-## Agent Compatibility
+## استقرار
 
-`AGENTS.md` is canonical. `CLAUDE.md` imports it for Claude Code. Skills are
-authored once under `.agents/skills`; `.claude/skills` points to the same skills.
-Current Grok tooling can consume the AGENTS/Claude-compatible setup without a
-third copy. OpenAI-specific `agents/openai.yaml` files contain presentation
-metadata only; portable behavior stays in `SKILL.md`.
+Cloudflare Pages باید به مخزن GitHub متصل شود و شاخهٔ `manual` را به‌عنوان
+Production branch دریافت کند. در تنظیمات پروژه این مقادیر را وارد کنید:
+
+```text
+Root directory: /
+Build command: pnpm install --frozen-lockfile && pnpm check && pnpm build
+Build output directory: apps/web/dist
+```
+
+پس از هر push به `manual`، Cloudflare Pages ساخت و انتشار نسخهٔ جدید را انجام
+می‌دهد. اتصال زیردامنه و مجوزهای Cloudflare یک کار عملیاتی جداگانه است و هیچ
+کلید یا رازی در این مخزن نگه‌داری نمی‌شود.
+
+## نگه‌داری محتوا
+
+`main` منبع قالب OmegaForge است و با `manual` ادغام نمی‌شود. هنگام تغییر قواعد
+یا skillهای OmegaForge در `main`، محتوای فارسی و promptهای شاخهٔ `manual` را
+متناسب با آن به‌روزرسانی کنید.

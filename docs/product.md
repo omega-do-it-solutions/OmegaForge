@@ -5,66 +5,96 @@ not implementation preferences.
 
 ## Purpose
 
-What problem does this product solve, and for whom?
+OmegaForge's handbook helps non-technical colleagues and company staff use the
+OmegaForge template to start projects, understand the recommended project
+structure and technology choices, maintain projects created with Forge, and
+update those projects safely. It provides a simple, Farsi-first manual so staff
+do not need to rely on command-line knowledge or strong English skills.
 
 ## Platforms
 
-- First-release interfaces: browser, iOS app, Android app, or another client
-- Which users need each interface and any phone-specific need, such as camera,
-  scanning, location, notifications, or offline work
+- First-release interface: a simple, single-page website with multiple sections,
+  used in a browser.
+- It is available to staff on desktop, laptop, and mobile browsers. No separate
+  iOS or Android app is needed.
 
 ## Future Direction
 
-- Business outcome the product is expected to support as it grows
-- Future customer, operational, market, or regulatory need known at launch
-- Capabilities intentionally planned for a later product release
+- No future expansion is currently planned. This is a focused internal company
+  manual to help workers use OmegaForge.
 
 ## Brand Identity
 
-- Primary color (hex): the main brand and action color, for example `#1D4ED8`
-- Secondary color (hex): the complementary brand color, for example `#F97316`
+- Primary color (hex): `#7856FF`
+- Secondary color (hex): `#171717` (Tailwind `neutral-900`)
 
 ## Users And Roles
 
-- Role: responsibilities and access
+- All colleagues and company staff use the same shared Farsi handbook.
+- There are no accounts, sign-in, or role-based access levels in the first
+  release.
 
 ## Main Workflows
 
-1. Workflow name: trigger, expected outcome, and important exceptions
+1. Create a new project: A colleague opens the handbook's Farsi project-creation
+   section, enters a new project name and target path in the handbook's fields,
+   and copies the completed ready-to-use prompt into Codex or Claude. The prompt
+   instructs the assistant to clone the authorized OmegaForge GitHub repository
+   into that new path, open the cloned project in VS Code, then use
+   `product-details` to prepare the project brief and `bootstrap-project` to
+   create the project foundation. The expected outcome is a new project based on
+   OmegaForge without command-line knowledge or post-copy prompt editing.
+2. Update an existing project foundation: A colleague opens the handbook's
+   Farsi update section and uses a ready-to-use prompt that tells Codex or
+   Claude to use `update-stack`. The expected outcome is a safe update of the
+   OmegaForge-owned foundation guidance while preserving the project's own work.
+3. Maintain an existing project: A colleague opens the handbook's Farsi
+   maintenance section, describes their goal in a ready-to-use prompt, and asks
+   Codex or Claude to select and use the relevant OmegaForge skill. The expected
+   outcome is guided, professional handling of changes and maintenance work in
+   accordance with the applicable OmegaForge rules.
 
 ## Business Rules
 
-- State rules that must remain true regardless of the technical implementation.
+- Each handbook prompt must direct Codex or Claude to use the appropriate
+  OmegaForge skill and follow its established rules.
+- Prompts should favor completing the requested workflow with minimal technical
+  explanation for the colleague. Required safeguards and approval points in the
+  applicable OmegaForge rules still apply.
 
 ## Risks
 
-- Business, customer, legal, trust, safety, data-quality, or provider problems
-  that could harm the product or its users
-- The effect to avoid and the product behavior or safeguard that would help
+- No current first-release risk is identified from outdated prompts: the
+  handbook will be kept updated in step with the current OmegaForge `main`
+  version so its prompts remain aligned with Forge rules.
 
 ## Data And Files
 
-- Structured records the product owns
-- Files users upload or the system generates
-- Retention, privacy, residency, or deletion requirements
+- The handbook only displays Farsi guidance and ready-to-copy AI prompts.
+- It does not store colleague information, accept uploads, generate downloads,
+  or manage files in the first release.
 
 ## Scale And Freshness
 
-- Any business clues about expected size, growth, peak periods, or high-volume
-  work; exact technical numbers are not required
-- Business information that must be current while a user is viewing it, such as
-  “live,” “soon,” or “daily”; exact latency targets are not required
-- Peak periods, high-volume imports, exports, or live operational workflows
-- Data history, reporting, retention, archival, and recovery expectations
+- The handbook serves fewer than 10 internal staff members.
+- It is updated continuously alongside the OmegaForge `main` source so workers
+  use current guidance and prompts.
 
 ## External Systems
 
-- Provider: business purpose and critical failure behavior
+- The handbook does not connect directly to Codex, Claude, or any other
+  external system. It only provides copy-ready Farsi prompts for colleagues to
+  use in their own AI assistant session.
 
 ## Success
 
-- Observable result that makes the first useful version complete
+- The first release is successful when it is a well-designed, easy-to-read,
+  easy-to-understand Farsi presentation that helps non-technical staff use
+  OmegaForge for project creation, updates, and maintenance.
 
 ## Out Of Scope
 
-- Capabilities intentionally excluded from the current product
+- A separate mobile application
+- User accounts, sign-in, and role-based access
+- Direct connections to Codex, Claude, or another AI service
+- Storing user data, accepting uploads, generating downloads, or file management

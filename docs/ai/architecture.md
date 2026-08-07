@@ -11,20 +11,20 @@ Fill this section during project bootstrap and keep it current. Once selected,
 agents must follow this profile instead of reconsidering the stack for each
 feature.
 
-- Shape: Unselected (`web-only`, `web-api`, or `web-api-worker`)
-- Web: Unselected
-- Application source organization (per application): Unselected
+- Shape: `web-only`
+- Web: Vite React single-page application with TypeScript and static production output
+- Application source organization (per application): Vite React with `src/main.tsx` browser bootstrap, `src/app/` application composition, and feature-owned handbook code in `src/features/handbook/`
 - UI system: Tailwind CSS with daisyUI
 - API: Not currently required
 - Worker: Not currently required
-- Database: Unselected
-- Object storage: Self-hosted SeaweedFS; deployed topology unselected
-- Scale forecast: Unselected
-- Data flow and real-time delivery: Unselected
-- Capacity and data lifecycle: Unselected
-- Runtime environments: Development and production; configuration unselected
-- CI: Unselected
-- Deployment: Unselected
+- Database: Not required; the handbook stores no records
+- Object storage: Not provisioned; the handbook handles no files
+- Scale forecast: Small; fewer than 10 internal staff members
+- Data flow and real-time delivery: Static content only; no polling, SSE, WebSockets, or durable event flow
+- Capacity and data lifecycle: Static assets only, deployed atomically and recoverable by redeploying a known-good `manual` branch revision
+- Runtime environments: Development through Vite and production static hosting; no application secrets or app-specific environment file
+- CI: Cloudflare Pages Git integration runs the workspace checks and production build for the `manual` branch
+- Deployment: Cloudflare Pages static site from `apps/web/dist`, with `manual` as the production branch and a separately authorized custom subdomain
 
 ## Decision
 
