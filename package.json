@@ -1,8 +1,8 @@
 {
   "name": "omega-forge-handbook",
-  "version": "0.5.0",
+  "version": "0.1.0",
   "private": true,
-  "description": "Farsi-first internal handbook for using OmegaForge",
+  "description": "Public bilingual handbook for AI-assisted projects with OmegaForge",
   "packageManager": "pnpm@11.11.0",
   "scripts": {
     "dev": "pnpm -r --parallel --if-present run dev",

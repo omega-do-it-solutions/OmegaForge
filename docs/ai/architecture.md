@@ -12,14 +12,14 @@ agents must follow this profile instead of reconsidering the stack for each
 feature.
 
 - Shape: `web-only`
-- Web: Vite React single-page application with TypeScript and static production output
-- Application source organization (per application): Vite React with `src/main.tsx` browser bootstrap, `src/app/` application composition, and feature-owned handbook code in `src/features/handbook/`
+- Web: Vite React bilingual single-page application with TypeScript and static production output
+- Application source organization (per application): Vite React with `src/main.tsx` browser bootstrap, `src/app/` application composition, and feature-owned handbook code in `src/features/handbook/`; each independently understandable handbook section owns its bilingual content and is loaded through a React lazy boundary so the production build emits section-level chunks
 - UI system: Tailwind CSS with daisyUI
 - API: Not currently required
 - Worker: Not currently required
 - Database: Not required; the handbook stores no records
 - Object storage: Not provisioned; the handbook handles no files
-- Scale forecast: Small; fewer than 10 internal staff members
+- Scale forecast: Small public static site for a modest audience; no user-specific processing
 - Data flow and real-time delivery: Static content only; no polling, SSE, WebSockets, or durable event flow
 - Capacity and data lifecycle: Static assets only, deployed atomically and recoverable by redeploying a known-good `manual` branch revision
 - Runtime environments: Development through Vite and production static hosting; no application secrets or app-specific environment file

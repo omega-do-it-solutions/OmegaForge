@@ -1,16 +1,18 @@
 import { Check, Copy, WarningCircle } from '@phosphor-icons/react'
 import { useEffect, useRef, useState, type ReactNode } from 'react'
 import { copyText } from '../clipboard.ts'
-import { renderPrompt, type HandbookPrompt, type PromptValues } from '../content.ts'
+import { renderPrompt } from '../prompt.ts'
+import type { HandbookPrompt, PromptCardContent, PromptValues } from '../types.ts'
 
 type CopyStatus = 'idle' | 'copied' | 'failed'
 
 type PromptCardProps = {
   icon: ReactNode
   prompt: HandbookPrompt
+  ui: PromptCardContent
 }
 
-export function PromptCard({ icon, prompt }: PromptCardProps) {
+export function PromptCard({ icon, prompt, ui }: PromptCardProps) {
   const [copyStatus, setCopyStatus] = useState<CopyStatus>('idle')
   const [fieldValues, setFieldValues] = useState<PromptValues>(() =>
     Object.fromEntries((prompt.fields ?? []).map((field) => [field.id, ''])),
@@ -46,13 +48,8 @@ export function PromptCard({ icon, prompt }: PromptCardProps) {
       <div className="card-body p-5 sm:p-7">
         <div className="grid gap-6 xl:grid-cols-[minmax(20rem,0.8fr)_minmax(0,1.2fr)] xl:gap-8">
           <div className="space-y-5">
-            <div className="flex items-start justify-between gap-4">
-              <div className="grid size-12 place-items-center rounded-box bg-primary text-primary-content shadow-lg shadow-primary/20">
-                {icon}
-              </div>
-              <span className="font-mono text-sm tracking-[0.2em] text-base-content/45">
-                {prompt.number}
-              </span>
+            <div className="grid size-12 place-items-center rounded-box bg-primary text-primary-content shadow-lg shadow-primary/20">
+              {icon}
             </div>
 
             <div className="space-y-2">
@@ -65,11 +62,9 @@ export function PromptCard({ icon, prompt }: PromptCardProps) {
 
             {promptFields.length > 0 && (
               <fieldset className="rounded-box border border-primary/20 bg-primary/5 p-4">
-                <legend className="sr-only">اطلاعات لازم برای آماده‌سازی prompt</legend>
-                <p className="text-sm font-bold text-base-content">اطلاعات پروژه را وارد کنید</p>
-                <p className="mt-1 text-sm leading-6 text-base-content/65">
-                  این اطلاعات فقط در همین prompt استفاده می‌شود و جایی ذخیره نمی‌شود.
-                </p>
+                <legend className="sr-only">{ui.fieldsLegend}</legend>
+                <p className="text-sm font-bold text-base-content">{ui.fieldsTitle}</p>
+                <p className="mt-1 text-sm leading-6 text-base-content/65">{ui.fieldsDescription}</p>
                 <div className="mt-4 grid gap-3">
                   {promptFields.map((field) => (
                     <div key={field.id}>
@@ -95,7 +90,7 @@ export function PromptCard({ icon, prompt }: PromptCardProps) {
 
             <div className="rounded-box border border-base-content/10 bg-base-200/60 p-4">
               <p className="mb-2 text-xs font-medium tracking-wide text-base-content/55">
-                SKILLهای مورد استفاده
+                {ui.skillsLabel}
               </p>
               <p className="font-mono text-sm text-base-content/80" dir="ltr">
                 {prompt.skills}
@@ -118,15 +113,15 @@ export function PromptCard({ icon, prompt }: PromptCardProps) {
                 disabled={!isPromptReady}
               >
                 {wasCopied ? <Check size={20} weight="bold" /> : <Copy size={20} weight="bold" />}
-                {wasCopied ? 'کپی شد' : 'کپی کردن prompt'}
+                {wasCopied ? ui.copied : ui.copy}
               </button>
               <p aria-live="polite" className="min-h-5 text-sm text-base-content/65">
                 {!isPromptReady ? (
-                  <>برای آماده شدن prompt، {missingFields.map((field) => field.label).join(' و ')} را وارد کنید.</>
+                  <>{ui.missingFields(missingFields.map((field) => field.label))}</>
                 ) : copyFailed ? (
                   <span className="inline-flex items-center gap-1 text-warning">
                     <WarningCircle size={18} weight="fill" />
-                    کپی خودکار انجام نشد؛ متن را انتخاب و کپی کنید.
+                    {ui.copyFailed}
                   </span>
                 ) : null}
               </p>
