@@ -7,56 +7,56 @@ type ReadinessContent = SectionHeading & {
 export const readinessContent = {
   fa: {
     eyebrow: 'پیش از شروع',
-    title: 'برای یک شروع بی‌دردسر آماده شوید.',
-    description: 'چند آمادگی ساده کمک می‌کند دستیار از همان ابتدا در مسیر درست و امن کار کند.',
+    title: 'این چهار مورد را آماده کنید.',
+    description: 'آماده کردنشان فقط چند دقیقه زمان می‌برد و جلوی بسیاری از اشتباه‌های ابتدای کار را می‌گیرد.',
     items: [
       {
-        title: 'یک دستیار برنامه‌نویسی محلی',
+        title: 'یک دستیار کدنویسی روی کامپیوترتان',
         description:
-          'از دستیاری استفاده کنید که روی کامپیوتر شما به فایل‌ها و پوشهٔ پروژه دسترسی دارد؛ یک چت معمولی مرورگر کافی نیست.',
+          'دستیار باید بتواند فایل‌های پروژه را بخواند و تغییر دهد. یک چت عادی در مرورگر این دسترسی را ندارد.',
       },
       {
         title: 'VS Code آماده',
         description:
-          'VS Code را نصب داشته باشید تا دستیار بتواند پروژه را در محیط مناسب باز کند و کار را از همان‌جا ادامه دهد.',
+          'اگر VS Code نصب نیست، پیش از شروع آن را نصب کنید. دستیار پوشهٔ پروژه را در همین برنامه باز می‌کند.',
       },
       {
         title: 'یک مسیر خالی برای پروژه',
         description:
-          'نام و پوشه‌ای را انتخاب کنید که پروژهٔ دیگری در آن نیست. prompt پیش از هر تغییری این موضوع را دوباره بررسی می‌کند.',
+          'نام و پوشه‌ای را انتخاب کنید که پروژهٔ دیگری در آن نیست. متن آماده از دستیار می‌خواهد پیش از شروع، خالی بودن مسیر را دوباره بررسی کند.',
       },
       {
-        title: 'بدون اطلاعات محرمانه',
+        title: 'اطلاعات محرمانه را وارد نکنید',
         description:
-          'رمز عبور، API key، کلید دسترسی یا دادهٔ واقعی مشتریان را داخل promptها قرار ندهید.',
+          'رمز عبور، کلید API، توکن دسترسی یا دادهٔ واقعی مشتریان را در پرامپت ننویسید.',
       },
     ],
   },
   en: {
     eyebrow: 'Before you begin',
-    title: 'Set yourself up for a smooth start.',
+    title: 'Have these four things ready.',
     description:
-      'A few simple preparations help your assistant work safely and in the right place from the beginning.',
+      'They only take a few minutes to prepare and prevent most problems at the start.',
     items: [
       {
-        title: 'A local coding assistant',
+        title: 'A coding assistant on your computer',
         description:
-          'Use an assistant that can access files and the project folder on your computer. A regular browser chat is not enough.',
+          'The assistant must be able to read and change project files. A regular browser chat does not have that access.',
       },
       {
         title: 'VS Code ready',
         description:
-          'Have VS Code installed so your assistant can open the project in the right environment and continue from there.',
+          'Install VS Code before you begin. Your assistant will open the project folder there and continue from that folder.',
       },
       {
         title: 'An empty project location',
         description:
-          'Choose a name and folder that do not already contain another project. The prompt checks again before making changes.',
+          'Choose a name and folder that do not already contain another project. The prepared prompt asks your assistant to check again before it starts.',
       },
       {
-        title: 'No confidential information',
+        title: 'Keep confidential information out',
         description:
-          'Do not include passwords, API keys, access tokens, or real customer data in your prompts.',
+          'Do not put passwords, API keys, access tokens, or real customer data in a prompt.',
       },
     ],
   },

@@ -10,7 +10,7 @@ use the OmegaForge template to start projects, maintain projects created with
 Forge, and update those projects safely with AI assistance. It provides a simple,
 bilingual, Persian-first guided path for people who do not want to manage
 engineering details and a separate technical view for engineers who want to use
-AI as a disciplined assistant in their workstation. Persian remains the default,
+AI agents within a disciplined software development process. Persian remains the default,
 and the complete handbook and copy-ready prompts are also available in English.
 These are presentation languages for the handbook, not a language boundary in
 OmegaForge: visitors may communicate with their AI assistant in any language the
@@ -68,8 +68,8 @@ assistant supports and should receive responses in the language they use.
    when continuing the conversation with their AI assistant.
 2. Choose the level of detail: The workflow section initially shows guided,
    copy-ready prompts. A visitor can switch to an accessible technical tab that
-   explains the repository context chain, engineering boundaries, workstation
-   loop, verification, and retained human control without adding that density to
+   explains the repository context chain, engineering boundaries, change
+   lifecycle, verification, and retained human control without adding that density to
    the main reading path.
 3. Prepare safely: Before choosing a prompt, a visitor learns that they need a
    local coding assistant with project-file access, VS Code, an empty project
@@ -127,6 +127,11 @@ assistant supports and should receive responses in the language they use.
   tab may expose repository structure and engineering behavior in greater depth.
   Required safeguards and approval points in the applicable OmegaForge rules
   still apply in both views.
+- Public copy must use direct, conversational Persian and English. Prefer short
+  sentences, concrete examples, and familiar words over slogans, abstractions,
+  or language that sounds generated for a presentation.
+- Switching between the guided and technical tabs must preserve the reader's
+  viewport position. Loading or hiding either panel must not move the page.
 - The technical tab must favor scanning over density: one visual execution flow,
   one compact repository-source mapping, and one clearly separated summary of
   retained human control.
@@ -174,7 +179,7 @@ assistant supports and should receive responses in the language they use.
 - The first release is successful when it is a well-designed, easy-to-read,
   easy-to-understand public bilingual presentation that helps newcomers use
   OmegaForge without managing technical details and gives engineers a concise,
-  accurate model for applying Forge in an AI-assisted workstation. It should
+  accurate model for applying Forge in AI-assisted software development. It should
   clearly explain who created Forge and why it exists. Visitors should also
   understand how to prepare safely, what happens after a prompt is sent, where
   external privacy begins, how to recover from common problems, and how to

@@ -6,57 +6,57 @@ type JourneyContent = SectionHeading & {
 
 export const journeyContent = {
   fa: {
-    eyebrow: 'بعد از ارسال prompt',
-    title: 'از یک ایدهٔ ساده تا یک پروژهٔ بررسی‌شده',
+    eyebrow: 'بعد از فرستادن پرامپت',
+    title: 'دستیار چطور کار را پیش می‌برد؟',
     description:
-      'دستیار قرار نیست بی‌خبر شروع به ساخت کند. OmegaForge مسیر همکاری و نقاط تأیید را روشن نگه می‌دارد.',
+      'پیش از آنکه فایلی تغییر کند، موضوع را با شما روشن می‌کند و برای تغییرات مهم تأیید می‌گیرد.',
     items: [
       {
-        title: 'ایده‌تان را توضیح می‌دهید',
-        description: 'دستیار با پرسش‌های کوتاه هدف، کاربران و رفتار محصول را روشن می‌کند.',
+        title: 'چند سؤال کوتاه از شما می‌پرسد',
+        description: 'با پاسخ‌های شما، هدف پروژه، کاربران و کاری که باید انجام شود مشخص می‌شود.',
       },
       {
-        title: 'پیشنهاد را مرور می‌کنید',
+        title: 'می‌گوید چه کاری می‌خواهد انجام دهد',
         description:
-          'ساختار پیشنهادی و فایل‌هایی که قرار است تغییر کنند به زبان ساده نمایش داده می‌شوند.',
+          'روش پیشنهادی، انتخاب‌های فنی و فایل‌هایی که قرار است تغییر کنند پیش از شروع به شما نشان داده می‌شوند.',
       },
       {
-        title: 'شروع کار را تأیید می‌کنید',
+        title: 'در جای لازم از شما تأیید می‌گیرد',
         description:
-          'تغییرات مهم فقط بعد از تأیید لازم انجام می‌شوند و کنترل در دست شما می‌ماند.',
+          'تصمیم‌های حساس، تغییرات تخریب‌گر و شروع ساخت پروژه بدون تأیید شما انجام نمی‌شوند.',
       },
       {
-        title: 'یک نتیجهٔ بررسی‌شده می‌گیرید',
+        title: 'در پایان، نتیجه را خلاصه می‌کند',
         description:
-          'دستیار کار انجام‌شده، آزمون‌ها و هر محدودیت باقی‌مانده را کوتاه گزارش می‌کند.',
+          'می‌گوید چه چیزی تغییر کرده، چطور آن را بررسی کرده و آیا کار ناتمام یا محدودیتی باقی مانده است.',
       },
     ],
   },
   en: {
     eyebrow: 'After you send the prompt',
-    title: 'From a plain idea to a verified project',
+    title: 'What will the assistant do next?',
     description:
-      'Your assistant should not begin building without context. OmegaForge keeps the collaboration path and approval points clear.',
+      'Before changing files, it clarifies the request with you and asks for approval where it matters.',
     items: [
       {
-        title: 'You describe the idea',
+        title: 'It asks a few short questions',
         description:
-          'Your assistant asks short questions to clarify the product goal, users, and behavior.',
+          'Your answers establish the project goal, its users, and what the result should do.',
       },
       {
-        title: 'You review the proposal',
+        title: 'It tells you what it plans to do',
         description:
-          'The recommended structure and intended file changes are presented in plain language.',
+          'You see the proposed approach, technical choices, and intended file changes before work begins.',
       },
       {
-        title: 'You approve the start',
+        title: 'It asks for approval when needed',
         description:
-          'Important changes happen only after the required approval, so you remain in control.',
+          'Sensitive decisions, destructive actions, and project scaffolding do not proceed without your approval.',
       },
       {
-        title: 'You receive a verified result',
+        title: 'It summarizes the result',
         description:
-          'Your assistant briefly reports the completed work, checks, and any remaining constraints.',
+          'At the end, it tells you what changed, how it checked the work, and whether anything remains unresolved.',
       },
     ],
   },

@@ -56,20 +56,23 @@ export default function TechnicalGuide({ language }: TechnicalGuideProps) {
           <p className="mt-3 max-w-2xl leading-8 text-base-content/65">{content.flowDescription}</p>
         </div>
 
-        <ol className="steps steps-vertical mt-9 w-full lg:steps-horizontal">
+        <ol className="mt-9 grid gap-y-8 md:grid-cols-2 md:gap-x-10 xl:grid-cols-4 xl:gap-x-0">
           {content.flowItems.map((item, index) => {
             const FlowIcon = flowIcons[index]
+            const isFirst = index === 0
+            const isLast = index === content.flowItems.length - 1
 
             return (
-              <li key={item.title} className="step step-primary" data-content="">
-                <article className="max-w-xs py-4 text-start lg:px-4 lg:pt-6">
-                  <div className="flex items-center gap-2 text-primary">
-                    <FlowIcon size={20} weight="bold" />
-                    <span className="text-xs font-black uppercase tracking-[0.12em]">{item.label}</span>
-                  </div>
-                  <h5 className="mt-3 text-base font-bold">{item.title}</h5>
-                  <p className="mt-2 text-sm leading-7 text-base-content/62">{item.description}</p>
-                </article>
+              <li
+                key={item.title}
+                className={`min-w-0 ${isFirst ? '' : 'xl:border-s xl:border-base-content/10 xl:ps-6'} ${isLast ? '' : 'xl:pe-6'}`}
+              >
+                <div className="flex items-center gap-3 text-primary">
+                  <FlowIcon className="shrink-0" size={22} weight="bold" />
+                  <span className="text-xs font-black uppercase tracking-[0.12em]">{item.label}</span>
+                </div>
+                <h5 className="mt-4 text-base font-bold leading-7">{item.title}</h5>
+                <p className="mt-2 text-sm leading-7 text-base-content/62">{item.description}</p>
               </li>
             )
           })}

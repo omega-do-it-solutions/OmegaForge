@@ -18,10 +18,10 @@ type WorkflowsContent = SectionHeading & {
 const persianPrompts: HandbookPrompt[] = [
   {
     id: 'create',
-    label: 'شروع یک پروژه',
-    title: 'پروژهٔ جدید بسازید',
+    label: 'پروژهٔ جدید',
+    title: 'یک پروژه را از ابتدا راه بیندازید',
     description:
-      'نام و مسیر پروژهٔ جدید را وارد کنید؛ prompt آماده می‌شود تا دستیار قالب Forge را clone، در VS Code باز و پایهٔ پروژه را آماده کند.',
+      'نام پروژه و محل ذخیرهٔ آن را وارد کنید. بعد متن آماده را برای دستیار بفرستید تا OmegaForge را در یک پوشهٔ تازه دریافت کند و مرحله‌به‌مرحله پروژه را با شما بسازد.',
     skills: 'git clone  →  product-details  +  bootstrap-project',
     fields: [
       {
@@ -44,52 +44,52 @@ const persianPrompts: HandbookPrompt[] = [
 نام پروژه: [نام جدید پروژه]
 مسیر والد پروژه: [مسیر دلخواه روی کامپیوتر من]
 
-ابتدا بررسی کن که مسیر نهایی [مسیر دلخواه روی کامپیوتر من]/[نام جدید پروژه] وجود ندارد یا پروژهٔ دیگری در آن نیست. اگر مسیر اشغال است، قبل از هر اقدامی از من مسیر دیگری بخواه.
+پیش از هر کاری، مسیر نهایی [مسیر دلخواه روی کامپیوتر من]/[نام جدید پروژه] را بررسی کن. اگر این مسیر از قبل وجود دارد یا پروژهٔ دیگری در آن است، دست نگه دار و از من یک مسیر دیگر بخواه.
 
-سپس repository زیر را در همان مسیر نهایی clone کن؛ فقط روی نسخهٔ clone‌شده کار کن و repository اصلی OmegaForge را تغییر نده:
+اگر مسیر خالی است، مخزن زیر را در همان‌جا clone کن. فقط روی نسخهٔ clone‌شده کار کن و مخزن اصلی OmegaForge را تغییر نده:
 https://github.com/omega-do-it-solutions/OmegaForge
 
-بعد از clone موفق، پوشهٔ پروژهٔ جدید را در VS Code باز کن و از همان پوشه کار را ادامه بده. فقط پس از این مرحله، از skill product-details استفاده کن و با پرسش‌های کوتاه، اطلاعات محصول را در docs/product.md کامل کن.
+بعد از clone موفق، پوشهٔ پروژه را در VS Code باز کن و از همان پوشه ادامه بده. سپس از skill product-details استفاده کن، با پرسش‌های کوتاه و ساده اطلاعات محصول را از من بگیر و docs/product.md را کامل کن.
 
-بعد از کامل شدن product.md، از skill bootstrap-project استفاده کن تا مناسب‌ترین ساختار و فناوری‌ها را پیشنهاد بدهی. قبل از ساخت یا تغییر فایل‌ها، فهرست دقیق تغییرات را به من نشان بده و برای شروع منتظر تأیید من بمان.
+وقتی product.md کامل شد، از skill bootstrap-project استفاده کن و ساختار و فناوری‌های مناسب را پیشنهاد بده. پیش از ساختن یا تغییر دادن فایل‌ها، فهرست دقیق کارهایی را که می‌خواهی انجام دهی نشانم بده و برای شروع منتظر تأیید من بمان.
 
-توضیحات را روشن و مختصر و به همان زبانی که در گفتگو استفاده می‌کنم ارائه بده.`,
+پاسخ‌هایت را کوتاه و روشن و به همان زبانی که در گفتگو استفاده می‌کنم بنویس.`,
   },
   {
     id: 'update',
-    label: 'به‌روزرسانی Forge',
-    title: 'پایهٔ پروژه را به‌روز کنید',
+    label: 'نسخهٔ جدید Forge',
+    title: 'راهنماهای Forge را به‌روز کنید',
     description:
-      'قواعد و راهنمایی‌های پایهٔ پروژه را با نسخهٔ جدید OmegaForge هم‌راستا کنید؛ بدون دست‌زدن به کد مخصوص محصول.',
+      'اگر پروژه‌تان با نسخهٔ قدیمی Forge ساخته شده، این متن فقط راهنماهای فنی Forge را به‌روز می‌کند و به کد محصول دست نمی‌زند.',
     skills: 'update-stack',
-    prompt: `این پروژه قبلاً با OmegaForge ساخته شده است. لطفاً از skill update-stack استفاده کن تا فقط بخش‌های متعلق به OmegaForge، شامل راهنماها، skillها و وضعیت foundation، با نسخهٔ جدید هماهنگ شوند.
+    prompt: `این پروژه قبلاً با OmegaForge ساخته شده است. از skill update-stack استفاده کن تا فقط فایل‌های متعلق به OmegaForge، شامل راهنماها، skillها و وضعیت foundation، با نسخهٔ جدید هماهنگ شوند.
 
-کد محصول، وابستگی‌ها، زیرساخت، تنظیمات اجرا، داده‌ها و نیازمندی‌های محصول را تغییر نده. ابتدا تفاوت‌ها را بررسی کن و اگر منبع یا نسخهٔ مورداعتماد لازم است، از من بپرس.
+کد محصول، وابستگی‌ها، زیرساخت، تنظیمات اجرا، داده‌ها و نیازمندی‌های محصول را تغییر نده. پیش از اعمال تغییرات، تفاوت‌ها را بررسی کن. اگر برای ادامه به نسخه یا منبع معتبری نیاز داری، از من بپرس.
 
-نتیجه را روشن و کوتاه و به همان زبانی که در گفتگو استفاده می‌کنم بگو.`,
+در پایان، کوتاه بگو چه چیزی به‌روز شد، چه فایل‌هایی تغییر کردند و آیا اختلافی باقی مانده است. پاسخ را به همان زبانی که در گفتگو استفاده می‌کنم بنویس.`,
   },
   {
     id: 'maintain',
     label: 'نگه‌داری پروژه',
-    title: 'یک تغییر را با خیال راحت انجام دهید',
+    title: 'قابلیتی اضافه کنید یا مشکلی را برطرف کنید',
     description:
-      'هدف‌تان را با زبان ساده بنویسید؛ دستیار skill مناسب Forge را انتخاب می‌کند و طبق قواعد آن، کار را انجام می‌دهد.',
+      'کاری را که می‌خواهید به زبان ساده بنویسید. دستیار مستندات پروژه را می‌خواند، راهنمای مناسب Forge را پیدا می‌کند و نتیجه را بررسی می‌کند.',
     skills: 'relevant OmegaForge skill',
     prompt: `این پروژه با OmegaForge ساخته شده است. می‌خواهم این کار را انجام دهم:
 
 [هدف یا مشکل خود را اینجا به زبان ساده بنویسید]
 
-لطفاً ابتدا پروژه و docs/product.md را بررسی کن، سپس مناسب‌ترین skill OmegaForge را برای این کار انتخاب و طبق قوانین همان skill عمل کن. اگر تغییر مهمی نیاز به تأیید من دارد، فقط همان تأیید لازم را به همان زبانی که در گفتگو استفاده می‌کنم از من بگیر. در پایان، نتیجه و روش بررسی انجام‌شده را کوتاه و قابل‌فهم و به همان زبان بگو.`,
+ابتدا پروژه و docs/product.md را بخوان. بعد مناسب‌ترین skill OmegaForge را برای این کار انتخاب کن و قواعدش را دنبال کن. اگر تغییر مهمی به تأیید من نیاز دارد، قبل از اجرا از من بپرس. در پایان، کوتاه توضیح بده چه چیزی تغییر کرده و چطور درست کار کردنش را بررسی کرده‌ای. پاسخ را به همان زبانی که در گفتگو استفاده می‌کنم بنویس.`,
   },
 ]
 
 const englishPrompts: HandbookPrompt[] = [
   {
     id: 'create',
-    label: 'Start a project',
-    title: 'Create a new project',
+    label: 'New project',
+    title: 'Set up a project from scratch',
     description:
-      'Enter the new project name and location. The prepared prompt tells your assistant to clone Forge, open it in VS Code, and establish the project foundation.',
+      'Enter a name and choose where to save the project. Then send the prepared text to your assistant. It will download OmegaForge into a new folder and build the project with you, one decision at a time.',
     skills: 'git clone  →  product-details  +  bootstrap-project',
     fields: [
       {
@@ -112,87 +112,87 @@ const englishPrompts: HandbookPrompt[] = [
 Project name: [new project name]
 Project parent path: [preferred location on my computer]
 
-First, verify that the final path [preferred location on my computer]/[new project name] does not already exist or contain another project. If the path is occupied, ask me for another location before taking any action.
+Before doing anything else, check the final path [preferred location on my computer]/[new project name]. If it already exists or contains another project, stop and ask me for a different location.
 
-Then clone the repository below into that final path. Work only on the cloned copy and do not change the original OmegaForge repository:
+If the path is empty, clone this repository there. Work only on the cloned copy and do not change the original OmegaForge repository:
 https://github.com/omega-do-it-solutions/OmegaForge
 
-After the clone succeeds, open the new project folder in VS Code and continue working from that folder. Only then use the product-details skill and ask short questions to complete the product brief in docs/product.md.
+After the clone succeeds, open the new project folder in VS Code and continue from that folder. Then use the product-details skill. Ask me short, straightforward questions and use my answers to complete docs/product.md.
 
-Once product.md is complete, use the bootstrap-project skill to recommend the most suitable structure and technologies. Before creating or changing files, show me the exact list of intended changes and wait for my approval to begin.
+When product.md is complete, use the bootstrap-project skill and recommend a suitable structure and technology stack. Before creating or changing files, show me exactly what you plan to do and wait for my approval to begin.
 
-Keep explanations clear and concise, using the same language I use in our conversation.`,
+Keep your replies short and clear, and use the same language I use in our conversation.`,
   },
   {
     id: 'update',
-    label: 'Update Forge',
-    title: 'Update the project foundation',
+    label: 'New Forge version',
+    title: 'Update the Forge guidance',
     description:
-      'Bring the project foundation and guidance in line with the latest OmegaForge version without touching product-specific code.',
+      'Use this when the project was built with an older Forge version. It updates Forge’s built-in task guidance without changing the product code.',
     skills: 'update-stack',
-    prompt: `This project was previously created with OmegaForge. Please use the update-stack skill to update only the OmegaForge-owned parts, including guidance, skills, and foundation state, to the newer version.
+    prompt: `This project was created with OmegaForge. Use the update-stack skill to bring only the OmegaForge-owned files—its guidance, skills, and foundation state—up to date.
 
-Do not change product code, dependencies, infrastructure, runtime configuration, data, or product requirements. Inspect the differences first, and ask me if you need a trusted source or version.
+Do not change product code, dependencies, infrastructure, runtime configuration, data, or product requirements. Review the differences before applying them. If you need a trusted source or a specific version, ask me.
 
-Summarize the result clearly and briefly, using the same language I use in our conversation.`,
+At the end, tell me what was updated, which files changed, and whether any conflicts remain. Keep the answer brief and use the same language I use in our conversation.`,
   },
   {
     id: 'maintain',
     label: 'Maintain a project',
-    title: 'Make a change with confidence',
+    title: 'Add a feature or fix a problem',
     description:
-      'Describe your goal in plain language. Your assistant selects the right Forge skill and completes the work according to its rules.',
+      'Describe what you want in your own words. Your assistant reads the project, finds the relevant Forge guidance, makes the change, and checks the result.',
     skills: 'relevant OmegaForge skill',
     prompt: `This project was created with OmegaForge. I want to do the following:
 
 [Describe your goal or problem here in plain language]
 
-First inspect the project and docs/product.md. Then choose the most appropriate OmegaForge skill for this work and follow that skill's rules. If an important change requires my approval, ask only for that required approval in the same language I use in our conversation. At the end, briefly explain the result and how it was verified in that same language.`,
+First read the project and docs/product.md. Then choose the most appropriate OmegaForge skill for this work and follow its rules. If an important change needs my approval, ask before making it. At the end, briefly tell me what changed and how you checked that it works. Use the same language I use in our conversation.`,
   },
 ]
 
 export const workflowsContent = {
   fa: {
-    eyebrow: 'مسیرهای استفاده',
-    title: 'برای هدف امروزتان، مسیر درست را انتخاب کنید.',
+    eyebrow: 'متن‌های آماده',
+    title: 'امروز می‌خواهید چه کاری انجام دهید؟',
     description:
-      'از promptهای آماده برای شروع سریع استفاده کنید یا مدل فنی Forge را برای کار در engineering workstation خود ببینید.',
+      'برای شروع سریع، یکی از پرامپت‌های آماده را انتخاب کنید. اگر می‌خواهید جزئیات فنی را ببینید، تب دوم را باز کنید.',
     tabs: {
       ariaLabel: 'انتخاب نوع راهنمای OmegaForge',
-      guided: 'promptهای آماده',
-      technical: 'راهنمای فنی',
+      guided: 'پرامپت‌های آماده',
+      technical: 'جزئیات فنی',
     },
     promptCard: {
-      fieldsLegend: 'اطلاعات لازم برای آماده‌سازی prompt',
-      fieldsTitle: 'اطلاعات پروژه را وارد کنید',
-      fieldsDescription: 'این اطلاعات فقط در همین prompt استفاده می‌شود و جایی ذخیره نمی‌شود.',
-      skillsLabel: 'SKILLهای مورد استفاده',
-      copy: 'کپی کردن prompt',
+      fieldsLegend: 'اطلاعات لازم برای آماده کردن پرامپت',
+      fieldsTitle: 'نام و محل پروژه را وارد کنید',
+      fieldsDescription: 'این اطلاعات فقط به متن زیر اضافه می‌شوند و در این سایت ذخیره نمی‌شوند.',
+      skillsLabel: 'راهنماهای فنی مورد استفاده',
+      copy: 'کپی کردن پرامپت',
       copied: 'کپی شد',
-      missingFields: (labels) => `برای آماده شدن prompt، ${labels.join(' و ')} را وارد کنید.`,
+      missingFields: (labels) => `ابتدا ${labels.join(' و ')} را وارد کنید.`,
       copyFailed: 'کپی خودکار انجام نشد؛ متن را انتخاب و کپی کنید.',
     },
     prompts: persianPrompts,
   },
   en: {
-    eyebrow: 'Ways to use Forge',
-    title: 'Choose the right path for today’s work.',
+    eyebrow: 'Ready-made prompts',
+    title: 'What would you like to do today?',
     description:
-      'Use a prepared prompt for a fast start, or inspect Forge’s technical operating model for your engineering workstation.',
+      'Choose a prepared prompt to get started quickly. If you want the engineering details, open the second tab.',
     tabs: {
       ariaLabel: 'Choose an OmegaForge guide',
-      guided: 'Guided prompts',
-      technical: 'Technical guide',
+      guided: 'Ready-made prompts',
+      technical: 'Technical details',
     },
     promptCard: {
-      fieldsLegend: 'Information needed to prepare the prompt',
-      fieldsTitle: 'Enter your project details',
-      fieldsDescription: 'These details are used only in this prompt and are not stored anywhere.',
-      skillsLabel: 'SKILLS USED',
+      fieldsLegend: 'Details needed to prepare the prompt',
+      fieldsTitle: 'Enter the project name and location',
+      fieldsDescription: 'These details are added to the text below. This site does not store them.',
+      skillsLabel: 'TECHNICAL GUIDANCE USED',
       copy: 'Copy prompt',
       copied: 'Copied',
-      missingFields: (labels) => `Enter ${labels.join(' and ')} to prepare the prompt.`,
-      copyFailed: 'Automatic copy failed. Select the prompt text and copy it manually.',
+      missingFields: (labels) => `Enter ${labels.join(' and ')} first.`,
+      copyFailed: 'The copy button did not work. Select the text and copy it manually.',
     },
     prompts: englishPrompts,
   },

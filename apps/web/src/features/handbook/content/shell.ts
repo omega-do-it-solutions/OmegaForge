@@ -38,7 +38,7 @@ export const shellContent = {
     metadata: {
       title: 'راهنمای عمومی اُمگا فورج',
       description:
-        'راهنمای عمومی دوزبانهٔ اُمگا فورج برای ساخت و نگه‌داری پروژه با کمک هوش مصنوعی، برای کاربران با هر سطح تجربهٔ فنی',
+        'راهنمای فارسی و انگلیسی برای ساختن، به‌روز کردن و نگه‌داری پروژه‌های OmegaForge با یک دستیار کدنویسی',
     },
     navigation: {
       ariaLabel: 'ناوبری راهنما',
@@ -59,30 +59,30 @@ export const shellContent = {
       enableDark: 'فعال کردن حالت تیره',
     },
     hero: {
-      badge: 'راهنمای عمومی OmegaForge برای همه',
-      title: 'پروژه‌تان را بسازید؛',
-      accent: 'بدون دغدغهٔ فنی.',
+      badge: 'راهنمای کار با OmegaForge',
+      title: 'ایده‌تان را به پروژه تبدیل کنید؛',
+      accent: 'با کمک یک دستیار کدنویسی.',
       description:
-        'چه اولین پروژه‌تان را شروع کنید و چه یک مهندس باتجربه باشید، هدف را انتخاب کنید و به زبان دلخواهتان با Codex یا Claude ادامه دهید؛ Forge ساخت، تغییر و نگه‌داری پروژه را در یک مسیر مهندسی روشن نگه می‌دارد.',
-      primaryAction: 'انتخاب مسیر',
-      secondaryAction: 'پیش از شروع',
+        'این راهنما به شما می‌گوید برای ساختن یک پروژه، به‌روز کردن پایهٔ Forge یا انجام یک تغییر، چه متنی را به Codex یا Claude بدهید. اگر فردی فنی هستید، در بخش فنی هم می‌بینید Forge چطور دامنهٔ کار، معماری و بررسی نهایی را مدیریت می‌کند.',
+      primaryAction: 'دیدن مسیرها',
+      secondaryAction: 'چه چیزهایی لازم دارم؟',
     },
     overview: {
-      eyebrow: 'دستیار پروژهٔ شما',
-      title: 'سه کار، یک مسیر روشن',
+      eyebrow: 'انتخاب شما',
+      title: 'با Forge چه کاری می‌خواهید انجام دهید؟',
       items: [
-        'ساخت پایهٔ یک پروژهٔ جدید',
-        'به‌روزرسانی امن قوانین Forge',
-        'نگه‌داری و تغییر پروژهٔ موجود',
+        'یک پروژهٔ جدید را از ابتدا راه بیندازید',
+        'راهنماهای Forge را به‌روز کنید',
+        'یک قابلیت اضافه کنید یا مشکلی را برطرف کنید',
       ],
     },
-    footer: 'OmegaForge Manual · راهنمای عمومی ساخت و نگه‌داری پروژه با هوش مصنوعی',
+    footer: 'OmegaForge Manual · راهنمای کار با OmegaForge و دستیارهای کدنویسی',
   },
   en: {
     metadata: {
       title: 'OmegaForge Public Handbook',
       description:
-        'A public bilingual OmegaForge handbook for building and maintaining projects with AI assistance, for people at every level of technical experience.',
+        'A Persian and English guide to starting, updating, and maintaining OmegaForge projects with an AI coding assistant.',
     },
     navigation: {
       ariaLabel: 'Handbook navigation',
@@ -103,23 +103,23 @@ export const shellContent = {
       enableDark: 'Enable dark mode',
     },
     hero: {
-      badge: 'The public OmegaForge handbook',
-      title: 'Build your project;',
-      accent: 'skip the technical burden.',
+      badge: 'A practical guide to OmegaForge',
+      title: 'Turn your idea into a project;',
+      accent: 'use an AI coding assistant to get there.',
       description:
-        'Whether you are starting your first project or working as an experienced engineer, choose the goal and continue with Codex or Claude in your preferred language. Forge keeps building, changing, and maintaining the project on a clear engineering path.',
-      primaryAction: 'Choose your path',
-      secondaryAction: 'Before you begin',
+        'This guide shows you what to give Codex or Claude when you want to start a project, update its Forge guidance, or make a change. If you are an engineer, the technical section also explains how Forge keeps the work scoped, consistent with the architecture, and properly checked.',
+      primaryAction: 'See the options',
+      secondaryAction: 'What do I need?',
     },
     overview: {
-      eyebrow: 'Your project assistant',
-      title: 'Three jobs, one clear path',
+      eyebrow: 'Choose a task',
+      title: 'What would you like to do with Forge?',
       items: [
-        'Establish a new project foundation',
-        'Safely update the Forge rules',
-        'Maintain and change an existing project',
+        'Set up a new project from scratch',
+        'Bring the Forge guidance up to date',
+        'Add a feature or fix a problem in an existing project',
       ],
     },
-    footer: 'OmegaForge Manual · A public guide to building and maintaining projects with AI',
+    footer: 'OmegaForge Manual · A practical guide to Forge and AI coding assistants',
   },
 } satisfies Localized<ShellContent>

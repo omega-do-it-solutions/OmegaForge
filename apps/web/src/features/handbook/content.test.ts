@@ -2,6 +2,7 @@ import { createElement } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { describe, expect, it } from 'vitest'
 import PublicProjectSection from './components/PublicProjectSection.tsx'
+import TechnicalGuide from './components/TechnicalGuide.tsx'
 import WorkflowsSection from './components/WorkflowsSection.tsx'
 import { aboutContent } from './content/about.ts'
 import { faqContent } from './content/faq.ts'
@@ -78,7 +79,7 @@ describe('localized handbook content', () => {
       expect(aboutContent[language].points).toHaveLength(3)
       expect(faqContent[language].items).toHaveLength(5)
       expect(publicProjectContent[language].privacy.description).toMatch(/ذخیره|store/)
-      expect(publicProjectContent[language].freshness.manualVersion).toContain('v0.1.0')
+      expect(publicProjectContent[language].freshness.manualVersion).toContain('v0.2.0')
       expect(publicProjectContent[language].freshness.forgeVersion).toContain('v0.5.0')
       expect(workflowsContent[language].prompts.map((prompt) => prompt.id)).toEqual([
         'create',
@@ -93,10 +94,8 @@ describe('localized handbook content', () => {
   })
 
   it('presents a bilingual handbook without restricting the assistant conversation language', () => {
-    expect(howItWorksContent.fa.title).toContain('زبان شما')
-    expect(howItWorksContent.fa.description).toContain('محدودیت زبانی ندارد')
-    expect(howItWorksContent.en.title).toContain('your language')
-    expect(howItWorksContent.en.description).toContain('no language restriction')
+    expect(howItWorksContent.fa.description).toContain('محدود به این دو زبان نیست')
+    expect(howItWorksContent.en.description).toContain('not limited to those languages')
 
     for (const prompt of workflowsContent.fa.prompts) {
       expect(prompt.prompt).toContain('همان زبانی که در گفتگو استفاده می‌کنم')
@@ -119,14 +118,43 @@ describe('localized handbook content', () => {
     expect(markup).toContain('aria-selected="true"')
     expect(markup).toContain('id="workflow-panel-guided"')
     expect(markup).toContain('id="workflow-panel-technical"')
+    expect(markup).toContain('border-0')
+    expect(markup).toContain('[overflow-anchor:none]')
+    expect(markup).not.toContain('tabs-box')
   })
 
   it('keeps the manual release separate from its aligned Forge version', () => {
     const markup = renderToStaticMarkup(createElement(PublicProjectSection, { language: 'en' }))
 
-    expect(markup).toContain('OmegaForge Manual v0.1.0')
+    expect(markup).toContain('OmegaForge Manual v0.2.0')
     expect(markup).toContain('Aligned with OmegaForge v0.5.0')
     expect(markup).toContain('/blob/manual/apps/web/CHANGELOG.md')
     expect(markup).not.toContain('/blob/main/CHANGELOG.md')
+  })
+
+  it('presents a professional technical lifecycle without stepper chrome', () => {
+    const markup = renderToStaticMarkup(createElement(TechnicalGuide, { language: 'en' }))
+
+    expect(technicalGuideContent.en.title).toContain('coding agent')
+    expect(technicalGuideContent.fa.eyebrow).toBe('جزئیات فنی')
+    expect(markup).toContain('<ol')
+    expect(markup).not.toMatch(/class="[^"]*\bsteps\b/)
+    expect(markup).not.toContain('step-primary')
+  })
+
+  it('avoids the retired presentation-style wording', () => {
+    const publicCopy = JSON.stringify({
+      aboutContent,
+      faqContent,
+      howItWorksContent,
+      journeyContent,
+      readinessContent,
+      shellContent,
+      technicalGuideContent,
+      workflowsContent,
+    })
+
+    expect(publicCopy).not.toMatch(/operating model|clear path|smooth start|plain idea/i)
+    expect(publicCopy).not.toMatch(/مدل عملیاتی|مسیر روشن/)
   })
 })

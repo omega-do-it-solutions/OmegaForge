@@ -21,21 +21,21 @@ type PublicProjectContent = {
 export const publicProjectContent = {
   fa: {
     privacy: {
-      title: 'حریم خصوصی را درست در نظر بگیرید',
+      title: 'اطلاعات حساس را در پرامپت نگذارید',
       description:
-        'این راهنما ورودی‌های شما را ذخیره نمی‌کند. اما وقتی prompt را در یک دستیار هوش مصنوعی می‌گذارید، پردازش آن تابع سیاست حریم خصوصی همان سرویس است. هیچ رمز، کلید دسترسی یا دادهٔ حساس واقعی را وارد نکنید.',
+        'این سایت چیزی که می‌نویسید را ذخیره نمی‌کند. اما پس از آنکه پرامپت را در Codex، Claude یا سرویس دیگری می‌گذارید، قواعد حریم خصوصی همان سرویس اعمال می‌شود. رمز، کلید دسترسی و دادهٔ واقعی مشتریان را وارد نکنید.',
     },
     contribution: {
       eyebrow: 'یک پروژهٔ عمومی',
-      title: 'کمک کنید این راهنما بهتر شود.',
+      title: 'اگر مشکلی دیدید، به ما خبر بدهید',
       description:
-        'اگر جایی مبهم بود، ترجمه‌ای بهتر داشتید یا به مشکلی برخوردید، آن را در GitHub با ما در میان بگذارید.',
+        'متن نامفهوم، مشکل فنی یا ترجمهٔ بهتری پیدا کردید؟ یک issue در GitHub باز کنید تا پیگیری‌اش کنیم.',
       reportAction: 'گزارش مشکل',
       suggestionAction: 'پیشنهاد برای متن',
       translationAction: 'کمک به ترجمه',
     },
     freshness: {
-      manualVersion: 'راهنمای OmegaForge v0.1.0',
+      manualVersion: 'راهنمای OmegaForge v0.2.0',
       forgeVersion: 'هماهنگ با OmegaForge v0.5.0',
       updated: 'آخرین بازبینی: اوت ۲۰۲۶',
       changelogAction: 'مشاهدهٔ تغییرات راهنما',
@@ -43,21 +43,21 @@ export const publicProjectContent = {
   },
   en: {
     privacy: {
-      title: 'Understand the privacy boundary',
+      title: 'Keep sensitive information out of your prompts',
       description:
-        'This handbook does not store your entries. Once you paste a prompt into an AI assistant, its processing follows that service’s privacy policy. Never include passwords, access keys, or real sensitive data.',
+        'This site does not store what you enter. After you paste a prompt into Codex, Claude, or another service, that service’s privacy policy applies. Do not include passwords, access keys, or real customer data.',
     },
     contribution: {
       eyebrow: 'A public project',
-      title: 'Help make this handbook better.',
+      title: 'Tell us when something needs fixing',
       description:
-        'If something is unclear, you have a better translation, or you find a problem, share it with us on GitHub.',
+        'Found unclear wording, a technical problem, or a better translation? Open a GitHub issue so we can follow it up.',
       reportAction: 'Report a problem',
       suggestionAction: 'Suggest clearer copy',
       translationAction: 'Contribute a translation',
     },
     freshness: {
-      manualVersion: 'OmegaForge Manual v0.1.0',
+      manualVersion: 'OmegaForge Manual v0.2.0',
       forgeVersion: 'Aligned with OmegaForge v0.5.0',
       updated: 'Last reviewed: August 2026',
       changelogAction: 'View manual changelog',

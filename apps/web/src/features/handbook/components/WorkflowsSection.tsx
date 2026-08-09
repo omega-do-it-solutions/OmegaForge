@@ -1,5 +1,5 @@
 import { ArrowDown, Sparkle, Wrench } from '@phosphor-icons/react'
-import { lazy, Suspense, useRef, useState, type KeyboardEvent } from 'react'
+import { lazy, Suspense, useLayoutEffect, useRef, useState, type KeyboardEvent } from 'react'
 import { workflowsContent } from '../content/workflows.ts'
 import type { Language } from '../types.ts'
 import { PromptCard } from './PromptCard.tsx'
@@ -22,13 +22,35 @@ export default function WorkflowsSection({ language }: WorkflowsSectionProps) {
   const content = workflowsContent[language]
   const [activeView, setActiveView] = useState<WorkflowView>('guided')
   const [hasOpenedTechnical, setHasOpenedTechnical] = useState(false)
+  const tablistRef = useRef<HTMLDivElement>(null)
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([])
+  const tablistViewportTop = useRef<number | null>(null)
   const tabs = [
     { id: 'guided' as const, label: content.tabs.guided },
     { id: 'technical' as const, label: content.tabs.technical },
   ]
 
+  useLayoutEffect(() => {
+    const previousTop = tablistViewportTop.current
+    const tablist = tablistRef.current
+    if (previousTop === null || !tablist) return
+
+    const restoreTablistPosition = () => {
+      const offset = tablist.getBoundingClientRect().top - previousTop
+      if (Math.abs(offset) > 0.5) window.scrollBy({ top: offset, behavior: 'instant' })
+    }
+
+    restoreTablistPosition()
+    const frame = window.requestAnimationFrame(restoreTablistPosition)
+    tablistViewportTop.current = null
+
+    return () => window.cancelAnimationFrame(frame)
+  }, [activeView])
+
   function selectView(view: WorkflowView) {
+    if (view === activeView) return
+
+    tablistViewportTop.current = tablistRef.current?.getBoundingClientRect().top ?? null
     setActiveView(view)
     if (view === 'technical') setHasOpenedTechnical(true)
   }
@@ -57,7 +79,12 @@ export default function WorkflowsSection({ language }: WorkflowsSectionProps) {
         <p className="max-w-sm leading-7 text-base-content/65">{content.description}</p>
       </div>
 
-      <div className="tabs tabs-box w-full sm:w-fit" role="tablist" aria-label={content.tabs.ariaLabel}>
+      <div
+        ref={tablistRef}
+        className="inline-flex w-full gap-1 rounded-box bg-base-200/70 p-1 [overflow-anchor:none] sm:w-auto"
+        role="tablist"
+        aria-label={content.tabs.ariaLabel}
+      >
         {tabs.map((tab, index) => {
           const isActive = activeView === tab.id
 
@@ -70,7 +97,11 @@ export default function WorkflowsSection({ language }: WorkflowsSectionProps) {
               id={`workflow-tab-${tab.id}`}
               type="button"
               role="tab"
-              className={`tab flex-1 gap-2 sm:flex-none ${isActive ? 'tab-active' : ''}`}
+              className={`btn btn-sm flex-1 border-0 shadow-none sm:flex-none ${
+                isActive
+                  ? 'bg-base-100 text-base-content shadow-sm'
+                  : 'bg-transparent text-base-content/60 hover:bg-base-100/60 hover:text-base-content'
+              }`}
               aria-selected={isActive}
               aria-controls={`workflow-panel-${tab.id}`}
               tabIndex={isActive ? 0 : -1}
@@ -87,7 +118,7 @@ export default function WorkflowsSection({ language }: WorkflowsSectionProps) {
         id="workflow-panel-guided"
         role="tabpanel"
         aria-labelledby="workflow-tab-guided"
-        className="mt-3 space-y-5"
+        className="mt-3 space-y-5 [overflow-anchor:none]"
         hidden={activeView !== 'guided'}
       >
         {content.prompts.map((prompt, index) => (
@@ -104,7 +135,7 @@ export default function WorkflowsSection({ language }: WorkflowsSectionProps) {
         id="workflow-panel-technical"
         role="tabpanel"
         aria-labelledby="workflow-tab-technical"
-        className="mt-3"
+        className="mt-3 [overflow-anchor:none]"
         hidden={activeView !== 'technical'}
       >
         {hasOpenedTechnical && (

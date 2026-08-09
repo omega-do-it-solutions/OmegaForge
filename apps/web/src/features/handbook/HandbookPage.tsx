@@ -159,9 +159,10 @@ export function HandbookPage({
             </div>
 
             <div className="space-y-5">
-              <h1 className="max-w-4xl text-5xl font-black leading-[1.1] tracking-[-0.06em] sm:text-6xl lg:text-7xl">
+              <h1 className="max-w-4xl text-4xl font-black leading-[1.14] tracking-[-0.045em] sm:text-5xl lg:text-6xl">
                 {content.hero.title}
-                <span className="ai-gradient-text mt-2 block">{content.hero.accent}</span>
+                {' '}
+                <span className="ai-gradient-text">{content.hero.accent}</span>
               </h1>
               <p className="max-w-2xl text-lg leading-9 text-base-content/70 sm:text-xl">
                 {content.hero.description}

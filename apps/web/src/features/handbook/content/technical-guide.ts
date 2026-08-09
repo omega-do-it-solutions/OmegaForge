@@ -26,38 +26,38 @@ type TechnicalGuideContent = {
 
 export const technicalGuideContent = {
   fa: {
-    eyebrow: 'برای engineering workstation',
-    title: 'یک مدل اجرایی برای همکاری جدی با عامل AI',
+    eyebrow: 'جزئیات فنی',
+    title: 'Forge چطور کار یک دستیار کدنویسی را هدایت می‌کند؟',
     description:
-      'Forge وابستگی runtime نیست. context، قراردادهای مهندسی و skillها داخل repository نسخه‌بندی می‌شوند تا عامل با معماری واقعی پروژه کار کند و خروجی قابل بازبینی تحویل دهد.',
-    traits: ['Stack-aware', 'Feature-sized', 'Verifiable'],
-    flowTitle: 'از outcome تا diff بررسی‌شده',
+      'OmegaForge همراه برنامه اجرا نمی‌شود و وابستگی کد نیست. فایل‌های راهنمای آن در مخزن پروژه می‌مانند. دستیار پیش از تغییر کد، نیازمندی‌های محصول، معماری و قواعد اجرای کار را از همین فایل‌ها می‌خواند.',
+    traits: ['قواعد کنار کد', 'هماهنگ با معماری', 'خروجی قابل بررسی'],
+    flowTitle: 'وقتی یک تغییر می‌خواهید، چه اتفاقی می‌افتد؟',
     flowDescription:
-      'هر درخواست از یک مسیر قابل دنبال‌کردن عبور می‌کند؛ context و شواهد همراه کد باقی می‌مانند، نه فقط در حافظهٔ گفتگو.',
+      'دستیار مستقیم سراغ کد نمی‌رود. ابتدا درخواست را مشخص می‌کند، بخش مرتبط پروژه را می‌خواند، تغییر را در جای درست انجام می‌دهد و بعد نتیجه را بررسی می‌کند.',
     flowItems: [
       {
-        label: 'هدف',
-        title: 'Outcome را تعریف می‌کنید',
-        description: 'رفتار مورد انتظار، محدودیت‌ها و معیار پایان را می‌نویسید.',
+        label: 'تعریف کار',
+        title: 'درخواست به یک کار مشخص تبدیل می‌شود',
+        description: 'دستیار مشخص می‌کند چه رفتاری باید تغییر کند، چه محدودیتی وجود دارد و کار چه زمانی تمام است.',
       },
       {
-        label: 'Context',
-        title: 'عامل پروژه را می‌خواند',
-        description: 'محصول، قرارداد مهندسی، کد و آزمون‌های موجود بررسی می‌شوند.',
+        label: 'تحلیل',
+        title: 'دستیار اول پروژه را می‌خواند',
+        description: 'مستندات محصول، قواعد مهندسی، معماری، کد موجود و آزمون‌های مرتبط پیش از پیاده‌سازی بررسی می‌شوند.',
       },
       {
-        label: 'اجرا',
-        title: 'Skill درست مسیر را هدایت می‌کند',
-        description: 'تغییر در boundary مالک رفتار و به‌اندازهٔ یک slice کامل انجام می‌شود.',
+        label: 'پیاده‌سازی',
+        title: 'تغییر در بخش درست پروژه انجام می‌شود',
+        description: 'Forge راهنمای تخصصی مناسب را انتخاب می‌کند تا کد جدید در ماژول یا قابلیتی قرار بگیرد که مسئول همان رفتار است.',
       },
       {
-        label: 'شواهد',
-        title: 'Diff و verification تحویل می‌گیرید',
-        description: 'تغییر، آزمون‌ها، تصمیم‌ها و محدودیت‌های باقی‌مانده روشن گزارش می‌شوند.',
+        label: 'اعتبارسنجی',
+        title: 'نتیجه پیش از تحویل بررسی می‌شود',
+        description: 'بسته به نوع تغییر، آزمون‌ها، بررسی نوع‌ها و ساخت نهایی اجرا می‌شوند. هر محدودیت یا کار ناتمام هم در گزارش پایانی می‌آید.',
       },
     ],
-    contextTitle: 'عامل چه چیزی را می‌خواند؟',
-    contextDescription: 'چهار منبع کوچک، context پایدار پروژه را می‌سازند.',
+    contextTitle: 'دستیار اول چه فایل‌هایی را می‌خواند؟',
+    contextDescription: 'این چهار منبع به دستیار می‌گویند پروژه برای چه ساخته شده و کد چطور سازمان‌دهی شده است.',
     contextSources: [
       {
         path: 'docs/product.md',
@@ -67,7 +67,7 @@ export const technicalGuideContent = {
       {
         path: 'AGENTS.md',
         title: 'قرارداد مهندسی',
-        description: 'boundaryها، کیفیت و ایمنی',
+        description: 'مرزهای معماری، معیارهای کیفیت و الزامات ایمنی',
       },
       {
         path: 'docs/ai/',
@@ -77,60 +77,60 @@ export const technicalGuideContent = {
       {
         path: '.agents/skills/',
         title: 'رویهٔ اجرا',
-        description: 'راهنمای تخصصی متناسب با task',
+        description: 'راهنمای تخصصی متناسب با نوع کار',
       },
     ],
-    controlTitle: 'چه چیزی در کنترل شما می‌ماند؟',
+    controlTitle: 'کجا هنوز تصمیم با شماست؟',
     controlDescription:
-      'Forge سرعت را بالا می‌برد، اما مسئولیت مهندسی را پنهان یا حذف نمی‌کند.',
+      'استفاده از Forge به معنای واگذار کردن همهٔ تصمیم‌ها نیست. تغییرات مهم همچنان باید دیده و در جای لازم تأیید شوند.',
     controlItems: [
       {
-        title: 'Approvalهای مهم',
-        description: 'تغییرات حساس و destructive پیش از اجرا متوقف می‌شوند.',
+        title: 'تغییرات حساس',
+        description: 'حذف فایل، بازنویسی داده یا یک تغییر مهم پیش از اجرا به شما اعلام می‌شود.',
       },
       {
-        title: 'Review و امنیت',
-        description: 'diff، تصمیم‌ها و failure pathها برای بررسی شما قابل مشاهده‌اند.',
+        title: 'بازبینی کد',
+        description: 'تغییرات، دلیل تصمیم‌ها و نتیجهٔ آزمون‌ها برای بازبینی شما قابل مشاهده می‌مانند.',
       },
       {
-        title: 'Release و production',
-        description: 'استقرار و عملیات production همچنان authorization صریح می‌خواهند.',
+        title: 'انتشار نسخهٔ جدید',
+        description: 'دستیار بدون درخواست صریح شما پروژه را منتشر نمی‌کند و به زیرساخت محیط عملیاتی دست نمی‌زند.',
       },
     ],
   },
   en: {
-    eyebrow: 'For the engineering workstation',
-    title: 'An operating model for serious AI collaboration',
+    eyebrow: 'Technical details',
+    title: 'How does Forge guide an AI coding agent?',
     description:
-      'Forge is not a runtime dependency. Context, engineering contracts, and skills are versioned inside the repository so the agent works with the real architecture and returns reviewable evidence.',
-    traits: ['Stack-aware', 'Feature-sized', 'Verifiable'],
-    flowTitle: 'From outcome to reviewed diff',
+      'OmegaForge does not ship with your application or run in production. Its guidance files stay in the project repository. Before changing code, the assistant reads those files to understand the product, the architecture, and the rules for the task.',
+    traits: ['Rules live with the code', 'Respects the architecture', 'Produces reviewable work'],
+    flowTitle: 'What happens when you request a change?',
     flowDescription:
-      'Every request moves through a traceable path. Context and evidence remain with the code instead of living only in chat memory.',
+      'The assistant does not jump straight into editing. It defines the task, reads the relevant part of the project, changes the right code, and checks the result.',
     flowItems: [
       {
-        label: 'Intent',
-        title: 'You define the outcome',
-        description: 'State the expected behavior, constraints, and definition of done.',
+        label: 'Scope',
+        title: 'Turn the request into a defined task',
+        description: 'The assistant identifies the expected behavior, important constraints, and what a finished result should look like.',
       },
       {
-        label: 'Context',
-        title: 'The agent reads the project',
-        description: 'Product intent, the engineering contract, existing code, and tests are inspected.',
+        label: 'Analysis',
+        title: 'Read the project before editing it',
+        description: 'Product documentation, engineering rules, architecture, existing code, and relevant tests are inspected first.',
       },
       {
-        label: 'Execution',
-        title: 'The right skill guides the work',
-        description: 'The change lands with its behavior owner as one complete vertical slice.',
+        label: 'Implementation',
+        title: 'Make the change in the right part of the codebase',
+        description: 'Forge selects the relevant specialist guidance so new code stays with the feature or module that owns the behavior.',
       },
       {
-        label: 'Evidence',
-        title: 'You receive a diff and verification',
-        description: 'Changes, checks, decisions, and remaining constraints are reported clearly.',
+        label: 'Validation',
+        title: 'Check the result before handing it back',
+        description: 'The assistant runs the relevant tests, type checks, and build, then reports anything that remains unresolved.',
       },
     ],
-    contextTitle: 'What does the agent read?',
-    contextDescription: 'Four small sources create durable project context.',
+    contextTitle: 'What does the assistant read first?',
+    contextDescription: 'These four sources explain what the project is for and how its code is organized.',
     contextSources: [
       {
         path: 'docs/product.md',
@@ -153,21 +153,21 @@ export const technicalGuideContent = {
         description: 'Task-specific specialist guidance',
       },
     ],
-    controlTitle: 'What remains under your control?',
+    controlTitle: 'Which decisions still belong to you?',
     controlDescription:
-      'Forge increases speed without hiding or removing engineering responsibility.',
+      'Using Forge does not mean handing over every decision. Important changes remain visible and require approval where appropriate.',
     controlItems: [
       {
-        title: 'Important approvals',
-        description: 'Sensitive and destructive changes stop before execution.',
+        title: 'Sensitive changes',
+        description: 'Deleting files, rewriting data, and other high-impact changes are raised before they happen.',
       },
       {
-        title: 'Review and security',
-        description: 'Diffs, decisions, and failure paths remain visible for review.',
+        title: 'Code review',
+        description: 'The diff, the reasons behind key decisions, and the results of checks remain available for review.',
       },
       {
-        title: 'Release and production',
-        description: 'Deployment and production operations still require explicit authorization.',
+        title: 'Releases and production',
+        description: 'The assistant does not deploy the project or change production infrastructure unless you explicitly ask it to.',
       },
     ],
   },

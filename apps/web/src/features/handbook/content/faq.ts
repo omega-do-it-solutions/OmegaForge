@@ -6,68 +6,68 @@ type FaqContent = SectionHeading & {
 
 export const faqContent = {
   fa: {
-    eyebrow: 'اگر چیزی طبق انتظار پیش نرفت',
-    title: 'پرسش‌های رایج و راه‌حل‌های ساده',
+    eyebrow: 'اگر جایی گیر کردید',
+    title: 'پاسخ چند پرسش رایج',
     description:
-      'در بیشتر مواقع لازم نیست خودتان مشکل فنی را حل کنید؛ کافی است دستیار را به مسیر درست برگردانید.',
+      'اگر کار متوقف شد، متن کامل خطا را نگه دارید و در همان گفتگو برای دستیار بفرستید. معمولاً می‌تواند از همان‌جا ادامه بدهد.',
     items: [
       {
         question: 'چرا دکمهٔ کپی غیرفعال است؟',
         answer:
-          'برای ساخت پروژهٔ جدید، ابتدا نام پروژه و مسیر والد را وارد کنید. پس از کامل شدن هر دو فیلد، prompt آمادهٔ کپی می‌شود.',
+          'برای ساخت پروژهٔ جدید، نام پروژه و محل ذخیرهٔ آن را وارد کنید. وقتی هر دو خانه پر شوند، دکمهٔ کپی هم فعال می‌شود.',
       },
       {
-        question: 'دستیار می‌گوید skill موردنظر را پیدا نمی‌کند؛ چه کنم؟',
+        question: 'دستیار skill موردنظر را پیدا نمی‌کند. چه کنم؟',
         answer:
-          'از دستیار بخواهید پوشهٔ clone‌شدهٔ OmegaForge را باز کند و AGENTS.md را دوباره بخواند. اگر skill همچنان پیدا نشد، مطمئن شوید در پوشهٔ اصلی همان پروژه کار می‌کند.',
+          'از آن بخواهید مطمئن شود پوشهٔ اصلی پروژهٔ clone‌شده را باز کرده و AGENTS.md را خوانده است. اگر هنوز skill را پیدا نمی‌کند، ممکن است پوشهٔ اشتباهی در VS Code باز باشد.',
       },
       {
         question: 'مسیر انتخاب‌شده از قبل پروژه دارد؛ چه کنم؟',
         answer:
-          'نام یا پوشهٔ دیگری انتخاب کنید. prompt عمداً در مسیر اشغال‌شده ادامه نمی‌دهد تا فایل‌های موجود شما در خطر قرار نگیرند.',
+          'نام یا پوشهٔ دیگری انتخاب کنید. دستیار عمداً در مسیری که فایل دارد ادامه نمی‌دهد، چون ممکن است فایل‌های قبلی شما را تغییر دهد.',
       },
       {
-        question: 'clone یا به‌روزرسانی با خطا متوقف شد؛ قدم بعدی چیست؟',
+        question: 'clone یا به‌روزرسانی با خطا متوقف شد. حالا چه کنم؟',
         answer:
-          'متن کامل خطا را در همان گفتگو برای دستیار بفرستید و بخواهید بدون حذف یا بازنویسی فایل‌های موجود، علت را ساده توضیح دهد و امن‌ترین راه ادامه را پیشنهاد کند.',
+          'متن کامل خطا را در همان گفتگو بفرستید. از دستیار بخواهید قبل از هر اقدامی علت را توضیح دهد و راهی پیشنهاد کند که فایل‌های موجود را حذف یا بازنویسی نکند.',
       },
       {
         question: 'اگر دستیار سؤال فنی پرسید و جوابش را ندانستم چه کنم؟',
         answer:
-          'بگویید فنی نیستید و از او بخواهید کوچک‌ترین انتخاب امن و مناسب محصول را پیشنهاد دهد، دلیلش را ساده بگوید و فقط در صورت نیاز واقعی تأیید شما را بگیرد.',
+          'صادقانه بگویید که پاسخ را نمی‌دانید یا نمی‌خواهید خودتان انتخاب کنید. از دستیار بخواهید گزینهٔ پیشنهادی خودش را با دلیل و به زبان ساده توضیح دهد.',
       },
     ],
   },
   en: {
-    eyebrow: 'When something does not go as expected',
-    title: 'Common questions, simple answers',
+    eyebrow: 'If you get stuck',
+    title: 'Answers to common questions',
     description:
-      'Most of the time, you do not need to solve the technical issue yourself. You only need to guide the assistant back to the right context.',
+      'If the work stops, keep the full error message and send it in the same conversation. In most cases, the assistant can continue from there.',
     items: [
       {
         question: 'Why is the copy button disabled?',
         answer:
-          'For a new project, enter both the project name and parent path first. The prompt becomes available as soon as both fields are complete.',
+          'For a new project, enter both the project name and its location. The copy button becomes available when both fields are filled in.',
       },
       {
         question: 'My assistant cannot find the requested skill. What should I do?',
         answer:
-          'Ask it to open the cloned OmegaForge folder and read AGENTS.md again. If the skill is still missing, confirm that it is working from the root of that project.',
+          'Ask it to confirm that it opened the root of the cloned project and read AGENTS.md. If it still cannot find the skill, the wrong folder may be open in VS Code.',
       },
       {
         question: 'The selected location already contains a project. What should I do?',
         answer:
-          'Choose a different name or folder. The prompt intentionally stops in an occupied location so your existing files are not put at risk.',
+          'Choose a different name or folder. The assistant stops on purpose because continuing could overwrite or mix with files that are already there.',
       },
       {
-        question: 'Clone or update stopped with an error. What comes next?',
+        question: 'Clone or update stopped with an error. What should I do?',
         answer:
-          'Paste the complete error into the same assistant conversation. Ask it to explain the cause plainly and recommend the safest next step without deleting or overwriting existing files.',
+          'Paste the full error into the same conversation. Ask the assistant to explain the cause before taking action and to suggest a fix that does not delete or overwrite existing files.',
       },
       {
         question: 'What if the assistant asks a technical question I cannot answer?',
         answer:
-          'Say that you are not technical and ask it to recommend the smallest safe choice for the product, explain the reason plainly, and request your approval only when genuinely required.',
+          'Say that you do not know the answer or do not want to choose yourself. Ask the assistant to recommend an option and explain the tradeoff in plain language.',
       },
     ],
   },
