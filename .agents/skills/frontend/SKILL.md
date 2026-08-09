@@ -15,6 +15,10 @@ library, styling system, or HTTP client without an explicit replacement need.
 Read version-matched local framework documentation when the installed framework
 ships it or the task touches version-sensitive behavior.
 
+Before adding or upgrading a frontend runtime, framework, adapter, or package,
+read `docs/ai/dependency-security.md`. Verify current support, compatibility, and
+security information; do not select versions from generator defaults or memory.
+
 Before creating or reorganizing frontend pages, components, or feature modules,
 read `docs/ai/application-structure.md` and the matching reference:
 [references/react.md](references/react.md) for Vite React, Next.js, or Expo

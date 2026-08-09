@@ -52,8 +52,9 @@ test data and must never be automatic in production.
 - Inject configuration and secrets at runtime; never bake credentials into an
   image or commit them.
 - Define startup, shutdown, and health behavior appropriate to the application.
-- Pin intentionally and document the update path for base and infrastructure
-  images.
+- Select maintained stable or LTS base and infrastructure image lines, verify
+  their current security status, pin release artifacts immutably, and document
+  the update path. Follow `docs/ai/dependency-security.md` for exceptions.
 
 ## Native Mobile Builds
 
@@ -85,7 +86,9 @@ Adapt to the repository's selected provider. A normal pipeline should:
 2. Run lint and type checking.
 3. Run relevant unit and integration tests.
 4. Build applications and production images.
-5. Scan dependencies, secrets, and images where tooling exists.
+5. Scan the committed dependency graph and images against current vulnerability
+   data, enforcing `docs/ai/dependency-security.md`; do not release with an
+   unmitigated critical or high-severity production finding.
 6. Publish immutable artifacts only after verification succeeds.
 7. Run database migrations as an observable, one-shot release step.
 8. Verify health after deployment and retain a rollback path.

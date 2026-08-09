@@ -6,6 +6,27 @@ repository's commit history, beginning with the original template.
 
 ## [Unreleased]
 
+## [0.6.0] - 2026-08-09
+
+### Added
+
+- A dependency-version security contract covering runtimes, frameworks,
+  libraries, packages, plugins, build tools, container base images, and
+  infrastructure components.
+- A documented exception process requiring explicit technical-owner approval,
+  compensating controls, ownership, and an upgrade or removal deadline.
+
+### Changed
+
+- Bootstrap profiles now select supported LTS release lines when available and
+  maintained stable lines otherwise, verified against current compatibility,
+  support, and security information.
+- Prerelease, deprecated, end-of-life, unsupported, and known-affected direct
+  dependencies are rejected from production foundations by default.
+- Bootstrap, feature, frontend, backend, and delivery workflows now require
+  lockfile-based vulnerability checks and block unmitigated critical or
+  high-severity production findings.
+
 ## [0.5.0] - 2026-08-06
 
 ### Added

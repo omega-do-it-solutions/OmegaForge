@@ -292,6 +292,20 @@ materially simplifies a required capability and is appropriate for the selected
 runtime. Do not add overlapping libraries for validation, state, HTTP access,
 logging, UI primitives, or persistence without explaining the replacement plan.
 
+Choose dependency versions using [docs/ai/dependency-security.md](docs/ai/dependency-security.md).
+Use an actively supported LTS line when the project publishes one; otherwise use
+a maintained stable release. Verify the selected version against current official
+support information and published security advisories instead of trusting
+`latest`, an old template, or model memory. Do not introduce prerelease, end-of-
+life, deprecated, or known-vulnerable direct dependencies. An exception requires
+explicit technical-owner approval and a documented mitigation and removal or
+upgrade plan.
+
+Commit the package-manager lockfile, use reproducible installs, and scan the
+resolved dependency graph after additions and upgrades. Do not knowingly retain
+an affected version when a compatible fixed release exists, and do not release
+with an unmitigated critical or high-severity production dependency finding.
+
 ## Docker And Delivery
 
 Containerize deployable applications when the selected deployment platform uses

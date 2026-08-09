@@ -181,6 +181,23 @@ customer, legal, trust, safety, data-quality, or provider risk into an owned
 launch safeguard and describe its business outcome, rather than presenting it
 as an undecided technical risk.
 
+#### Dependency version decision
+
+- Follow `docs/ai/dependency-security.md` for every runtime, framework, package,
+  build tool, base image, and infrastructure component in the proposed profile.
+- Prefer an actively supported LTS line when the ecosystem publishes one;
+  otherwise choose a maintained stable release line. Select a compatible patched
+  release within that line.
+- Verify current support status, release compatibility, and published security
+  advisories from current sources before proposing exact versions. Do not trust
+  `latest`, generator defaults, template examples, or remembered version numbers.
+- Do not propose alpha, beta, release-candidate, canary, nightly, preview,
+  experimental, deprecated, end-of-life, unsupported, or known-affected direct
+  dependencies. Stop for explicit technical-owner approval if a documented
+  product need has no safe supported alternative.
+- State the chosen runtime and framework support lines in the technical profile,
+  together with the point-in-time security verification that supports them.
+
 #### Frontend decision
 
 - React is the default frontend choice when the product has no existing
@@ -294,8 +311,9 @@ as an undecided technical risk.
   production must never run seeds automatically or run migrations opportunistically
   during normal application startup.
 
-Framework limitations and version-specific behavior must be verified against
-official documentation before the profile is proposed.
+Framework limitations, support status, version compatibility, and security
+advisories must be verified from current authoritative sources before the profile
+is proposed.
 
 ### Phase 3: Print The Proposal And Wait
 
@@ -317,6 +335,7 @@ Authentication:
 Brand colors:
 External integrations:
 Package manager:
+Dependency version posture:
 UI system:
 Frontend foundation:
 Scale forecast:
@@ -431,6 +450,12 @@ without creating additional lockfiles. At every approved root or application
 configuration location, create `.env` from its matching `.env.example` only if
 the `.env` does not already exist. Do not overwrite existing environment files
 or duplicate shared values into application files without a documented need.
+Inspect the committed lockfile with the package manager's supported vulnerability
+scanner and confirm direct dependencies match the approved stable or LTS support
+lines. Critical or high-severity production findings block bootstrap; review and
+report every remaining finding rather than silently accepting it. Apply the
+exception process in `docs/ai/dependency-security.md` when no safe supported
+alternative exists.
 Start every approved local dependency through its documented root command, wait
 for its health check, then run the required migrations and seed scripts. Run a
 seed only when the approved baseline defines one; bootstrap must not invent

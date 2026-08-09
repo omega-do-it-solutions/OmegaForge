@@ -16,7 +16,8 @@ Before any action, read these files completely:
 2. `docs/ai/bootstrap.md`
 3. `docs/product.md`
 4. `docs/ai/architecture.md`
-5. `docs/ai/application-structure.md`
+5. `docs/ai/dependency-security.md`
+6. `docs/ai/application-structure.md`
 
 The mutation classes, decision rules, and phases in `docs/ai/bootstrap.md` are
 mandatory. This skill is not permission to alter protected framework files.
@@ -87,14 +88,18 @@ State the conservative operating defaults, whether bounded polling, SSE,
 WebSockets, or a durable event flow is selected, why it fits, and why larger
 alternatives are not yet needed.
 
-Verify version-sensitive framework claims using official documentation. Print
-the complete `PROJECT TECHNICAL PROFILE` from Phase 3, including approved brand
-colors, reasons, rejected larger alternatives, applications to create, and every
-targeted file edit. daisyUI and the S3-compatible file contract are fixed
-choices. Resolve known material launch, growth, and business-risk safeguards
-before the profile. Describe their business outcome and the foundation
-established now instead of listing unowned technical assumptions, undecided
-technical risks, or unresolved future choices.
+Verify framework support lines, version compatibility, and current security
+advisories using authoritative current sources. Prefer supported LTS releases
+when available and maintained stable releases otherwise; do not propose a
+prerelease, end-of-life, unsupported, deprecated, or known-affected direct
+dependency. Print the complete `PROJECT TECHNICAL PROFILE` from Phase 3,
+including dependency version posture, approved brand colors, reasons, rejected
+larger alternatives, applications to create, and every targeted file edit.
+daisyUI and the S3-compatible file contract are fixed choices. Resolve known
+material launch, growth, and business-risk safeguards before the profile.
+Describe their business outcome and the foundation established now instead of
+listing unowned technical assumptions, undecided technical risks, or unresolved
+future choices.
 
 End with a direct approval request. Do not edit configuration, install packages,
 run generators, or write application code before explicit technical approval.
@@ -134,6 +139,9 @@ it cleanly after the smoke test and report the restart command. After
 verification, start each built server application once with its production
 command, health-check it, and stop that production-mode process cleanly. Build
 the selected mobile release artifacts and report available device verification.
+Run the ecosystem's supported dependency scanner against the committed lockfile;
+critical or high-severity production findings block completion, and all other
+findings must be reviewed and reported under the dependency security contract.
 Then replace the template README with a project-owned README that
 reflects the generated product, real commands, and local setup; it must not
 retain OmegaForge onboarding or template instructions. Report generated files

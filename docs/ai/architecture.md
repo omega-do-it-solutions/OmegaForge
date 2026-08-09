@@ -23,6 +23,7 @@ feature.
 - Data flow and real-time delivery: Unselected
 - Capacity and data lifecycle: Unselected
 - Runtime environments: Development and production; configuration unselected
+- Dependency version posture: Supported stable/LTS releases; exact lines unselected
 - CI: Unselected
 - Deployment: Unselected
 
@@ -95,6 +96,22 @@ process must explicitly receive the configuration it needs; automatic loading by
 one framework does not satisfy another process. Bootstrap creates missing local
 environment files from their matching examples without overwriting existing
 files.
+
+## Dependency Version Security
+
+Treat support status and known vulnerabilities as architecture constraints, not
+as package-installation details. Follow
+[dependency-security.md](dependency-security.md) whenever selecting or changing
+a runtime, framework, library, package, plugin, build tool, base image, or
+infrastructure component.
+
+Prefer a supported LTS line when one exists and a maintained stable line when it
+does not. Verify the exact release against current official support information,
+compatibility requirements, and security advisories. Do not base a technical
+profile on prerelease, deprecated, end-of-life, unsupported, or known-affected
+direct dependencies without an explicit, documented technical-owner exception.
+Record the selected support lines in this profile and enforce lockfile-based
+installation and dependency scanning in CI.
 
 ## Data Flow, Scale, And Real-Time Delivery
 

@@ -14,6 +14,11 @@ Before creating or reorganizing a server module, read
 When NestJS uses the Fastify adapter, follow the NestJS structure because Nest
 owns the application and module boundary.
 
+Before adding or upgrading a backend runtime, framework, adapter, plugin, or
+package, read `docs/ai/dependency-security.md`. Verify current support,
+compatibility, and security information; do not select versions from generator
+defaults or memory.
+
 ## Preserve Boundaries
 
 Default to a modular monolith organized by business feature. Keep controllers,

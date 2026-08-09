@@ -24,6 +24,11 @@ Do not turn routine technical decisions into questions for a business user.
   only when that area is involved.
 - Add a new application or package only when the boundary rules in
   `docs/ai/architecture.md` require it.
+- Before adding or upgrading a dependency, read
+  `docs/ai/dependency-security.md`. Use a compatible supported LTS release when
+  available and a maintained stable release otherwise; verify current advisories
+  and do not introduce prerelease, end-of-life, unsupported, deprecated, or
+  known-affected direct versions.
 - Prefer a direct implementation over a generic framework built for imagined
   future features.
 
@@ -51,7 +56,9 @@ it explicit and limited to enabling the requested behavior.
 
 Run focused tests plus lint and type checking for affected applications. Run a
 build when contracts, configuration, application boundaries, or delivery files
-change.
+change. When dependencies change, scan the committed lockfile with the
+ecosystem's supported vulnerability tool and apply the blocking and exception
+rules in `docs/ai/dependency-security.md`.
 
 Report:
 
