@@ -1,127 +1,70 @@
-# Changelog
+# OmegaForge Manual Changelog
 
-All notable OmegaForge blueprint changes are recorded here. Version numbers use
-semantic versioning. The historical entries below are reconstructed from the
-repository's commit history, beginning with the original template.
+All notable changes to the public OmegaForge Manual are recorded here. Manual
+versions are independent from OmegaForge foundation versions. The current
+released manual version is also stored in `VERSION`.
 
-## [Unreleased]
+## Unreleased
 
-## [0.5.0] - 2026-08-06
+## 0.3.0 - 2026-08-10
 
 ### Added
 
-- A framework-aware application-structure guide covering Vite React, Next.js
-  App Router, Vue Router, Nuxt 4, Expo Router, NestJS, and Fastify.
-- NestJS and Fastify backend skill references covering module/plugin ownership,
-  framework composition roots, and testable server boundaries.
-- `$update-stack`, a foundation-only workflow for safely bringing an older
-  OmegaForge project's guidance, built-in skills, and foundation metadata
-  forward without changing application code or runtime configuration.
+- A refactor workflow that creates a clean OmegaForge project and derives its
+  `docs/product.md` from the documentation and implemented business behavior of
+  a read-only source project.
+- A separate bootstrap step explaining research and stack recommendations,
+  owner review and alterations, explicit approval, project creation, checks,
+  startup, and sample-page review.
+- The official Omega Do wordmark as a theme-aware SVG and a branded favicon.
+- Smooth FAQ expand and collapse animations with reduced-motion support.
+- A lightweight `VERSION` source, a locally linked manual changelog, and
+  developer attribution for Emad Moghimi.
 
 ### Changed
 
-- Bootstrap technical profiles must now name the selected application source
-  organization alongside the framework.
-- Global application composition—layouts, routing, technical providers,
-  session/security setup, configuration, and telemetry—is explicitly separated
-  from business features across supported frameworks.
-- Bootstrap now directs existing projects to `$update-stack` for framework
-  maintenance and protects the resulting foundation-state record.
+- Replaced the React and Forge workspace with a standalone English HTML, CSS,
+  and JavaScript site that needs no build process or application server.
+- Split new-project setup into product-definition and bootstrap steps.
+- Added fresh-project and refactor-project tabs to product definition.
+- Standardized English typography on Inter and interface icons on Phosphor.
+- Simplified the hero heading and removed the unnecessary generic feature and
+  maintenance prompt.
 
-## [0.4.0] - 2026-08-02
+### Removed
 
-### Added
+- The Persian translation, language switcher, React application, workspace
+  configuration, and other framework-specific project files.
 
-- Framework-specific frontend structure references for React, Next.js, Vue,
-  and Nuxt, with feature-owned component, state, request, and test boundaries.
-- Alignment rules for mixed peer components, including consistent outer
-  geometry, headings, content start lines, padding, responsive behavior, and
-  expanded or collapsed states in both LTR and RTL layouts.
+## 0.2.0 - 2026-08-09
 
 ### Changed
 
-- Route and page files are now explicitly composition entry points; substantial
-  one-use sections must be extracted when they own a distinct responsibility,
-  interaction, state, validation, request, failure state, or focused test.
-- Fieldsets are reserved for genuinely named groups of related controls.
-  Standalone labeled fields may use cards or sections when those containers
-  preserve the surrounding composition and alignment more clearly.
-- Shared component locations are reserved for stable cross-feature primitives
-  and product patterns instead of becoming the default destination for every
-  page-specific component.
+- Rewrote the Persian and English handbook copy in a shorter, more direct voice.
+- Replaced the workflow tab border with a clean filled selection state and kept
+  the viewport fixed when switching between guided and technical content.
+- Replaced the technical stepper with an aligned lifecycle summary and clarified
+  its engineering terminology.
+- Reduced the hero heading height and let its two-tone text wrap naturally across
+  responsive layouts.
 
-## [0.3.0] - 2026-08-02
+## 0.1.0 - 2026-08-09
 
 ### Added
 
-- Permanent page-composition and UX rules for meaningful data grouping,
-  proximity, balanced responsive layouts, intentional whitespace, professional
-  color use, restrained container borders, and accessible disclosure motion.
-- Full-page visual review requirements covering hierarchy, density, control-to-
-  content relationships, supported directions, themes, and viewport widths.
+- A complete public handbook in Persian and English, with RTL and LTR layouts
+  and language-independent prompts for supported AI assistants.
+- Guided create, update, and maintenance workflows, plus a separate technical
+  guide for engineers using Forge in AI-assisted software development.
+- Public background on Omega Do, why OmegaForge exists, how it works, setup
+  readiness, expected outcomes, privacy boundaries, FAQs, and contribution
+  links.
+- Persisted language and theme preferences, smooth section navigation, and a
+  throttled active-section indicator in the header.
 
 ### Changed
 
-- Web UI work must check daisyUI first, use its premade components wherever they
-  fit, and create custom visual elements only when no suitable daisyUI element
-  exists.
-- Frontend work must start from the closest version-matched official daisyUI
-  example and preserve or improve its visual clarity instead of treating class
-  names alone as proof of acceptable design.
-- Frontend skill guidance now rejects pale, ambiguous, visually broken, or
-  unfinished output and requires diagnosis of theme, configuration, CSS order,
-  and override problems before adding one-off styling.
-
-## [0.2.0] - 2026-08-01
-
-### Added
-
-- Guided `$product-details` discovery that builds `docs/product.md` in small,
-  non-technical, business-language steps, including Farsi support.
-- Question cards with the question, why it matters, an example answer, an
-  owner-voiced suggested answer, and visible section-by-section progress.
-- Product-document sections for platforms and business risks, including iOS and
-  Android requirements, phone capabilities, customer harm, trust, legal, and
-  provider concerns.
-- Mobile application standards for Expo, React Native, TypeScript, Expo Router,
-  Axios, TanStack Query, Zustand, React Hook Form, Zod, CASL, SecureStore, mobile
-  design tokens, device modules, and React Native Testing Library.
-
-### Changed
-
-- Bootstrap now derives scale, real-time delivery, operating defaults, recovery,
-  hosting posture, and technical choices from business facts instead of asking
-  non-technical owners for infrastructure estimates.
-- Bootstrap now supports a verified `apps/mobile` baseline, development builds,
-  Android/iOS release artifacts, and device verification without treating a
-  mobile app like a production web server.
-- The frontend foundation now standardizes Axios, TanStack Query, TanStack
-  Table, CASL, Phosphor icons, Zod forms, Tiptap, ApexCharts, Day.js, and the
-  appropriate client-state store only when each capability is in scope.
-- Project startup now treats Git as optional, creates missing local environment
-  files safely, explicitly propagates configuration to every process, starts
-  local dependencies, runs applicable migrations and seeds, and smoke-tests
-  development and production-safe baselines.
-- Development and production contracts now distinguish server processes from
-  native mobile release artifacts, keep production migrations observable, and
-  prohibit automatic production seeds.
-
-### Fixed
-
-- Restored React as the default frontend choice; Nuxt is selected only for an
-  explicit preference or a concrete Vue advantage.
-- Made self-hosted S3-compatible storage with SeaweedFS the default local and
-  deployed object-storage posture.
-- Required a generated project README to replace template-oriented OmegaForge
-  setup text after a successful bootstrap.
-
-## [0.1.0] - 2026-08-01
-
-### Added
-
-- Initial OmegaForge workspace template with pnpm, agent rules, modular
-  application boundaries, product documentation, bootstrap contract, reusable
-  implementation skills, Docker Compose local storage, and SeaweedFS support.
-- Architecture guidance for modular monoliths, relational data, private
-  S3-compatible file handling, delivery, verification, and Tailwind + daisyUI
-  web interfaces.
+- Split the handbook into section-owned content and React components with lazy
+  loading for independently delivered page sections.
+- Reworked the technical guide for clearer scanning and distributed the ambient
+  background decoration across the full page.

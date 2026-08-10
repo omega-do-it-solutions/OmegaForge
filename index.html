@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="A practical guide to starting, updating, and maintaining OmegaForge projects with an AI coding assistant."
+    >
+    <meta name="theme-color" content="#7856ff">
+    <meta name="application-version" content="0.3.0">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    >
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/bold/style.css"
+    >
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/fill/style.css"
+    >
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <title>OmegaForge Public Handbook</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+      <header class="site-header">
+        <nav class="topbar" aria-label="Handbook navigation">
+          <a class="brand" href="#start" aria-label="Omega Do — OmegaForge handbook start">
+            <span class="omegado-logo-box">
+              <svg class="omegado-logo" viewBox="0 0 288 38" width="288" height="38" aria-hidden="true">
+                <use href="omegado-logo.svg#omegado-wordmark"></use>
+              </svg>
+            </span>
+            <span class="brand-divider" aria-hidden="true"></span>
+            <span class="brand-product">OmegaForge Manual</span>
+          </a>
+
+          <div class="nav-links">
+            <a href="#start" data-nav-link="start">Start</a>
+            <a href="#workflows" data-nav-link="workflows">Paths</a>
+            <a href="#how-it-works" data-nav-link="how-it-works">How it works</a>
+            <a href="#about" data-nav-link="about">About us</a>
+            <a href="#faq" data-nav-link="faq">FAQ</a>
+          </div>
+
+          <div class="header-actions">
+            <a
+              class="icon-button"
+              href="https://github.com/omega-do-it-solutions/OmegaForge"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="View OmegaForge on GitHub"
+              title="GitHub"
+            ><i class="ph-fill ph-github-logo" aria-hidden="true"></i></a>
+            <button
+              class="icon-button theme-button"
+              type="button"
+              data-theme-toggle
+              data-light-label="Enable light mode"
+              data-dark-label="Enable dark mode"
+            >
+              <i class="ph-fill ph-moon" aria-hidden="true" data-theme-icon></i>
+            </button>
+          </div>
+        </nav>
+      </header>
+
+      <main id="main" class="site-main">
+        <section id="start" class="hero" data-nav-section="start">
+          <div class="hero-copy">
+            <p class="pill"><span></span> A practical guide to OmegaForge</p>
+            <h1>Build your idea with <em>an AI coding assistant.</em></h1>
+            <p class="hero-description">
+              This guide shows you what to give Codex or Claude when you want to start a project, update its Forge guidance,
+              or make a change. If you are an engineer, the technical section also explains how Forge keeps the work scoped,
+              consistent with the architecture, and properly checked.
+            </p>
+            <div class="button-row">
+              <a class="button primary" href="#workflows">See the options <i class="ph-bold ph-arrow-down" aria-hidden="true"></i></a>
+              <a class="button quiet" href="#getting-ready">What do I need?</a>
+            </div>
+          </div>
+
+          <aside class="panel overview-card">
+            <div class="card-heading">
+              <div>
+                <p class="eyebrow">Choose a task</p>
+                <h2>What would you like to do with Forge?</h2>
+              </div>
+              <span class="square-icon" aria-hidden="true"><i class="ph-fill ph-shield-check"></i></span>
+            </div>
+            <ul class="dot-list">
+              <li>Set up a new project from scratch</li>
+              <li>Bring the Forge guidance up to date</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section id="getting-ready" class="panel section readiness">
+          <div class="section-heading">
+            <p class="eyebrow">Before you begin</p>
+            <h2>Have these four things ready.</h2>
+            <p>They only take a few minutes to prepare and prevent most problems at the start.</p>
+          </div>
+          <ul class="check-grid">
+            <li><span aria-hidden="true"><i class="ph-fill ph-check-circle"></i></span><div><h3>A coding assistant on your computer</h3><p>The assistant must be able to read and change project files. A regular browser chat does not have that access.</p></div></li>
+            <li><span aria-hidden="true"><i class="ph-fill ph-check-circle"></i></span><div><h3>VS Code ready</h3><p>Install VS Code before you begin. Your assistant will open the project folder there and continue from that folder.</p></div></li>
+            <li><span aria-hidden="true"><i class="ph-fill ph-check-circle"></i></span><div><h3>An empty project location</h3><p>Choose a name and folder that do not already contain another project. The prepared prompt asks your assistant to check again before it starts.</p></div></li>
+            <li><span aria-hidden="true"><i class="ph-fill ph-check-circle"></i></span><div><h3>Keep confidential information out</h3><p>Do not put passwords, API keys, access tokens, or real customer data in a prompt.</p></div></li>
+          </ul>
+        </section>
+
+        <section id="workflows" class="section workflows" data-nav-section="workflows">
+          <div class="split-heading">
+            <div>
+              <p class="eyebrow">Ready-made prompts</p>
+              <h2>What would you like to do today?</h2>
+            </div>
+            <p>Choose a prepared prompt to get started quickly. If you want the engineering details, open the second tab.</p>
+          </div>
+
+          <div class="tabs" role="tablist" aria-label="Choose an OmegaForge guide" data-tablist>
+            <button id="guided-tab" type="button" role="tab" aria-selected="true" aria-controls="guided-panel" data-tab="guided">Ready-made prompts</button>
+            <button id="technical-tab" type="button" role="tab" aria-selected="false" aria-controls="technical-panel" tabindex="-1" data-tab="technical">Technical details</button>
+          </div>
+
+          <div id="guided-panel" class="tab-panel prompt-list" role="tabpanel" aria-labelledby="guided-tab" data-panel="guided">
+            <article class="panel project-start-card">
+              <div class="tabs project-mode-tabs" role="tablist" aria-label="Choose how to define the product" data-tablist>
+                <button id="fresh-project-tab" type="button" role="tab" aria-selected="true" aria-controls="fresh-project-panel">Fresh project</button>
+                <button id="refactor-project-tab" type="button" role="tab" aria-selected="false" aria-controls="refactor-project-panel" tabindex="-1">Refactor project</button>
+              </div>
+
+              <section id="fresh-project-panel" class="prompt-card project-mode-panel" role="tabpanel" aria-labelledby="fresh-project-tab" data-prompt-card>
+                <div class="prompt-intro">
+                  <span class="square-icon" aria-hidden="true"><i class="ph-fill ph-sparkle"></i></span>
+                  <p class="eyebrow">New project · Step 1 of 2</p>
+                  <h3>Clone OmegaForge and define the product</h3>
+                  <p>Start with an empty product idea. Your assistant will clone OmegaForge, ask short business questions, and turn your answers into <code>docs/product.md</code>. It will not build the application yet.</p>
+
+                  <fieldset class="prompt-fields">
+                    <legend>Enter the project name and location</legend>
+                    <p>These details are added to the text opposite. This site does not store them.</p>
+                    <label for="fresh-project-name">New project name</label>
+                    <input id="fresh-project-name" type="text" placeholder="For example, sales-dashboard" dir="auto" autocomplete="off" spellcheck="false" data-prompt-input data-placeholder="[new project name]" data-label="the new project name">
+                    <label for="fresh-parent-path">Project parent path</label>
+                    <input id="fresh-parent-path" type="text" placeholder="For example, C:\Projects or /Users/name/Projects" dir="ltr" autocomplete="off" spellcheck="false" data-prompt-input data-placeholder="[preferred location on my computer]" data-label="the project parent path">
+                  </fieldset>
+
+                  <div class="skill-box"><small>TECHNICAL GUIDANCE USED</small><code dir="ltr">git clone → product-details</code></div>
+                </div>
+                <div class="prompt-output">
+                  <pre data-prompt-preview>I want to create a new project with OmegaForge.
+
+Project name: [new project name]
+Project parent path: [preferred location on my computer]
+
+Before doing anything else, check the final path [preferred location on my computer]/[new project name]. If it already exists or contains another project, stop and ask me for a different location.
+
+If the path is empty, clone this repository there. Work only on the cloned copy and do not change the original OmegaForge repository:
+https://github.com/omega-do-it-solutions/OmegaForge
+
+After the clone succeeds, open the new project folder in VS Code and continue from that folder. Then use the product-details skill. Ask me short, straightforward questions and use my answers to complete docs/product.md.
+
+When docs/product.md is complete, summarize the agreed product and stop. Do not use the bootstrap-project skill yet and do not create the application in this step.
+
+Keep your replies short and clear, and use the same language I use in our conversation.</pre>
+                  <div class="copy-row">
+                    <button class="button primary" type="button" data-copy disabled data-copy-label="Copy prompt" data-copied-label="Copied"><i class="ph-bold ph-copy" aria-hidden="true" data-copy-icon></i><span data-copy-text>Copy prompt</span></button>
+                    <p class="copy-status" aria-live="polite" data-copy-status data-missing-prefix="Enter " data-missing-suffix=" first." data-missing-join=" and " data-failed="The copy button did not work. Select the text and copy it manually."></p>
+                  </div>
+                </div>
+              </section>
+
+              <section id="refactor-project-panel" class="prompt-card project-mode-panel" role="tabpanel" aria-labelledby="refactor-project-tab" data-prompt-card hidden>
+                <div class="prompt-intro">
+                  <span class="square-icon" aria-hidden="true"><i class="ph-bold ph-arrows-clockwise"></i></span>
+                  <p class="eyebrow">Refactor · Step 1 of 2</p>
+                  <h3>Document an existing product</h3>
+                  <p>Use this when another project already contains the business rules, documentation, and working features. Your assistant will read that project without changing it and transfer the product knowledge into a clean OmegaForge project.</p>
+
+                  <fieldset class="prompt-fields">
+                    <legend>Enter the new and existing project locations</legend>
+                    <p>All three details are added to the prompt. This site does not store them.</p>
+                    <label for="refactor-project-name">New OmegaForge project name</label>
+                    <input id="refactor-project-name" type="text" placeholder="For example, sales-dashboard-v2" dir="auto" autocomplete="off" spellcheck="false" data-prompt-input data-placeholder="[new OmegaForge project name]" data-label="the new project name">
+                    <label for="refactor-parent-path">New project parent path</label>
+                    <input id="refactor-parent-path" type="text" placeholder="For example, C:\Projects or /Users/name/Projects" dir="ltr" autocomplete="off" spellcheck="false" data-prompt-input data-placeholder="[new project parent path]" data-label="the new project parent path">
+                    <label for="source-project-path">Source project path</label>
+                    <input id="source-project-path" type="text" placeholder="For example, C:\Projects\old-app or /Users/name/Projects/old-app" dir="ltr" autocomplete="off" spellcheck="false" data-prompt-input data-placeholder="[source project path]" data-label="the source project path">
+                  </fieldset>
+
+                  <div class="skill-box"><small>TECHNICAL PROCESS USED</small><code dir="ltr">git clone → source review → docs/product.md</code></div>
+                </div>
+                <div class="prompt-output">
+                  <pre data-prompt-preview>I want to create a new OmegaForge project from an existing product.
+
+New OmegaForge project name: [new OmegaForge project name]
+New project parent path: [new project parent path]
+Source project to analyze: [source project path]
+
+Before doing anything else, confirm that [source project path] exists and contains the source project. Treat that entire project as read-only: do not edit files, install packages, run migrations, reformat code, or change its Git state.
+
+Check the final new-project path [new project parent path]/[new OmegaForge project name]. If it already exists or contains another project, stop and ask me for a different location.
+
+If the new-project path is empty, clone this repository there. Work only on the cloned copy and do not change the original OmegaForge repository:
+https://github.com/omega-do-it-solutions/OmegaForge
+
+After the clone succeeds, open the new OmegaForge project folder in VS Code and continue from there. Do not use the product-details skill and do not conduct a product interview. Instead, analyze the source project at [source project path].
+
+Read its product and business documentation first, including requirements, README files, specifications, and planning notes. Then inspect its implemented features, routes and screens, user-facing text, tests, schemas, domain and service logic, permissions, workflows, statuses, validations, and integrations. Gather all business-related information you can establish about the product’s purpose, users, capabilities, rules, data concepts, constraints, and external systems.
+
+Write those findings into docs/product.md in the new OmegaForge project, preserving the document’s existing structure. Record evidence-supported behavior as product requirements. Clearly label uncertain inferences, conflicting evidence, and gaps that the source project cannot answer. Do not copy source code, secrets, credentials, or real customer data into the document.
+
+When docs/product.md is complete, summarize which source material you used and list any unresolved business gaps. Then stop. Do not use the bootstrap-project skill or create the application in this step.
+
+Keep your replies short and clear, and use the same language I use in our conversation.</pre>
+                  <div class="copy-row">
+                    <button class="button primary" type="button" data-copy disabled data-copy-label="Copy prompt" data-copied-label="Copied"><i class="ph-bold ph-copy" aria-hidden="true" data-copy-icon></i><span data-copy-text>Copy prompt</span></button>
+                    <p class="copy-status" aria-live="polite" data-copy-status data-missing-prefix="Enter " data-missing-suffix=" first." data-missing-join=", " data-failed="The copy button did not work. Select the text and copy it manually."></p>
+                  </div>
+                </div>
+              </section>
+            </article>
+
+            <article class="panel prompt-card" data-prompt-card>
+              <div class="prompt-intro">
+                <span class="square-icon" aria-hidden="true"><i class="ph-bold ph-rocket-launch"></i></span>
+                <p class="eyebrow">New project · Step 2 of 2</p>
+                <h3>Plan and bootstrap the project</h3>
+                <p>Use this after <code>docs/product.md</code> is complete. Send the prompt once: your assistant will pause for your review before it creates anything, then continue in the same conversation after you approve the plan.</p>
+
+                <ol class="bootstrap-steps" aria-label="Bootstrap process">
+                  <li><span aria-hidden="true">1</span><div><h4>Research and recommend</h4><p>It researches suitable, current options and proposes the project structure, technology stack, and exact planned changes.</p></div></li>
+                  <li><span aria-hidden="true">2</span><div><h4>Review and approve</h4><p>It waits while you approve the proposal or request alterations. Any revised proposal must be shown to you before work begins.</p></div></li>
+                  <li><span aria-hidden="true">3</span><div><h4>Build and show</h4><p>After approval, it creates the project, checks it, starts it, and opens a working sample page for you to review.</p></div></li>
+                </ol>
+
+                <div class="skill-box"><small>TECHNICAL GUIDANCE USED</small><code dir="ltr">bootstrap-project</code></div>
+              </div>
+              <div class="prompt-output">
+                <pre data-prompt-preview>Continue with this OmegaForge project. Read docs/product.md, then use the bootstrap-project skill.
+
+First, research suitable, current technology options for the documented product. Recommend the smallest appropriate project structure and technology stack. Explain the important choices in plain language and list the exact files and folders you intend to create or change.
+
+Do not create or change the application yet. Show me the proposal and wait for my response. If I request alterations, update the proposal and wait again. Begin implementation only after I explicitly approve it.
+
+After approval, create the runnable project baseline, install what it needs, and run the relevant checks. Then start the application and open its working sample page so I can review it. Tell me the local address and briefly report what was created and verified.
+
+Keep your replies short and clear, and use the same language I use in our conversation.</pre>
+                <div class="copy-row">
+                  <button class="button primary" type="button" data-copy data-copy-label="Copy prompt" data-copied-label="Copied"><i class="ph-bold ph-copy" aria-hidden="true" data-copy-icon></i><span data-copy-text>Copy prompt</span></button>
+                  <p class="copy-status" aria-live="polite" data-copy-status data-failed="The copy button did not work. Select the text and copy it manually."></p>
+                </div>
+              </div>
+            </article>
+
+            <article class="panel prompt-card" data-prompt-card>
+              <div class="prompt-intro">
+                <span class="square-icon" aria-hidden="true"><i class="ph-bold ph-arrow-down"></i></span>
+                <p class="eyebrow">New Forge version</p>
+                <h3>Update the Forge guidance</h3>
+                <p>Use this when the project was built with an older Forge version. It updates Forge’s built-in task guidance without changing the product code.</p>
+                <div class="skill-box"><small>TECHNICAL GUIDANCE USED</small><code dir="ltr">update-stack</code></div>
+              </div>
+              <div class="prompt-output">
+                <pre data-prompt-preview>This project was created with OmegaForge. Use the update-stack skill to bring only the OmegaForge-owned files—its guidance, skills, and foundation state—up to date.
+
+Do not change product code, dependencies, infrastructure, runtime configuration, data, or product requirements. Review the differences before applying them. If you need a trusted source or a specific version, ask me.
+
+At the end, tell me what was updated, which files changed, and whether any conflicts remain. Keep the answer brief and use the same language I use in our conversation.</pre>
+                <div class="copy-row">
+                  <button class="button primary" type="button" data-copy data-copy-label="Copy prompt" data-copied-label="Copied"><i class="ph-bold ph-copy" aria-hidden="true" data-copy-icon></i><span data-copy-text>Copy prompt</span></button>
+                  <p class="copy-status" aria-live="polite" data-copy-status data-failed="The copy button did not work. Select the text and copy it manually."></p>
+                </div>
+              </div>
+            </article>
+
+          </div>
+
+          <div id="technical-panel" class="tab-panel" role="tabpanel" aria-labelledby="technical-tab" data-panel="technical" hidden>
+            <article class="panel technical-guide">
+              <header class="technical-header">
+                <div>
+                  <span class="square-icon" aria-hidden="true"><i class="ph-bold ph-flow-arrow"></i></span>
+                  <p class="eyebrow">Technical details</p>
+                  <h3>How does Forge guide an AI coding agent?</h3>
+                </div>
+                <div>
+                  <p>OmegaForge does not ship with your application or run in production. Its guidance files stay in the project repository. Before changing code, the assistant reads those files to understand the product, the architecture, and the rules for the task.</p>
+                  <ul class="tag-list"><li>Rules live with the code</li><li>Respects the architecture</li><li>Produces reviewable work</li></ul>
+                </div>
+              </header>
+              <section class="technical-flow">
+                <h4>What happens when you request a change?</h4>
+                <p>The assistant does not jump straight into editing. It defines the task, reads the relevant part of the project, changes the right code, and checks the result.</p>
+                <ol>
+                  <li><div class="flow-label"><i class="ph-bold ph-chat-circle-text" aria-hidden="true"></i><small>Scope</small></div><h5>Turn the request into a defined task</h5><p>The assistant identifies the expected behavior, important constraints, and what a finished result should look like.</p></li>
+                  <li><div class="flow-label"><i class="ph-bold ph-file-text" aria-hidden="true"></i><small>Analysis</small></div><h5>Read the project before editing it</h5><p>Product documentation, engineering rules, architecture, existing code, and relevant tests are inspected first.</p></li>
+                  <li><div class="flow-label"><i class="ph-bold ph-wrench" aria-hidden="true"></i><small>Implementation</small></div><h5>Make the change in the right part of the codebase</h5><p>Forge selects the relevant specialist guidance so new code stays with the feature or module that owns the behavior.</p></li>
+                  <li><div class="flow-label"><i class="ph-bold ph-checks" aria-hidden="true"></i><small>Validation</small></div><h5>Check the result before handing it back</h5><p>The assistant runs the relevant tests, type checks, and build, then reports anything that remains unresolved.</p></li>
+                </ol>
+              </section>
+              <div class="technical-bottom">
+                <section>
+                  <h4>What does the assistant read first?</h4>
+                  <p>These four sources explain what the project is for and how its code is organized.</p>
+                  <table>
+                    <caption class="sr-only">Initial project sources</caption>
+                    <tbody>
+                      <tr><th><code dir="ltr">docs/product.md</code></th><td><strong>Product behavior</strong><span>Needs, users, and business rules</span></td></tr>
+                      <tr><th><code dir="ltr">AGENTS.md</code></th><td><strong>Engineering contract</strong><span>Boundaries, quality, and safety</span></td></tr>
+                      <tr><th><code dir="ltr">docs/ai/</code></th><td><strong>Technical profile</strong><span>Selected architecture and structure</span></td></tr>
+                      <tr><th><code dir="ltr">.agents/skills/</code></th><td><strong>Execution procedure</strong><span>Task-specific specialist guidance</span></td></tr>
+                    </tbody>
+                  </table>
+                </section>
+                <section class="control-section">
+                  <span class="large-symbol" aria-hidden="true"><i class="ph-fill ph-shield-check"></i></span>
+                  <h4>Which decisions still belong to you?</h4>
+                  <p>Using Forge does not mean handing over every decision. Important changes remain visible and require approval where appropriate.</p>
+                  <ul class="compact-list">
+                    <li><i class="ph-fill ph-check-circle" aria-hidden="true"></i><div><strong>Sensitive changes</strong><span>Deleting files, rewriting data, and other high-impact changes are raised before they happen.</span></div></li>
+                    <li><i class="ph-fill ph-check-circle" aria-hidden="true"></i><div><strong>Code review</strong><span>The diff, the reasons behind key decisions, and the results of checks remain available for review.</span></div></li>
+                    <li><i class="ph-fill ph-check-circle" aria-hidden="true"></i><div><strong>Releases and production</strong><span>The assistant does not deploy the project or change production infrastructure unless you explicitly ask it to.</span></div></li>
+                  </ul>
+                </section>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section id="how-it-works" class="section two-column" data-nav-section="how-it-works">
+          <div class="section-heading sticky-heading">
+            <p class="eyebrow">Getting started</p>
+            <h2>Choose a task and send the prepared prompt</h2>
+            <p>This page is in English, but your conversation with the assistant is not limited to English. Copy the prompt and continue in whichever language is most comfortable for you.</p>
+          </div>
+          <ol class="step-list">
+            <li><span>1</span><div><h3>Choose what you want to do</h3><p>Start a project, update Forge, or change an existing project.</p></div></li>
+            <li><span>2</span><div><h3>Copy the prepared text</h3><p>If you are starting a project, enter its name and location first.</p></div></li>
+            <li><span>3</span><div><h3>Send it to your assistant</h3><p>From there, answer the assistant’s questions in whichever language you prefer.</p></div></li>
+          </ol>
+        </section>
+
+        <section class="section journey">
+          <div class="center-heading">
+            <p class="eyebrow">After you send the prompt</p>
+            <h2>What will the assistant do next?</h2>
+            <p>Before changing files, it clarifies the request with you and asks for approval where it matters.</p>
+          </div>
+          <div class="journey-grid">
+            <article><span aria-hidden="true"><i class="ph-bold ph-chat-circle-text"></i></span><h3>It asks a few short questions</h3><p>Your answers establish the project goal, its users, and what the result should do.</p></article>
+            <article><span aria-hidden="true"><i class="ph-bold ph-eye"></i></span><h3>It tells you what it plans to do</h3><p>You see the proposed approach, technical choices, and intended file changes before work begins.</p></article>
+            <article><span aria-hidden="true"><i class="ph-bold ph-seal-check"></i></span><h3>It asks for approval when needed</h3><p>Sensitive decisions, destructive actions, and project scaffolding do not proceed without your approval.</p></article>
+            <article><span aria-hidden="true"><i class="ph-bold ph-rocket-launch"></i></span><h3>It summarizes the result</h3><p>At the end, it tells you what changed, how it checked the work, and whether anything remains unresolved.</p></article>
+          </div>
+        </section>
+
+        <section id="about" class="panel section about" data-nav-section="about">
+          <div>
+            <p class="eyebrow">About Omega Do and OmegaForge</p>
+            <h2>Why did we build OmegaForge?</h2>
+            <p>We are Omega Do, a digital team in Vienna working on design, web and app development, and AI tools. OmegaForge started with a problem we kept running into on our own projects: every time a new assistant joined the work, we had to explain the whole project again.</p>
+            <div class="button-row">
+              <a class="button primary" href="https://www.omegado.com/" target="_blank" rel="noreferrer">Meet Omega Do <i class="ph-bold ph-arrow-square-out" aria-hidden="true"></i></a>
+              <a class="button quiet" href="https://github.com/omega-do-it-solutions/OmegaForge" target="_blank" rel="noreferrer">View the project repository <i class="ph-bold ph-arrow-square-out" aria-hidden="true"></i></a>
+            </div>
+          </div>
+          <ol class="reason-list">
+            <li><h3>Project context kept getting lost</h3><p>The product goal, engineering rules, and reasons behind earlier decisions lived in chat. When the conversation ended or changed, much of that useful context disappeared with it.</p></li>
+            <li><h3>One prompt is not enough for a real project</h3><p>A project needs more than generated code. It also needs a clear structure, a way to check changes, and rules for decisions that should stay with the project owner.</p></li>
+            <li><h3>We kept the important information beside the code</h3><p>OmegaForge stores product requirements, engineering rules, and task-specific guidance in versioned project files. That gives every new assistant a reliable place to start.</p></li>
+          </ol>
+        </section>
+
+        <section id="faq" class="section two-column faq" data-nav-section="faq">
+          <div class="section-heading sticky-heading">
+            <p class="eyebrow">If you get stuck</p>
+            <h2>Answers to common questions</h2>
+            <p>If the work stops, keep the full error message and send it in the same conversation. In most cases, the assistant can continue from there.</p>
+          </div>
+          <div class="faq-list">
+            <details><summary>Why is the copy button disabled?<span class="faq-icons" aria-hidden="true"><i class="ph-bold ph-plus faq-open-icon"></i><i class="ph-bold ph-minus faq-close-icon"></i></span></summary><p>For a new project, enter both the project name and its location. The copy button becomes available when both fields are filled in.</p></details>
+            <details><summary>My assistant cannot find the requested skill. What should I do?<span class="faq-icons" aria-hidden="true"><i class="ph-bold ph-plus faq-open-icon"></i><i class="ph-bold ph-minus faq-close-icon"></i></span></summary><p>Ask it to confirm that it opened the root of the cloned project and read AGENTS.md. If it still cannot find the skill, the wrong folder may be open in VS Code.</p></details>
+            <details><summary>The selected location already contains a project. What should I do?<span class="faq-icons" aria-hidden="true"><i class="ph-bold ph-plus faq-open-icon"></i><i class="ph-bold ph-minus faq-close-icon"></i></span></summary><p>Choose a different name or folder. The assistant stops on purpose because continuing could overwrite or mix with files that are already there.</p></details>
+            <details><summary>Clone or update stopped with an error. What should I do?<span class="faq-icons" aria-hidden="true"><i class="ph-bold ph-plus faq-open-icon"></i><i class="ph-bold ph-minus faq-close-icon"></i></span></summary><p>Paste the full error into the same conversation. Ask the assistant to explain the cause before taking action and to suggest a fix that does not delete or overwrite existing files.</p></details>
+            <details><summary>What if the assistant asks a technical question I cannot answer?<span class="faq-icons" aria-hidden="true"><i class="ph-bold ph-plus faq-open-icon"></i><i class="ph-bold ph-minus faq-close-icon"></i></span></summary><p>Say that you do not know the answer or do not want to choose yourself. Ask the assistant to recommend an option and explain the tradeoff in plain language.</p></details>
+          </div>
+        </section>
+
+        <section class="section public-project">
+          <article class="panel contribution">
+            <p class="eyebrow">A public project</p>
+            <h2>Tell us when something needs fixing</h2>
+            <p>Found unclear wording, a technical problem, or a better translation? Open a GitHub issue so we can follow it up.</p>
+            <div class="button-row">
+              <a class="button primary" href="https://github.com/omega-do-it-solutions/OmegaForge/issues/new?title=Manual%20problem%3A%20" target="_blank" rel="noreferrer"><i class="ph-bold ph-bug" aria-hidden="true"></i>Report a problem</a>
+              <a class="button outline" href="https://github.com/omega-do-it-solutions/OmegaForge/issues/new?title=Manual%20copy%20suggestion%3A%20" target="_blank" rel="noreferrer"><i class="ph-bold ph-chat-circle-text" aria-hidden="true"></i>Suggest clearer copy</a>
+              <a class="button quiet" href="https://github.com/omega-do-it-solutions/OmegaForge/issues/new?title=Manual%20translation%3A%20" target="_blank" rel="noreferrer"><i class="ph-bold ph-translate" aria-hidden="true"></i>Contribute a translation</a>
+            </div>
+          </article>
+          <div class="public-side">
+            <aside class="privacy-box"><span aria-hidden="true"><i class="ph-fill ph-shield-check"></i></span><div><h2>Keep sensitive information out of your prompts</h2><p>This site does not store what you enter. After you paste a prompt into Codex, Claude, or another service, that service’s privacy policy applies. Do not include passwords, access keys, or real customer data.</p></div></aside>
+            <div class="panel version-box">
+              <span aria-hidden="true"><i class="ph-bold ph-clock-counter-clockwise"></i></span>
+              <div><strong>OmegaForge Manual v0.3.0</strong><p>Aligned with OmegaForge v0.5.0</p><small>Last reviewed: August 2026</small><a href="CHANGELOG.md" target="_blank">View changelog <i class="ph-bold ph-arrow-square-out" aria-hidden="true"></i></a></div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <span>OmegaForge Manual · A practical guide to Forge and AI coding assistants</span>
+        <span class="footer-credit"><span aria-hidden="true">·</span> Created by <a href="https://github.com/JaxThePrime" target="_blank" rel="noreferrer">Emad Moghimi</a> at Omega Do</span>
+      </footer>
+  </body>
+</html>
