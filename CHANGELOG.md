@@ -6,6 +6,10 @@ released manual version is also stored in `VERSION`.
 
 ## Unreleased
 
+### Changed
+
+- Linked Mo. MIKAELI's creator credit to his GitHub profile.
+
 ## 0.5.0 - 2026-08-11
 
 ### Added
