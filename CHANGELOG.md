@@ -6,6 +6,27 @@ released manual version is also stored in `VERSION`.
 
 ## Unreleased
 
+## 0.5.0 - 2026-08-11
+
+### Added
+
+- A ready-made `$design-interface` workflow for defining or correcting product
+  category, audience surfaces, application shells, navigation, and UI density.
+- A ready-made `$audit-project` workflow for auditing implemented code,
+  repairing verified architecture drift, and decomposing oversized files by
+  responsibility rather than arbitrary line counts.
+- Plain-language guidance explaining why internal admin, public, customer,
+  commerce, checkout, collaborative, and guided surfaces may need different
+  layouts within the same product.
+
+### Changed
+
+- Aligned the manual with OmegaForge v0.8.0 and its smarter skill routing,
+  interface-identity intake, category-aware frontend rules, and code audit
+  workflow.
+- Updated new-project guidance to explain that product discovery records who
+  uses each surface and bootstrap derives the appropriate application shell.
+
 ## 0.4.0 - 2026-08-11
 
 ### Added

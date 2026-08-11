@@ -8,7 +8,7 @@
       content="A practical guide to starting, updating, and maintaining OmegaForge projects with an AI coding assistant."
     >
     <meta name="theme-color" content="#7856ff">
-    <meta name="application-version" content="0.4.0">
+    <meta name="application-version" content="0.5.0">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -82,7 +82,7 @@
             <h1>Build your idea with <em>an AI coding assistant.</em></h1>
             <p class="hero-description">
               This guide shows you what to give Codex or Claude when you want to start a project, update its Forge guidance,
-              or make a change. If you are an engineer, the technical section also explains how Forge keeps the work scoped,
+              define its interface, audit its code, or make a change. If you are an engineer, the technical section also explains how Forge keeps the work scoped,
               consistent with the architecture, and properly checked.
             </p>
             <div class="button-row">
@@ -102,6 +102,8 @@
             <ul class="dot-list">
               <li>Set up a new project from scratch</li>
               <li>Bring the Forge guidance up to date</li>
+              <li>Define or correct the interface direction</li>
+              <li>Audit and repair an existing project</li>
             </ul>
           </aside>
         </section>
@@ -146,7 +148,7 @@
                   <span class="square-icon" aria-hidden="true"><i class="ph-fill ph-sparkle"></i></span>
                   <p class="eyebrow">New project · Step 1 of 2</p>
                   <h3>Clone OmegaForge and define the product</h3>
-                  <p>Start with an empty product idea. Your assistant will clone OmegaForge, ask short business questions, and turn your answers into <code>docs/product.md</code>. It will not build the application yet.</p>
+                  <p>Start with an empty product idea. Your assistant will clone OmegaForge, ask short business questions, and turn your answers—including the product category and its audience surfaces—into <code>docs/product.md</code>. It will not build the application yet.</p>
 
                   <fieldset class="prompt-fields">
                     <legend>Enter the project name and location</legend>
@@ -241,7 +243,7 @@ Keep your replies short and clear, and use the same language I use in our conver
                 <p>Use this after <code>docs/product.md</code> is complete. Send the prompt once: your assistant will pause for your review before it creates anything, then continue in the same conversation after you approve the plan.</p>
 
                 <ol class="bootstrap-steps" aria-label="Bootstrap process">
-                  <li><span aria-hidden="true">1</span><div><h4>Research and recommend</h4><p>It researches suitable, current options and proposes the project structure, technology stack, and exact planned changes.</p></div></li>
+                  <li><span aria-hidden="true">1</span><div><h4>Research and recommend</h4><p>It researches suitable, current options and proposes the project structure, technology stack, interface shells, and exact planned changes.</p></div></li>
                   <li><span aria-hidden="true">2</span><div><h4>Review and approve</h4><p>It waits while you approve the proposal or request alterations. Any revised proposal must be shown to you before work begins.</p></div></li>
                   <li><span aria-hidden="true">3</span><div><h4>Build and show</h4><p>After approval, it creates the project, checks it, starts it, and opens a working sample page for you to review.</p></div></li>
                 </ol>
@@ -286,6 +288,56 @@ At the end, tell me what was updated, which files changed, and whether any confl
               </div>
             </article>
 
+            <article class="panel prompt-card" data-prompt-card>
+              <div class="prompt-intro">
+                <span class="square-icon" aria-hidden="true"><i class="ph-bold ph-layout"></i></span>
+                <p class="eyebrow">Interface direction</p>
+                <h3>Define or correct the product layout</h3>
+                <p>Use this when the interface has not been defined yet, or when an admin tool, customer area, storefront, checkout, or public site has started to look like the wrong kind of product.</p>
+                <div class="skill-box"><small>TECHNICAL GUIDANCE USED</small><code dir="ltr">design-interface → frontend</code></div>
+              </div>
+              <div class="prompt-output">
+                <pre data-prompt-preview>Use the design-interface skill for this OmegaForge project.
+
+Read docs/product.md and the existing routes, layouts, navigation, permissions, and design tokens when application code exists. Identify the product category, who can enter each first-release area, what work they do there, and whether the product needs separate public, customer, checkout, or staff surfaces.
+
+Show me the Interface Design Profile first. Explain the recommended shell, navigation, content width, density, responsive behavior, and LTR or RTL direction for each surface in plain language. Do not force every audience into one dashboard layout.
+
+If the current interface conflicts with the agreed identity, list the documentation and application changes required. Wait for my approval when the product direction is not already explicit. When implementation is approved, use the frontend skill, preserve routes and business behavior, and verify the complete interface at supported widths and navigation states.
+
+At the end, tell me what identity was recorded, what changed, and what was verified. Keep the answer brief and use the same language I use in our conversation.</pre>
+                <div class="copy-row">
+                  <button class="button primary" type="button" data-copy data-copy-label="Copy prompt" data-copied-label="Copied"><i class="ph-bold ph-copy" aria-hidden="true" data-copy-icon></i><span data-copy-text>Copy prompt</span></button>
+                  <p class="copy-status" aria-live="polite" data-copy-status data-failed="The copy button did not work. Select the text and copy it manually."></p>
+                </div>
+              </div>
+            </article>
+
+            <article class="panel prompt-card" data-prompt-card>
+              <div class="prompt-intro">
+                <span class="square-icon" aria-hidden="true"><i class="ph-bold ph-magnifying-glass"></i></span>
+                <p class="eyebrow">Project health</p>
+                <h3>Audit and repair the project</h3>
+                <p>Use this when AI-generated code has drifted from the product or architecture, files have grown difficult to maintain, or you want an evidence-based codebase review.</p>
+                <div class="skill-box"><small>TECHNICAL GUIDANCE USED</small><code dir="ltr">audit-project → relevant specialists</code></div>
+              </div>
+              <div class="prompt-output">
+                <pre data-prompt-preview>Use the audit-project skill to audit this entire OmegaForge project and fix confirmed, behavior-preserving problems.
+
+Read the product brief, engineering contract, architecture, interface identity, and implemented code. Inspect every application and package for product mismatch, architecture drift, mixed responsibilities, unsafe boundaries, duplicated business rules, missing verification, and frontend layouts that do not match their audience.
+
+Treat very large files as investigation signals. When a file owns unrelated workflows, state, requests, I/O, or reasons to change, split it along the project architecture and feature ownership. Do not create arbitrary small files just to reduce a line count.
+
+Repair only verified behavior-preserving drift. Ask before changing product behavior, public contracts, dependencies, schemas, data, deployment, or performing destructive work. Run the relevant checks after each coherent repair.
+
+At the end, report the evidence, fixes, file splits and their boundaries, checks run, and remaining risks. Keep the answer brief and use the same language I use in our conversation.</pre>
+                <div class="copy-row">
+                  <button class="button primary" type="button" data-copy data-copy-label="Copy prompt" data-copied-label="Copied"><i class="ph-bold ph-copy" aria-hidden="true" data-copy-icon></i><span data-copy-text>Copy prompt</span></button>
+                  <p class="copy-status" aria-live="polite" data-copy-status data-failed="The copy button did not work. Select the text and copy it manually."></p>
+                </div>
+              </div>
+            </article>
+
           </div>
 
           <div id="technical-panel" class="tab-panel" role="tabpanel" aria-labelledby="technical-tab" data-panel="technical" hidden>
@@ -298,7 +350,7 @@ At the end, tell me what was updated, which files changed, and whether any confl
                 </div>
                 <div>
                   <p>OmegaForge does not ship with your application or run in production. Its guidance files stay in the project repository. It also does not impose one runtime, database, application Dockerfile, Compose topology, CI provider, or host. Bootstrap derives those choices from the product brief, presents them for approval, and only then creates the project-specific foundation.</p>
-                  <ul class="tag-list"><li>Rules live with the code</li><li>Stack chosen per project</li><li>Produces reviewable work</li></ul>
+                  <ul class="tag-list"><li>Rules live with the code</li><li>Stack and UI fit the product</li><li>Produces reviewable work</li></ul>
                 </div>
               </header>
               <section class="technical-flow">
@@ -307,7 +359,7 @@ At the end, tell me what was updated, which files changed, and whether any confl
                 <ol>
                   <li><div class="flow-label"><i class="ph-bold ph-chat-circle-text" aria-hidden="true"></i><small>Scope</small></div><h5>Turn the request into a defined task</h5><p>The assistant identifies the expected behavior, important constraints, and what a finished result should look like.</p></li>
                   <li><div class="flow-label"><i class="ph-bold ph-file-text" aria-hidden="true"></i><small>Analysis</small></div><h5>Read the project before editing it</h5><p>Product documentation, engineering rules, architecture, existing code, and relevant tests are inspected first.</p></li>
-                  <li><div class="flow-label"><i class="ph-bold ph-wrench" aria-hidden="true"></i><small>Implementation</small></div><h5>Make the change in the right part of the codebase</h5><p>Forge selects the relevant specialist guidance so new code stays with the feature or module that owns the behavior.</p></li>
+                  <li><div class="flow-label"><i class="ph-bold ph-wrench" aria-hidden="true"></i><small>Implementation</small></div><h5>Make the change in the right part of the codebase</h5><p>Forge selects one workflow and only the relevant specialist guidance so code stays with the feature or module that owns the behavior.</p></li>
                   <li><div class="flow-label"><i class="ph-bold ph-checks" aria-hidden="true"></i><small>Validation</small></div><h5>Check the result before handing it back</h5><p>The assistant runs the relevant tests, type checks, and build, then reports anything that remains unresolved.</p></li>
                 </ol>
               </section>
@@ -347,7 +399,7 @@ At the end, tell me what was updated, which files changed, and whether any confl
             <p>This page is in English, but your conversation with the assistant is not limited to English. Copy the prompt and continue in whichever language is most comfortable for you.</p>
           </div>
           <ol class="step-list">
-            <li><span>1</span><div><h3>Choose what you want to do</h3><p>Start a project, update Forge, or change an existing project.</p></div></li>
+            <li><span>1</span><div><h3>Choose what you want to do</h3><p>Start a project, update Forge, define its interface, audit it, or change a feature.</p></div></li>
             <li><span>2</span><div><h3>Copy the prepared text</h3><p>If you are starting a project, enter its name and location first.</p></div></li>
             <li><span>3</span><div><h3>Send it to your assistant</h3><p>From there, answer the assistant’s questions in whichever language you prefer.</p></div></li>
           </ol>
@@ -397,6 +449,8 @@ At the end, tell me what was updated, which files changed, and whether any confl
             <details><summary>Clone or update stopped with an error. What should I do?<span class="faq-icons" aria-hidden="true"><i class="ph-bold ph-plus faq-open-icon"></i><i class="ph-bold ph-minus faq-close-icon"></i></span></summary><p>Paste the full error into the same conversation. Ask the assistant to explain the cause before taking action and to suggest a fix that does not delete or overwrite existing files.</p></details>
             <details><summary>What if the assistant asks a technical question I cannot answer?<span class="faq-icons" aria-hidden="true"><i class="ph-bold ph-plus faq-open-icon"></i><i class="ph-bold ph-minus faq-close-icon"></i></span></summary><p>Say that you do not know the answer or do not want to choose yourself. Ask the assistant to recommend an option and explain the tradeoff in plain language.</p></details>
             <details><summary>Does every OmegaForge project use the same stack or Docker setup?<span class="faq-icons" aria-hidden="true"><i class="ph-bold ph-plus faq-open-icon"></i><i class="ph-bold ph-minus faq-close-icon"></i></span></summary><p>No. The assistant derives the stack, application Dockerfiles, Compose topology, CI, hosting, and deployment approach from that project's product requirements and presents the complete technical profile for approval. The Compose file in OmegaForge itself only provides the optional local SeaweedFS service; it is not a production topology.</p></details>
+            <details><summary>What if my admin area looks like a customer dashboard?<span class="faq-icons" aria-hidden="true"><i class="ph-bold ph-plus faq-open-icon"></i><i class="ph-bold ph-minus faq-close-icon"></i></span></summary><p>Use the interface-direction prompt. Forge records who uses each surface and derives a suitable shell. Internal operations normally use a header and responsive collapsible sidebar, while public, customer, storefront, and checkout areas keep layouts suited to their own work.</p></details>
+            <details><summary>Can Forge clean up code that an AI made too large or confusing?<span class="faq-icons" aria-hidden="true"><i class="ph-bold ph-plus faq-open-icon"></i><i class="ph-bold ph-minus faq-close-icon"></i></span></summary><p>Yes. Use the audit prompt. Forge inspects the implementation and can repair confirmed behavior-preserving drift. It splits oversized files by feature and responsibility, not into arbitrary line-count chunks.</p></details>
           </div>
         </section>
 
@@ -416,7 +470,7 @@ At the end, tell me what was updated, which files changed, and whether any confl
             <aside class="privacy-box"><span aria-hidden="true"><i class="ph-fill ph-shield-check"></i></span><div><h2>Keep sensitive information out of your prompts</h2><p>This site does not store what you enter. After you paste a prompt into Codex, Claude, or another service, that service’s privacy policy applies. Do not include passwords, access keys, or real customer data.</p></div></aside>
             <div class="panel version-box">
               <span aria-hidden="true"><i class="ph-bold ph-clock-counter-clockwise"></i></span>
-              <div><strong>OmegaForge Manual v0.4.0</strong><p>Aligned with OmegaForge v0.7.0</p><small>Last reviewed: August 2026</small><a href="CHANGELOG.md" target="_blank">View changelog <i class="ph-bold ph-arrow-square-out" aria-hidden="true"></i></a></div>
+              <div><strong>OmegaForge Manual v0.5.0</strong><p>Aligned with OmegaForge v0.8.0</p><small>Last reviewed: August 2026</small><a href="CHANGELOG.md" target="_blank">View changelog <i class="ph-bold ph-arrow-square-out" aria-hidden="true"></i></a></div>
             </div>
           </div>
         </section>
