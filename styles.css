@@ -175,6 +175,11 @@ h5 {
   white-space: nowrap;
 }
 
+.brand-logo-link {
+  display: inline-flex;
+  border-radius: 9px;
+}
+
 .square-icon {
   display: inline-grid;
   place-items: center;
