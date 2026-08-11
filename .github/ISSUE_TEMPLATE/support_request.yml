@@ -1,0 +1,44 @@
+name: Support request
+description: Ask for help using an OmegaForge-owned workflow after reading the manual.
+title: "[Support]: "
+labels:
+  - question
+body:
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: Before submitting
+      options:
+        - label: I read the relevant section of the OmegaForge manual.
+          required: true
+        - label: This concerns OmegaForge rather than support for my framework, host, or production infrastructure.
+          required: true
+        - label: I removed credentials, customer data, private prompts, and unrelated proprietary code.
+          required: true
+  - type: input
+    id: version
+    attributes:
+      label: OmegaForge version
+      placeholder: v0.6.0 or a commit hash
+    validations:
+      required: true
+  - type: input
+    id: agent
+    attributes:
+      label: Coding agent and environment
+      placeholder: Codex on Linux with pnpm 11
+    validations:
+      required: true
+  - type: textarea
+    id: goal
+    attributes:
+      label: What are you trying to do?
+    validations:
+      required: true
+  - type: textarea
+    id: blocker
+    attributes:
+      label: What is blocking you?
+      description: Include the exact sanitized message or behavior and what you already tried.
+    validations:
+      required: true

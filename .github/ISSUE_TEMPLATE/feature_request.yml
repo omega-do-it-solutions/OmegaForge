@@ -1,0 +1,41 @@
+name: Foundation improvement
+description: Propose an improvement that belongs in the reusable OmegaForge foundation.
+title: "[Proposal]: "
+labels:
+  - enhancement
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What recurring user or foundation problem should be solved?
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Desired outcome
+      description: Describe observable behavior without prescribing an unnecessary stack.
+    validations:
+      required: true
+  - type: textarea
+    id: foundation_scope
+    attributes:
+      label: Why this belongs in OmegaForge
+      description: Explain why the change is reusable foundation guidance rather than project-specific code, infrastructure, or deployment configuration.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Describe current workarounds or smaller options.
+  - type: checkboxes
+    id: boundaries
+    attributes:
+      label: Foundation boundaries
+      options:
+        - label: This proposal does not impose a fixed application stack, Docker topology, CI provider, or hosting platform.
+          required: true
+        - label: I have removed secrets, customer data, private prompts, and proprietary application code.
+          required: true

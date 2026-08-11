@@ -9,6 +9,46 @@ project to use the same frontend or backend framework.
 
 Release history is maintained in [CHANGELOG.md](CHANGELOG.md).
 
+## Documentation
+
+Read the complete step-by-step manual at
+[forge.omegado.com](https://forge.omegado.com).
+
+## Origin And Credits
+
+OmegaForge is an original project created by Emad Moghimi and Mo. MIKAELI for
+Omega Do IT Solutions. It is maintained as the company's reusable foundation
+for AI-developed products.
+
+- Emad Moghimi — Creator
+- Mo. MIKAELI — Creator
+- Omega Do IT Solutions — Project owner and maintainer
+
+## Responsibility Boundaries
+
+OmegaForge stays stack-flexible by separating the reusable foundation from the
+product it creates.
+
+| OmegaForge owns | The generated project owns |
+| --- | --- |
+| Engineering contracts and built-in skills | Application code and business behavior |
+| Product discovery and technical-profile workflow | Approved frameworks, runtimes, and dependencies |
+| Bootstrap safety and approval boundaries | Project-specific Dockerfiles and Compose topology |
+| Portable architecture and security guidance | CI/CD, hosting, production infrastructure, and operations |
+| Foundation update rules | Product releases, data, and deployment decisions |
+
+## What OmegaForge Does Not Predefine
+
+OmegaForge does not impose a fixed application stack, application Dockerfile,
+deployment topology, CI provider, database, or hosting platform. Bootstrap
+derives those choices from the completed product brief, presents the technical
+profile and exact intended mutations, and waits for owner approval before
+scaffolding them.
+
+The root `compose.yaml` provides only the optional local SeaweedFS service used
+by the foundation's S3-compatible storage contract. It is not an application or
+production deployment topology.
+
 ## Start A Project
 
 1. Create or unpack the product repository from the OmegaForge template. Git is
@@ -96,3 +136,24 @@ authored once under `.agents/skills`; `.claude/skills` points to the same skills
 Current Grok tooling can consume the AGENTS/Claude-compatible setup without a
 third copy. OpenAI-specific `agents/openai.yaml` files contain presentation
 metadata only; portable behavior stays in `SKILL.md`.
+
+## Community And Support
+
+- Read [CONTRIBUTING.md](CONTRIBUTING.md) before proposing a change.
+- Use [SUPPORT.md](SUPPORT.md) to choose the right support channel.
+- Report security concerns according to [SECURITY.md](SECURITY.md).
+- See [RELEASING.md](RELEASING.md) for the version and release process.
+
+## Built With OmegaForge
+
+Public downstream projects may be listed here with their owners' permission.
+Using OmegaForge does not require a project to disclose its source code or its
+use of the foundation. To propose a public listing, open a pull request that
+includes the project name, public URL, and the OmegaForge version used.
+
+## License
+
+OmegaForge is licensed under the [Apache License 2.0](LICENSE). Projects created
+from OmegaForge may use their owners' chosen licenses, while any OmegaForge
+material they retain remains subject to the Apache License 2.0 and its notice
+requirements.

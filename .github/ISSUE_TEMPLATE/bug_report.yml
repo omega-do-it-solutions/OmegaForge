@@ -1,0 +1,50 @@
+name: Bug report
+description: Report reproducible behavior in the OmegaForge foundation or manual.
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping improve OmegaForge. Remove credentials, customer data, private prompts, and proprietary application code. Report security concerns through the Security tab instead.
+  - type: input
+    id: version
+    attributes:
+      label: OmegaForge version
+      description: Provide a release tag or commit hash.
+      placeholder: v0.6.0 or 60c51d9
+    validations:
+      required: true
+  - type: input
+    id: agent
+    attributes:
+      label: Coding agent and environment
+      description: Name the coding agent, operating system, and relevant tool versions.
+      placeholder: Codex on Linux with pnpm 11
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps
+      description: Provide the smallest safe sequence that reproduces the problem.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Add sanitized logs, screenshots, or links that help explain the problem.

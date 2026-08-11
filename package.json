@@ -1,8 +1,22 @@
 {
   "name": "omega-forge",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "private": true,
   "description": "A lean technical foundation for AI-developed products",
+  "author": "Omega Do IT Solutions",
+  "contributors": [
+    "Emad Moghimi",
+    "Mo. MIKAELI"
+  ],
+  "license": "Apache-2.0",
+  "homepage": "https://forge.omegado.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/omega-do-it-solutions/OmegaForge.git"
+  },
+  "bugs": {
+    "url": "https://github.com/omega-do-it-solutions/OmegaForge/issues"
+  },
   "packageManager": "pnpm@11.11.0",
   "scripts": {
     "dev": "pnpm -r --parallel --if-present run dev",

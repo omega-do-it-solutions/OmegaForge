@@ -6,6 +6,17 @@ repository's commit history, beginning with the original template.
 
 ## [Unreleased]
 
+## [0.7.0] - 2026-08-11
+
+### Added
+
+- Apache License 2.0 licensing and an accompanying attribution notice.
+- Explicit project origin, creator, owner, and maintainer credits in the README.
+- A prominent link to the public manual, explicit responsibility and scope
+  boundaries, and a public downstream-project showcase in the README.
+- Contribution, support, security, ownership, issue, pull-request, and release
+  guidance for the public repository.
+
 ## [0.6.0] - 2026-08-09
 
 ### Added

@@ -1,0 +1,8 @@
+# Default ownership for the OmegaForge foundation.
+* @JaxThePrime
+
+# Protect repository policy and ownership configuration explicitly.
+/.github/ @JaxThePrime
+/AGENTS.md @JaxThePrime
+/.agents/ @JaxThePrime
+/docs/ai/ @JaxThePrime

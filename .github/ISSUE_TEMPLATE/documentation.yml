@@ -1,0 +1,41 @@
+name: Documentation improvement
+description: Report unclear, incorrect, or missing README, manual, or foundation guidance.
+title: "[Docs]: "
+labels:
+  - documentation
+body:
+  - type: dropdown
+    id: area
+    attributes:
+      label: Documentation area
+      options:
+        - Public manual
+        - README
+        - Engineering contract
+        - Architecture guidance
+        - Built-in skill
+        - Translation
+        - Other foundation documentation
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is unclear or incorrect?
+      description: Quote only the minimum public text needed to identify the problem.
+    validations:
+      required: true
+  - type: textarea
+    id: improvement
+    attributes:
+      label: Suggested improvement
+      description: Explain the wording, correction, example, or translation you recommend.
+    validations:
+      required: true
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy
+      options:
+        - label: I removed credentials, customer data, private prompts, and proprietary application code.
+          required: true

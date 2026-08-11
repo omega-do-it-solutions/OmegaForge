@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: OmegaForge manual
+    url: https://forge.omegado.com
+    about: Read the step-by-step guide and troubleshooting help before opening an issue.
+  - name: Security report
+    url: https://github.com/omega-do-it-solutions/OmegaForge/security
+    about: Report suspected vulnerabilities privately; do not disclose them in a public issue.
