@@ -6,6 +6,10 @@ repository's commit history, beginning with the original template.
 
 ## [Unreleased]
 
+### Changed
+
+- Linked Mo. MIKAELI's creator credit to his GitHub profile.
+
 ## [0.8.0] - 2026-08-11
 
 ### Added
