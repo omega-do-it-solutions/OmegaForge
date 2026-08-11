@@ -17,7 +17,9 @@ Before any action, read these files completely:
 3. `docs/product.md`
 4. `docs/ai/architecture.md`
 5. `docs/ai/dependency-security.md`
-6. `docs/ai/application-structure.md`
+6. `docs/ai/skill-routing.md`
+7. `docs/ai/interface-design.md`
+8. `docs/ai/application-structure.md`
 
 The mutation classes, decision rules, and phases in `docs/ai/bootstrap.md` are
 mandatory. This skill is not permission to alter protected framework files.
@@ -47,7 +49,10 @@ Android, or other first-release clients, any phone-specific needs, SEO needs,
 integrations, background work, data, files, expected outcomes, and primary and
 secondary brand colors as hex codes. Update
 `docs/product.md` while preserving its required headings. Do not ask the business
-owner to choose frameworks.
+owner to choose frameworks. Capture and confirm the product category, audience
+exposure, distinct first-release surfaces, and work posture in `Interface
+Identity`. Derive each surface's shell from `docs/ai/interface-design.md`; do
+not ask the owner to choose layout components.
 
 ### 3. Decide And Print The Technical Profile
 
@@ -93,8 +98,9 @@ advisories using authoritative current sources. Prefer supported LTS releases
 when available and maintained stable releases otherwise; do not propose a
 prerelease, end-of-life, unsupported, deprecated, or known-affected direct
 dependency. Print the complete `PROJECT TECHNICAL PROFILE` from Phase 3,
-including dependency version posture, approved brand colors, reasons, rejected
-larger alternatives, applications to create, and every targeted file edit.
+including dependency version posture, approved brand colors, interface identity
+and shells, reasons, rejected larger alternatives, applications to create, and
+every targeted file edit.
 daisyUI and the S3-compatible file contract are fixed choices. Resolve known
 material launch, growth, and business-risk safeguards before the profile.
 Describe their business outcome and the foundation established now instead of
@@ -113,8 +119,10 @@ Use pnpm from the repository root and never permit a generator to initialize Git
 or create another lockfile.
 
 Create only an up-and-running technical baseline. Configure a central daisyUI
-theme whose `primary` and `secondary` tokens use the approved brand colors. Run
-the approved local-service, migration, and seed commands where they exist, then
+theme whose `primary` and `secondary` tokens use the approved brand colors and
+establish only the approved application or area shells required by the
+first-release surfaces. Run the approved local-service, migration, and seed
+commands where they exist, then
 start and smoke-test the application before handoff. Do not invent product data
 or implement product features during bootstrap. Provide separate validated
 development, build, and production-start commands for server applications, plus

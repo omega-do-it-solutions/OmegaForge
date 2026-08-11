@@ -23,6 +23,11 @@ Use the following sources in order:
 4. Existing code, tests, and public contracts for established implementation
 5. A relevant skill under `.agents/skills` for task-specific procedure
 
+Use [docs/ai/skill-routing.md](docs/ai/skill-routing.md) to select one primary
+workflow per task stage and only the specialist skills required by the concrete
+areas involved. Named skills in the current request take priority, but never
+broaden the user's mutation authority.
+
 If product documentation and the request conflict, call out the conflict before
 changing established business behavior.
 
@@ -126,6 +131,19 @@ Implement the smallest complete vertical slice:
 Skip layers that do not apply. Do not create empty abstractions, speculative
 packages, placeholder services, or unrelated refactors.
 
+## Project Audits
+
+Use `$audit-project` when asked to inspect codebase health, repair architecture
+drift, clean up AI-generated code that has gone off track, or decompose oversized
+mixed-responsibility files. Audit the implemented code as well as foundation
+documents. Treat file length as an inspection signal, not a splitting target;
+divide code by feature ownership, workflow, state, I/O, and reasons to change.
+
+An explicit audit-and-fix request authorizes safe behavior-preserving repairs.
+Product changes, public breaking changes, dependency replacements, schema or
+data migrations, deployment changes, and destructive rewrites retain their
+normal approval requirements.
+
 ## Code Quality
 
 Keep code cohesive, loosely coupled, and easy for a human to trace. Organize by
@@ -177,6 +195,27 @@ component locations for stable cross-feature UI only.
 
 Follow the detailed code structure, SOLID, DRY, debuggability, and scalability
 rules in `docs/ai/architecture.md`.
+
+## Interface Identity
+
+Read the `Interface Identity` section of `docs/product.md` and
+`docs/ai/interface-design.md` before selecting or changing an application shell,
+navigation model, content-width posture, or page density. Use
+`$design-interface` when defining or revising those decisions.
+
+Do not treat every authenticated screen as the same kind of dashboard. Internal
+admin, customer self-service, public content, storefront, checkout,
+collaborative workspace, and guided transactional surfaces have different user
+mentalities. A mixed product must define separate application or area shells
+for its distinct audiences while sharing product tokens and accessible
+primitives.
+
+For internal admin and operational surfaces, default to a persistent header and
+a logical-start sidebar on wide screens, with a readable expanded mode, an
+accessible collapsible icon rail where suitable, and an overlay drawer on narrow
+screens. Public, customer, commerce, workspace, and guided surfaces must use the
+simplest shell that fits their documented navigation depth and work rather than
+inheriting the admin shell automatically.
 
 ## UI System
 
@@ -367,10 +406,14 @@ Do not run unrelated expensive suites for a small isolated change.
 ## Skills
 
 - `$product-details`: guided business interview to create or improve `docs/product.md`
+- `$design-interface`: define or revise product category, audience surfaces,
+  application shells, navigation posture, and design mentality
 - `$bootstrap-project`: interview, stack proposal, approval, and safe scaffolding
 - `$update-stack`: foundation-only guidance and built-in skill updates for a
   previously bootstrapped project
 - `$implement-feature`: business request to smallest complete vertical slice
+- `$audit-project`: whole-project code and architecture audit with safe,
+  evidence-backed remediation
 - `$frontend`: pages, components, forms, client state, accessibility, and UX
 - `$backend`: APIs, domain modules, authorization, integrations, and workers
 - `$database`: relational models, queries, transactions, and migrations

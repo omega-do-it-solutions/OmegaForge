@@ -13,6 +13,17 @@ What problem does this product solve, and for whom?
 - Which users need each interface and any phone-specific need, such as camera,
   scanning, location, notifications, or offline work
 
+## Interface Identity
+
+- Product category: internal operations/admin, customer self-service, public
+  content/service, commerce/marketplace, collaborative workspace, guided
+  transaction, or a documented mix
+- Audience exposure: internal-only, authenticated external, anonymous public,
+  or mixed
+- First-release surfaces: surface name, audience, primary jobs, work posture,
+  and any reason people move between surfaces
+- Product-specific interface expectations or boundaries that must remain true
+
 ## Future Direction
 
 - Business outcome the product is expected to support as it grows

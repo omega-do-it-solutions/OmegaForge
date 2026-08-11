@@ -13,6 +13,8 @@ Consider only these OmegaForge-owned paths:
 - `.claude/skills`, only when it remains the canonical link to `.agents/skills`
 - `docs/ai/bootstrap.md`
 - `docs/ai/application-structure.md`
+- `docs/ai/interface-design.md`
+- `docs/ai/skill-routing.md`
 - `docs/ai/foundation-state.md`, containing only update provenance and local
   foundation exceptions
 - generic engineering rules in `docs/ai/architecture.md`

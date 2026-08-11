@@ -8,11 +8,13 @@ description: Implement product features and behavior-changing fixes from busines
 ## Establish The Behavior
 
 1. Read `AGENTS.md` and the relevant parts of `docs/product.md`.
-2. Read the code structure sections of `docs/ai/architecture.md` when the change
+2. Read `docs/ai/skill-routing.md` and select only the specialists required by
+   concrete affected areas.
+3. Read the code structure sections of `docs/ai/architecture.md` when the change
    adds a module, crosses layers, or introduces a new boundary.
-3. Inspect the owning feature, its tests, and adjacent established patterns.
-4. Translate the request into observable acceptance behavior and failure cases.
-5. Ask only when ambiguity affects business behavior, permissions, money,
+4. Inspect the owning feature, its tests, and adjacent established patterns.
+5. Translate the request into observable acceptance behavior and failure cases.
+6. Ask only when ambiguity affects business behavior, permissions, money,
    external side effects, security, or irreversible data.
 
 Do not turn routine technical decisions into questions for a business user.
@@ -21,7 +23,7 @@ Do not turn routine technical decisions into questions for a business user.
 
 - Change the existing owning application when its boundary remains appropriate.
 - Load `$frontend`, `$backend`, `$database`, `$object-storage`, or `$delivery`
-  only when that area is involved.
+  according to `docs/ai/skill-routing.md` only when that area is involved.
 - Add a new application or package only when the boundary rules in
   `docs/ai/architecture.md` require it.
 - Before adding or upgrading a dependency, read

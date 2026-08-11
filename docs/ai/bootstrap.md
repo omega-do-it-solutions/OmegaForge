@@ -24,6 +24,8 @@ Bootstrap work must not modify, replace, move, or delete:
 - `.claude/skills`
 - `docs/ai/bootstrap.md`
 - `docs/ai/application-structure.md`
+- `docs/ai/interface-design.md`
+- `docs/ai/skill-routing.md`
 - `docs/ai/foundation-state.md`
 - Every section of `docs/ai/architecture.md` except `Selected Project Profile`
 
@@ -114,7 +116,8 @@ During bootstrap, never:
 ### Phase 0: Preflight
 
 1. Read `AGENTS.md`, this contract, `docs/product.md`,
-   `docs/ai/architecture.md`, and `docs/ai/application-structure.md`.
+   `docs/ai/architecture.md`, `docs/ai/skill-routing.md`,
+   `docs/ai/interface-design.md`, and `docs/ai/application-structure.md`.
 2. Confirm the repository root. When `.git` exists, run `git status --short`;
    otherwise record that Git metadata is absent and continue.
 3. Confirm pnpm and the selected framework's required runtime are available.
@@ -135,6 +138,9 @@ uptime, recovery, data residency, providers, or architecture. Establish from the
 product description:
 
 - product purpose, users, and main workflows;
+- product category, audience exposure, and each distinct first-release surface,
+  including whether its work is operational, self-service, content-led,
+  commerce-oriented, collaborative, or guided;
 - first-release browser, iOS, Android, partner, or automation clients, and any
   phone-specific workflow need such as camera, scanning, location,
   notifications, or offline work;
@@ -200,6 +206,14 @@ as an undecided technical risk.
 
 #### Frontend decision
 
+- Use the confirmed `Interface Identity` and `docs/ai/interface-design.md` to
+  derive a shell, navigation posture, content width, and density for each
+  surface. Do not let framework defaults or a generic dashboard starter decide
+  whether the product looks like an admin console, customer portal, storefront,
+  public service, workspace, or guided flow.
+- A mixed product must identify separate public, customer, checkout, and staff
+  shells where those surfaces exist. Share product tokens and primitives without
+  forcing their navigation or density into one universal layout.
 - React is the default frontend choice when the product has no existing
   framework constraint or explicit user preference. Prefer a React SPA built
   with Vite for an authenticated internal admin, dashboard, or back-office UI
@@ -323,6 +337,8 @@ Before any project mutation, print this reviewable profile:
 PROJECT TECHNICAL PROFILE
 
 Product shape:
+Interface identity:
+Application shells (per audience surface):
 Frontend:
 Mobile:
 Rendering mode:
@@ -370,6 +386,10 @@ explicitly approves the profile and mutation list.
 
 The profile must state the supplied primary and secondary hex codes, including
 any accessibility or contrast risk the agent identified.
+It must name the confirmed product category, audience exposure, first-release
+surfaces, work posture, and selected shell and navigation model for each surface.
+It must explain any intentional difference between public, customer, checkout,
+and staff areas without asking the owner to choose CSS or layout primitives.
 When `Mobile` is selected, it must state the iOS and Android targets, the chosen
 mobile approach, the phone-specific capabilities in scope, and the server
 contract that supports them.
@@ -408,7 +428,10 @@ The boilerplate must be runnable, but contain only foundation work: framework
 entry points, health behavior where applicable, Tailwind and daisyUI setup for
 web, mobile token setup for native applications, environment validation,
 approved database/storage connectivity, Docker support where applicable, and
-basic verification. Define one central daisyUI product theme that maps the
+basic verification. Establish only the approved application or area shells
+required by documented first-release surfaces; include their responsive
+navigation behavior but no invented feature pages, metrics, or sample product
+data. Define one central daisyUI product theme that maps the
 approved primary and secondary brand color codes to the corresponding semantic
 web theme tokens, and map those colors to the mobile token layer when a mobile
 application exists. Do not scatter those raw values through UI components. Do
@@ -506,6 +529,9 @@ exact command that starts it. Confirm:
   the release path;
 - the selected daisyUI theme centrally uses the approved primary and secondary
   color codes and no component duplicates them as raw values;
+- every created application or area shell matches the documented interface
+  identity, including wide and narrow navigation posture and LTR or RTL logical
+  placement where applicable;
 - `README.md` describes the bootstrapped product rather than OmegaForge, and its
   setup and commands match the generated applications;
 - no secret or local runtime data is staged when Git metadata exists, or present

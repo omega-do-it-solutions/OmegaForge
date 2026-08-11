@@ -1,6 +1,6 @@
 ---
 name: frontend
-description: Implement and refactor browser-facing pages, framework-native feature structure, daisyUI components, forms, client state, accessibility, responsive behavior, and user experience in the project's established frontend framework. Use for work under a web or mobile UI application or any task that changes user interaction, presentation, page composition, or frontend code organization.
+description: Implement and refactor browser-facing application shells, navigation, pages, framework-native feature structure, daisyUI components, forms, client state, accessibility, responsive behavior, and category-aware user experience in the project's established frontend framework. Use for work under a web or mobile UI application or any task that changes user interaction, presentation, page composition, layout identity, or frontend code organization.
 ---
 
 # Frontend
@@ -25,6 +25,12 @@ read `docs/ai/application-structure.md` and the matching reference:
 Router, or
 [references/vue.md](references/vue.md) for Vue Router or Nuxt. Follow the
 installed router's required entry-file conventions over generic example paths.
+
+Before creating or changing an application shell, navigation, page layout, or
+substantial page composition, read the `Interface Identity` section of
+`docs/product.md` and `docs/ai/interface-design.md`. If the identity is missing,
+contradictory, or materially different from the existing interface, use
+`$design-interface` before inventing a shell.
 
 ## Use The Required UI System
 
@@ -110,6 +116,23 @@ and do not extract trivial static markup solely to reduce line count.
 
 ## User Experience
 
+- Match every page to its documented audience surface and shell. Do not make an
+  internal operations area resemble a consumer portal, or make a public or
+  customer area inherit staff-tool density and navigation.
+- For internal admin and operational surfaces, default to a persistent header
+  and logical-start sidebar on wide screens. Support a readable expanded mode,
+  an accessible labeled icon-rail collapse when suitable, and an overlay drawer
+  on narrow screens. Keep operational content wide enough for its real tables,
+  filters, comparisons, and workflows.
+- For customer self-service, public, commerce, collaborative, and guided
+  surfaces, select the shell from `docs/ai/interface-design.md`; do not add a
+  sidebar merely because the page is authenticated or called a dashboard.
+- Give mixed products separate application or area shells for public, customer,
+  checkout, and staff experiences. Share tokens and primitives, not necessarily
+  navigation, density, or content width.
+- Place shell composition in the framework's application-composition or area
+  layout boundary. Keep feature code responsible for feature content and intent,
+  not the global header, sidebar, router, or session bootstrap.
 - Implement loading, empty, success, validation, and failure states.
 - Preserve keyboard access, labels, focus behavior, and semantic structure.
 - Respect documented locale, direction, timezone, currency, and formatting.

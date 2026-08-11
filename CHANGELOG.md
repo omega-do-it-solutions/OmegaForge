@@ -6,6 +6,36 @@ repository's commit history, beginning with the original template.
 
 ## [Unreleased]
 
+## [0.8.0] - 2026-08-11
+
+### Added
+
+- `$audit-project`, a whole-project code and architecture audit workflow that
+  repairs confirmed behavior-preserving drift, including oversized modules that
+  have accumulated unrelated responsibilities.
+- Central skill-routing guidance that selects one primary workflow per task
+  stage and activates specialists only from concrete product and implementation
+  signals.
+- `$design-interface`, a focused workflow for defining or revising product
+  category, audience surfaces, application shells, navigation posture, and
+  design mentality.
+- Product intake fields for interface identity, audience exposure, surface-level
+  work posture, and mixed public, customer, commerce, checkout, or staff areas.
+- Category-aware interface guidance based on established admin, self-service,
+  public, commerce, collaborative, and guided-transaction patterns.
+
+### Changed
+
+- Frontend and bootstrap workflows now derive shells from the documented
+  interface identity. Internal operational surfaces use a responsive header and
+  collapsible sidebar posture, while other surfaces use context-appropriate
+  navigation, width, and density.
+- Project audits now detect application shells and page composition that drift
+  from the documented interface identity.
+- The optional local SeaweedFS service now uses the current `4.41` release,
+  pinned to its multi-platform image digest, including the upstream S3
+  bucket-policy authorization fix.
+
 ## [0.7.0] - 2026-08-11
 
 ### Added

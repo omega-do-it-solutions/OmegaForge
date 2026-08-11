@@ -1,0 +1,4 @@
+interface:
+  display_name: "Audit Project"
+  short_description: "Audit and repair architecture drift safely"
+  default_prompt: "Use $audit-project to audit this OmegaForge project, remediate verified architecture and code-quality drift, and report the evidence."

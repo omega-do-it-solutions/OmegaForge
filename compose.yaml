@@ -2,7 +2,7 @@ name: ${COMPOSE_PROJECT_NAME:-omega-forge}
 
 services:
   seaweedfs:
-    image: chrislusf/seaweedfs:4.40
+    image: chrislusf/seaweedfs:4.41@sha256:43b768cd62b00d132439cda881b93fd1adebf1b315e996e794087743821d771d
     profiles:
       - storage
     command:

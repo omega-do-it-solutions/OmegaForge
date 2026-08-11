@@ -13,6 +13,8 @@ feature.
 
 - Shape: Unselected (`web-only`, `web-api`, or `web-api-worker`)
 - Web: Unselected
+- Interface identity: Unselected
+- Application shells (per audience surface): Unselected
 - Application source organization (per application): Unselected
 - UI system: Tailwind CSS with daisyUI
 - API: Not currently required
@@ -170,6 +172,12 @@ normal API when necessary.
 Tailwind CSS with daisyUI is the required visual system for every web interface.
 The frontend framework may be Vue, Nuxt, React, Next.js, or another supported
 Tailwind environment, but the visual system remains daisyUI.
+
+The product's audience surfaces, work posture, application shells, navigation,
+and density are defined through `docs/product.md` and
+`docs/ai/interface-design.md`. Treat those as product architecture input. A
+shared component system does not require public, customer, checkout, and staff
+surfaces to share one shell.
 
 - Install daisyUI only inside applications that render a web interface.
 - Do not install or mix a second visual component library.

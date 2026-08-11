@@ -55,8 +55,8 @@ production deployment topology.
    optional and is not required for bootstrap.
 2. For a guided, non-technical conversation that builds the product brief, ask
    Codex to use `$product-details`. It updates `docs/product.md` one small
-   business topic at a time, including confirmed primary and secondary brand
-   colors.
+   business topic at a time, including product category, audience surfaces,
+   interface identity, and confirmed primary and secondary brand colors.
 3. Ask Codex to use `$bootstrap-project`.
 4. Codex prints the recommended technical profile, its reasons, and the exact
    files it intends to create or edit. No code is generated yet.
@@ -69,6 +69,21 @@ The mutation boundaries and resumable startup phases are defined in
 `docs/ai/bootstrap.md`. Bootstrap does not include product features, push, or
 deployment.
 
+## Define Or Change The Interface Identity
+
+Ask Codex to use `$design-interface` when defining or revising whether a product
+is an internal operations tool, customer portal, public service, storefront,
+collaborative workspace, guided transaction, or a mix. It records each audience
+surface in `docs/product.md` and derives its application shell, navigation,
+content width, density, responsive behavior, and direction from
+[`docs/ai/interface-design.md`](docs/ai/interface-design.md).
+
+Internal admin surfaces default to a persistent header and responsive,
+collapsible sidebar. Public, customer, commerce, checkout, and guided surfaces
+receive their own context-appropriate shells instead of inheriting a generic
+dashboard layout. Mixed products may share theme tokens and components while
+keeping distinct audience shells.
+
 ## Update An Existing OmegaForge Foundation
 
 For a project created from an earlier OmegaForge version, ask Codex to use
@@ -78,6 +93,19 @@ guidance, built-in skills, and foundation metadata. It preserves application and
 package code, product documentation, dependencies, infrastructure, and existing
 worktree changes; it does not migrate application structure or upgrade runtime
 dependencies.
+
+## Audit An Existing Project
+
+Ask Codex to use `$audit-project` to inspect an OmegaForge-derived project's
+implemented code, product alignment, architecture, ownership boundaries,
+dependencies, and verification posture. The workflow repairs confirmed,
+behavior-preserving drift when fixes are authorized and reports approval-gated
+or unproven concerns separately.
+
+Oversized files are inspection signals rather than automatic violations. A file
+that has accumulated unrelated workflows, state, I/O, or reasons to change is
+split along the feature and application boundaries in
+`docs/ai/application-structure.md`, not into arbitrary line-count chunks.
 
 ## Application Shapes
 
@@ -135,7 +163,8 @@ replication, backup, monitoring, upgrades, security, and recovery.
 authored once under `.agents/skills`; `.claude/skills` points to the same skills.
 Current Grok tooling can consume the AGENTS/Claude-compatible setup without a
 third copy. OpenAI-specific `agents/openai.yaml` files contain presentation
-metadata only; portable behavior stays in `SKILL.md`.
+metadata only; portable behavior stays in `SKILL.md`. Skill selection and
+composition are defined in [docs/ai/skill-routing.md](docs/ai/skill-routing.md).
 
 ## Community And Support
 

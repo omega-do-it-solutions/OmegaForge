@@ -1,6 +1,6 @@
 ---
 name: product-details
-description: Guide a non-technical product owner through creating or improving docs/product.md with a short, business-language conversation. Use when the owner asks to describe a new product, fill in the product template, refine product requirements, or prepare product details before using $bootstrap-project.
+description: Guide a non-technical product owner through creating or improving docs/product.md, including users, audience surfaces, product category, interface identity, workflows, rules, risks, and release boundaries, with a short business-language conversation. Use when the owner asks to describe a new product, fill in the product template, refine product requirements, or prepare product details before using $bootstrap-project.
 ---
 
 # Product Details
@@ -15,6 +15,7 @@ Before editing, read:
 
 1. `AGENTS.md`
 2. `docs/product.md`
+3. `docs/ai/interface-design.md`
 
 Edit only `docs/product.md`. Preserve its required headings and any accurate
 existing details. Do not select a technical stack, alter configuration, or
@@ -60,12 +61,12 @@ Suggestion:
 ## Progress Card
 
 Show a progress card before every question, including the first question. Use
-the owner's conversation language. Base it on the 13 required `docs/product.md`
+the owner's conversation language. Base it on the 14 required `docs/product.md`
 sections, and use this structure:
 
 ```text
 Progress:
-- Completed: <number> of 13 sections — <completed section names>
+- Completed: <number> of 14 sections — <completed section names>
 - In progress: <section name and concise status, if applicable>
 - Current question: <section name>
 - Remaining: <remaining section names, or “None — ready for review”>
@@ -78,8 +79,8 @@ Progress:
 - For a multi-part section such as `Main Workflows`, state the useful local
   status, for example `2 workflows recorded; checking for more`. Do not pretend
   there is a fixed number of workflows before the owner has described them.
-- Show `0 of 13` at the beginning so the owner always knows the interview's
-  size. When all sections are complete, show `13 of 13` and replace the next
+- Show `0 of 14` at the beginning so the owner always knows the interview's
+  size. When all sections are complete, show `14 of 14` and replace the next
   question with the completion and handoff summary.
 
 ## Conversation Language
@@ -102,6 +103,13 @@ Use this natural order, skipping a topic already covered:
   the owner to choose a mobile framework or distinguish native from
   cross-platform development.
 - Users and roles: who uses it and what each person may do.
+- Interface identity: ask what kind of product experience this is and who can
+  enter each distinct area—for example, staff-only operations, a customer
+  account, public content, a storefront, checkout, or a mix. Derive a concise
+  category and surface list from the owner's business description and ask for
+  confirmation. Do not ask them to choose a sidebar, header, breakpoint, or
+  visual template. For a mixed product, record each first-release surface and
+  its audience instead of forcing one category onto the whole product.
 - Main workflows: ask about one user journey at a time, including the expected
   result and important exceptions.
 - Business rules: permissions, approvals, money, deadlines, ownership, or

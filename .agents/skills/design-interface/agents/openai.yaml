@@ -1,0 +1,4 @@
+interface:
+  display_name: "Design Interface"
+  short_description: "Define and evolve product interface identity"
+  default_prompt: "Use $design-interface to define or revise the product interface identity, application shells, navigation posture, and design mentality."

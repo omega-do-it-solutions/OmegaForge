@@ -36,6 +36,30 @@ Official references:
 - Do not reproduce a daisyUI component with large custom utility strings when its
   semantic component classes already express the intended result.
 
+## Build Application Shells
+
+Read `docs/ai/interface-design.md` before choosing shell composition. For an
+approved sidebar shell, start from the current official
+[drawer](https://daisyui.com/components/drawer/) structure and compose it with
+daisyUI `navbar`, `menu`, `tooltip`, and project-owned navigation components.
+
+- Use responsive drawer behavior so wide screens can keep navigation visible
+  while narrow screens use an overlay controlled from the header.
+- For an approved desktop icon-rail mode, use the documented open and closed
+  state variants. Keep accessible names in the DOM and show readable tooltips on
+  pointer hover and keyboard focus; do not make unlabeled icons the only cue.
+- Place the drawer on the logical start side for the active direction, including
+  the right side for RTL. Verify rather than assuming direction-aware geometry.
+- Give the toggle an accessible name and state, preserve visible focus, manage
+  overlay focus and dismissal, and keep the current navigation item exposed with
+  `aria-current="page"`.
+- Keep shell state and navigation composition outside business features. Persist
+  a desktop collapse preference only when useful, and do not let it force the
+  mobile overlay open or closed.
+
+Do not copy a dashboard template or its branding. The approved interface
+identity determines whether a drawer belongs at all.
+
 ## Meet The Visual Quality Bar
 
 Using a daisyUI component name is not evidence that the rendered interface is
