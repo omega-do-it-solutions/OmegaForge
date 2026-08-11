@@ -6,6 +6,23 @@ released manual version is also stored in `VERSION`.
 
 ## Unreleased
 
+## 0.4.0 - 2026-08-11
+
+### Added
+
+- Public Apache 2.0 license access and structured GitHub paths for manual bugs,
+  documentation suggestions, and translations.
+- Creator credit for Mo. MIKAELI alongside Emad Moghimi and Omega Do IT
+  Solutions.
+
+### Changed
+
+- Aligned the manual with OmegaForge v0.7.0 and clarified that each project's
+  approved technical profile owns its stack, application Dockerfiles, Compose
+  topology, CI, hosting, and deployment choices.
+- Clarified that OmegaForge's root Compose service is an optional local
+  SeaweedFS dependency rather than an application or production topology.
+
 ## 0.3.0 - 2026-08-10
 
 ### Added

@@ -8,7 +8,7 @@
       content="A practical guide to starting, updating, and maintaining OmegaForge projects with an AI coding assistant."
     >
     <meta name="theme-color" content="#7856ff">
-    <meta name="application-version" content="0.3.0">
+    <meta name="application-version" content="0.4.0">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -297,8 +297,8 @@ At the end, tell me what was updated, which files changed, and whether any confl
                   <h3>How does Forge guide an AI coding agent?</h3>
                 </div>
                 <div>
-                  <p>OmegaForge does not ship with your application or run in production. Its guidance files stay in the project repository. Before changing code, the assistant reads those files to understand the product, the architecture, and the rules for the task.</p>
-                  <ul class="tag-list"><li>Rules live with the code</li><li>Respects the architecture</li><li>Produces reviewable work</li></ul>
+                  <p>OmegaForge does not ship with your application or run in production. Its guidance files stay in the project repository. It also does not impose one runtime, database, application Dockerfile, Compose topology, CI provider, or host. Bootstrap derives those choices from the product brief, presents them for approval, and only then creates the project-specific foundation.</p>
+                  <ul class="tag-list"><li>Rules live with the code</li><li>Stack chosen per project</li><li>Produces reviewable work</li></ul>
                 </div>
               </header>
               <section class="technical-flow">
@@ -396,6 +396,7 @@ At the end, tell me what was updated, which files changed, and whether any confl
             <details><summary>The selected location already contains a project. What should I do?<span class="faq-icons" aria-hidden="true"><i class="ph-bold ph-plus faq-open-icon"></i><i class="ph-bold ph-minus faq-close-icon"></i></span></summary><p>Choose a different name or folder. The assistant stops on purpose because continuing could overwrite or mix with files that are already there.</p></details>
             <details><summary>Clone or update stopped with an error. What should I do?<span class="faq-icons" aria-hidden="true"><i class="ph-bold ph-plus faq-open-icon"></i><i class="ph-bold ph-minus faq-close-icon"></i></span></summary><p>Paste the full error into the same conversation. Ask the assistant to explain the cause before taking action and to suggest a fix that does not delete or overwrite existing files.</p></details>
             <details><summary>What if the assistant asks a technical question I cannot answer?<span class="faq-icons" aria-hidden="true"><i class="ph-bold ph-plus faq-open-icon"></i><i class="ph-bold ph-minus faq-close-icon"></i></span></summary><p>Say that you do not know the answer or do not want to choose yourself. Ask the assistant to recommend an option and explain the tradeoff in plain language.</p></details>
+            <details><summary>Does every OmegaForge project use the same stack or Docker setup?<span class="faq-icons" aria-hidden="true"><i class="ph-bold ph-plus faq-open-icon"></i><i class="ph-bold ph-minus faq-close-icon"></i></span></summary><p>No. The assistant derives the stack, application Dockerfiles, Compose topology, CI, hosting, and deployment approach from that project's product requirements and presents the complete technical profile for approval. The Compose file in OmegaForge itself only provides the optional local SeaweedFS service; it is not a production topology.</p></details>
           </div>
         </section>
 
@@ -403,18 +404,19 @@ At the end, tell me what was updated, which files changed, and whether any confl
           <article class="panel contribution">
             <p class="eyebrow">A public project</p>
             <h2>Tell us when something needs fixing</h2>
-            <p>Found unclear wording, a technical problem, or a better translation? Open a GitHub issue so we can follow it up.</p>
+            <p>OmegaForge is available under the Apache License 2.0. Found unclear wording, a technical problem, or a better translation? Use the matching GitHub form so we can follow it up.</p>
             <div class="button-row">
-              <a class="button primary" href="https://github.com/omega-do-it-solutions/OmegaForge/issues/new?title=Manual%20problem%3A%20" target="_blank" rel="noreferrer"><i class="ph-bold ph-bug" aria-hidden="true"></i>Report a problem</a>
-              <a class="button outline" href="https://github.com/omega-do-it-solutions/OmegaForge/issues/new?title=Manual%20copy%20suggestion%3A%20" target="_blank" rel="noreferrer"><i class="ph-bold ph-chat-circle-text" aria-hidden="true"></i>Suggest clearer copy</a>
-              <a class="button quiet" href="https://github.com/omega-do-it-solutions/OmegaForge/issues/new?title=Manual%20translation%3A%20" target="_blank" rel="noreferrer"><i class="ph-bold ph-translate" aria-hidden="true"></i>Contribute a translation</a>
+              <a class="button primary" href="https://github.com/omega-do-it-solutions/OmegaForge/issues/new?template=bug_report.yml&amp;title=%5BBug%5D%3A%20Manual%20" target="_blank" rel="noreferrer"><i class="ph-bold ph-bug" aria-hidden="true"></i>Report a problem</a>
+              <a class="button outline" href="https://github.com/omega-do-it-solutions/OmegaForge/issues/new?template=documentation.yml&amp;title=%5BDocs%5D%3A%20Manual%20" target="_blank" rel="noreferrer"><i class="ph-bold ph-chat-circle-text" aria-hidden="true"></i>Suggest clearer copy</a>
+              <a class="button quiet" href="https://github.com/omega-do-it-solutions/OmegaForge/issues/new?template=documentation.yml&amp;title=%5BDocs%5D%3A%20Manual%20translation%20" target="_blank" rel="noreferrer"><i class="ph-bold ph-translate" aria-hidden="true"></i>Contribute a translation</a>
+              <a class="button quiet" href="https://github.com/omega-do-it-solutions/OmegaForge/blob/main/LICENSE" target="_blank" rel="noreferrer"><i class="ph-bold ph-scales" aria-hidden="true"></i>View license</a>
             </div>
           </article>
           <div class="public-side">
             <aside class="privacy-box"><span aria-hidden="true"><i class="ph-fill ph-shield-check"></i></span><div><h2>Keep sensitive information out of your prompts</h2><p>This site does not store what you enter. After you paste a prompt into Codex, Claude, or another service, that service’s privacy policy applies. Do not include passwords, access keys, or real customer data.</p></div></aside>
             <div class="panel version-box">
               <span aria-hidden="true"><i class="ph-bold ph-clock-counter-clockwise"></i></span>
-              <div><strong>OmegaForge Manual v0.3.0</strong><p>Aligned with OmegaForge v0.5.0</p><small>Last reviewed: August 2026</small><a href="CHANGELOG.md" target="_blank">View changelog <i class="ph-bold ph-arrow-square-out" aria-hidden="true"></i></a></div>
+              <div><strong>OmegaForge Manual v0.4.0</strong><p>Aligned with OmegaForge v0.7.0</p><small>Last reviewed: August 2026</small><a href="CHANGELOG.md" target="_blank">View changelog <i class="ph-bold ph-arrow-square-out" aria-hidden="true"></i></a></div>
             </div>
           </div>
         </section>
@@ -422,7 +424,7 @@ At the end, tell me what was updated, which files changed, and whether any confl
 
       <footer>
         <span>OmegaForge Manual · A practical guide to Forge and AI coding assistants</span>
-        <span class="footer-credit"><span aria-hidden="true">·</span> Created by <a href="https://github.com/JaxThePrime" target="_blank" rel="noreferrer">Emad Moghimi</a> at <a href="https://omegado.com/" target="_blank" rel="noreferrer">Omega Do</a></span>
+        <span class="footer-credit"><span aria-hidden="true">·</span> Created by <a href="https://github.com/JaxThePrime" target="_blank" rel="noreferrer">Emad Moghimi</a> and Mo. MIKAELI for <a href="https://omegado.com/" target="_blank" rel="noreferrer">Omega Do IT Solutions</a></span>
       </footer>
   </body>
 </html>
