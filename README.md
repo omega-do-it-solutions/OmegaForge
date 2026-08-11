@@ -16,12 +16,12 @@ Read the complete step-by-step manual at
 
 ## Origin And Credits
 
-OmegaForge is an original project created by Emad Moghimi and
-[Mo. MIKAELI](https://github.com/momikaeli) for Omega Do IT Solutions. It is
-maintained as the company's reusable foundation for AI-developed products.
+OmegaForge is an original project created by Emad Moghimi and Mo. MIKAELI for
+Omega Do IT Solutions. It is maintained as the company's reusable foundation
+for AI-developed products.
 
 - Emad Moghimi — Creator
-- [Mo. MIKAELI](https://github.com/momikaeli) — Creator
+- Mo. MIKAELI — Creator
 - Omega Do IT Solutions — Project owner and maintainer
 
 ## Responsibility Boundaries
