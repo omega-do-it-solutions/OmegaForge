@@ -25,6 +25,7 @@ competing primary workflows for the same work.
 | Describe, clarify, or complete a product brief | `$product-details` |
 | Define or revise product category, audience surfaces, application shells, navigation posture, or design mentality | `$design-interface` |
 | Start or resume a project from the OmegaForge foundation | `$bootstrap-project` |
+| Remove or replace stale OmegaForge template material after bootstrap | `$clean-template-residue` |
 | Update only OmegaForge-owned guidance in an existing derived project | `$update-stack` |
 | Add a feature or behavior-changing fix | `$implement-feature` |
 | Audit codebase health, repair architecture drift, clean up AI-generated code, or split oversized mixed-responsibility files | `$audit-project` |
@@ -32,7 +33,9 @@ competing primary workflows for the same work.
 Use `$product-details` to discover the complete business brief and
 `$design-interface` to focus on or revise its interface identity. Do not use
 `$bootstrap-project` for features, `$update-stack` for runtime or application
-maintenance, or `$audit-project` as permission to redesign product behavior.
+maintenance, `$clean-template-residue` to remove the retained engineering
+foundation or make licensing decisions, or `$audit-project` as permission to
+redesign product behavior.
 
 ## Specialist Activation
 

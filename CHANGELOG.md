@@ -6,6 +6,15 @@ repository's commit history, beginning with the original template.
 
 ## [Unreleased]
 
+## [0.9.0] - 2026-08-12
+
+### Added
+
+- `$clean-template-residue`, an approval-gated post-bootstrap workflow that
+  removes or replaces stale OmegaForge community files, repository metadata,
+  and redundant placeholders while preserving the engineering foundation and
+  holding legal and attribution material for explicit owner review.
+
 ## [0.8.0] - 2026-08-11
 
 ### Added

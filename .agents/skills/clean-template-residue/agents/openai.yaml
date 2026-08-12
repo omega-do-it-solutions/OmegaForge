@@ -1,0 +1,4 @@
+interface:
+  display_name: "Clean Template Residue"
+  short_description: "Remove OmegaForge template residue safely"
+  default_prompt: "Use $clean-template-residue to inspect this derived project, propose a safe cleanup manifest, and remove approved OmegaForge template residue."

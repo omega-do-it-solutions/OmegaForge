@@ -99,8 +99,9 @@ when available and maintained stable releases otherwise; do not propose a
 prerelease, end-of-life, unsupported, deprecated, or known-affected direct
 dependency. Print the complete `PROJECT TECHNICAL PROFILE` from Phase 3,
 including dependency version posture, approved brand colors, interface identity
-and shells, reasons, rejected larger alternatives, applications to create, and
-every targeted file edit.
+and shells, reasons, rejected larger alternatives, applications to create,
+every targeted file edit, and the exact post-verification template cleanup
+manifest.
 daisyUI and the S3-compatible file contract are fixed choices. Resolve known
 material launch, growth, and business-risk safeguards before the profile.
 Describe their business outcome and the foundation established now instead of
@@ -112,7 +113,7 @@ run generators, or write application code before explicit technical approval.
 
 ### 4. Bootstrap The Runnable Baseline
 
-After approval, follow Phases 4 through 9 in order.
+After approval, follow Phases 4 through 7 in order.
 Keep protected files untouched, use targeted edits instead of whole-file
 replacement, and run generators only in verified empty application directories.
 Use pnpm from the repository root and never permit a generator to initialize Git
@@ -138,9 +139,9 @@ baseline. Do not create placeholder trees. Keep Next.js and Nuxt framework
 directories in their native roles, and do not label global layouts, routers,
 technical providers, or configuration as features.
 
-### 5. Verify And Report
+### 5. Verify, Clean Up, And Report
 
-Follow Phases 8 through 10. Confirm the local dependencies, migrations, and
+Follow Phases 8 through 11. Confirm the local dependencies, migrations, and
 app startup actually succeed; do not merely document commands. Keep the managed
 development process available when the environment supports it, otherwise stop
 it cleanly after the smoke test and report the restart command. After
@@ -152,9 +153,16 @@ critical or high-severity production findings block completion, and all other
 findings must be reviewed and reported under the dependency security contract.
 Then replace the template README with a project-owned README that
 reflects the generated product, real commands, and local setup; it must not
-retain OmegaForge onboarding or template instructions. Report generated files
-separately from targeted edits and state anything that could not be verified. Do
-not push or deploy.
+retain OmegaForge onboarding or template instructions.
+
+Before handoff, read and apply `$clean-template-residue`. Include its exact
+path-level manifest in the technical proposal so unchanged approved template
+community files and repository metadata can be replaced or removed without a
+second approval. Preserve the engineering foundation, and hold licenses,
+notices, attribution, changed candidates, and unlisted actions unless the owner
+explicitly approves their treatment. Report generated files separately from
+targeted edits and cleanup actions, and state anything that could not be
+verified. Do not push or deploy.
 
 ## Operating Boundaries
 
@@ -162,4 +170,6 @@ not push or deploy.
 - Do not create unused applications, services, packages, or empty architecture.
 - Do not overwrite an existing `.env` file.
 - Do not use force flags to bypass conflicts.
+- Do not remove the retained engineering foundation or legal and attribution
+  files as template residue.
 - Ask for additional approval only when the bootstrap contract identifies a gate.

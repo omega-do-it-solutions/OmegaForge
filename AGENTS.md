@@ -84,6 +84,19 @@ runtime, delivery, or data files. It must preserve the project's selected
 architecture profile and custom guidance, and report unresolved merge conflicts
 instead of overwriting them.
 
+## Project Handoff Cleanup
+
+Use `$clean-template-residue` after a derived project has a verified runnable
+baseline, or later when asked to remove stale OmegaForge-facing repository
+material. It must preserve the engineering foundation used by future agent work
+and `$update-stack`, distinguish project policies from template community files,
+and hold licenses, notices, and attribution for explicit owner review.
+
+Cleanup is approval-gated and evidence-based. Print an exact path-level manifest
+before removing or replacing anything unless the active bootstrap proposal
+already approved those same actions and the files have not changed. Never treat
+an OmegaForge mention alone as proof that a file is disposable.
+
 ## Application Shape
 
 Default to `apps/web` only when one web application can safely own the UI and
@@ -409,6 +422,8 @@ Do not run unrelated expensive suites for a small isolated change.
 - `$design-interface`: define or revise product category, audience surfaces,
   application shells, navigation posture, and design mentality
 - `$bootstrap-project`: interview, stack proposal, approval, and safe scaffolding
+- `$clean-template-residue`: approval-gated removal or replacement of stale
+  OmegaForge project-facing template material
 - `$update-stack`: foundation-only guidance and built-in skill updates for a
   previously bootstrapped project
 - `$implement-feature`: business request to smallest complete vertical slice

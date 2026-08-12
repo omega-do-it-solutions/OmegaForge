@@ -83,6 +83,22 @@ Never accept a generated root `package.json`, workspace file, lockfile,
 `.gitignore`, README, or agent instruction file. Merge only the required values
 through targeted edits.
 
+### Post-Verification Handoff
+
+After the runnable baseline and project README are verified, use
+`$clean-template-residue` to apply only the exact handoff actions approved in
+the technical profile. Candidate paths include project-facing community and
+release files such as `CHANGELOG.md`, `CONTRIBUTING.md`, `SECURITY.md`,
+`SUPPORT.md`, `RELEASING.md`, `.github/CODEOWNERS`, issue and pull-request
+templates, OmegaForge-only repository metadata, and redundant placeholders.
+
+Classify every candidate from its content and ownership rather than its filename.
+Replace it when the derived project needs an accurate project-owned equivalent,
+remove it only when it is unchanged template-only residue, and hold it when it
+contains project changes or uncertain policy. `LICENSE`, `NOTICE`, attribution,
+and package license fields remain outside automatic cleanup and require explicit
+owner direction. Protected foundation paths remain protected throughout handoff.
+
 ### Local Only
 
 These may change locally but must not be committed:
@@ -110,6 +126,9 @@ During bootstrap, never:
   the database.
 - Create speculative applications, packages, services, or abstractions.
 - Start feature implementation before the technical profile is approved.
+- Remove retained engineering guidance or built-in skills as template residue.
+- Delete or rewrite license, notice, copyright, or attribution material without
+  explicit owner direction.
 
 ## Startup Roadmap
 
@@ -365,6 +384,8 @@ Development runtime:
 Production release:
 CI:
 Deployment target:
+Template residue cleanup:
+- path: preserve, replace, remove, or hold for owner review; evidence
 
 Why this fits:
 - ...
@@ -411,6 +432,11 @@ the selected default volume and freshness outcome; delivery and durability
 pattern; scaling boundary; and why polling, SSE, WebSockets, or a durable event
 flow was selected or rejected. They must not ask the owner for technical
 estimates.
+The `Template residue cleanup` section must classify exact project-facing files
+as preserve, replace, remove, or hold for owner review. It must preserve the
+foundation paths and keep legal and attribution files unchanged unless the owner
+explicitly directs their treatment. These actions are part of the technical
+approval only when listed path by path.
 
 ### Phase 4: Set Project Identity
 
@@ -532,8 +558,6 @@ exact command that starts it. Confirm:
 - every created application or area shell matches the documented interface
   identity, including wide and narrow navigation posture and LTR or RTL logical
   placement where applicable;
-- `README.md` describes the bootstrapped product rather than OmegaForge, and its
-  setup and commands match the generated applications;
 - no secret or local runtime data is staged when Git metadata exists, or present
   in files intended for handoff when it does not;
 - `.claude/skills` still resolves;
@@ -567,20 +591,37 @@ integrations, features, or commands that were not created. Never include
 secrets. This README rewrite is a deliberate project-identity change, not a
 generator-owned file replacement.
 
-### Phase 10: Hand Off
+### Phase 10: Clean Template Residue
+
+Read and apply `$clean-template-residue`. Reinspect every candidate and apply
+only the path-level replacements and removals approved in Phase 3 whose contents
+have not drifted. If cleanup was omitted from the proposal, a new candidate is
+discovered, or a candidate changed after approval, print the cleanup manifest
+and wait for approval before mutating those paths.
+
+Preserve the reusable engineering foundation and leave legal or attribution
+material unchanged without explicit owner direction. Verify that the final
+README, package identity, and project-facing metadata describe the derived
+project, then classify every remaining OmegaForge reference as expected
+foundation, required attribution, project context, or unresolved residue.
+
+### Phase 11: Hand Off
 
 Report the approved profile, created and targeted-edited files, commands run,
 verification results, the running-process state or the exact restart command,
-product trajectory decisions made, and any externally imposed constraints.
-Include `git status` and a concise diff summary when Git metadata exists;
-otherwise state that the workspace has no Git metadata and summarize inspected
-file changes. Do not push or deploy.
+template files removed or replaced, foundation and legal files retained, product
+trajectory decisions made, and any externally imposed constraints. Include
+`git status` and a concise diff summary when Git metadata exists; otherwise state
+that the workspace has no Git metadata and summarize inspected file changes. Do
+not push or deploy.
 
 ## Approval And Resume Rules
 
 Technical approval after Phase 3 is the normal startup gate. Additional approval
 is required only for destructive changes, production access, replacing a fixed
-framework choice, or changing an established business rule.
+framework choice, or changing an established business rule. Exact cleanup
+deletions included in the approved Phase 3 manifest do not need a second
+approval; new, changed, ambiguous, or previously unlisted cleanup actions do.
 
 The workflow is idempotent: inspect before every phase, skip completed work, and
 merge partial work deliberately. Existing files are evidence, not permission to

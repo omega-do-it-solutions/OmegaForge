@@ -94,6 +94,19 @@ package code, product documentation, dependencies, infrastructure, and existing
 worktree changes; it does not migrate application structure or upgrade runtime
 dependencies.
 
+## Clean Up A Derived Project
+
+After bootstrap verifies the runnable baseline and writes the project README,
+`$clean-template-residue` turns the repository's remaining project-facing
+metadata over to the derived product. It inventories OmegaForge-specific
+community files, GitHub templates, ownership metadata, release instructions,
+and redundant placeholders, then presents exact replacements and removals for
+approval.
+
+The cleanup preserves `AGENTS.md`, built-in skills, and `docs/ai` as the ongoing
+engineering foundation. It also holds licenses, notices, and attribution for an
+explicit owner decision instead of deleting legal material automatically.
+
 ## Audit An Existing Project
 
 Ask Codex to use `$audit-project` to inspect an OmegaForge-derived project's
