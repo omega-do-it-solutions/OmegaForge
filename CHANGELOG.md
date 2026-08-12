@@ -6,8 +6,21 @@ released manual version is also stored in `VERSION`.
 
 ## Unreleased
 
+## 0.6.0 - 2026-08-12
+
+### Added
+
+- A ready-made `$clean-template-residue` workflow for turning OmegaForge's
+  project-facing community files, repository metadata, and placeholders over to
+  a derived project through an approval-gated cleanup manifest.
+- Plain-language guidance explaining that the engineering foundation remains in
+  the project and that licenses, notices, and attribution require an explicit
+  owner decision.
+
 ### Changed
 
+- Aligned the manual with OmegaForge v0.9.0 and its post-bootstrap project
+  handoff cleanup.
 - Linked Mo. MIKAELI's creator credit to his GitHub profile.
 
 ## 0.5.0 - 2026-08-11

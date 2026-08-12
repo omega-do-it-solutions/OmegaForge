@@ -8,7 +8,7 @@
       content="A practical guide to starting, updating, and maintaining OmegaForge projects with an AI coding assistant."
     >
     <meta name="theme-color" content="#7856ff">
-    <meta name="application-version" content="0.5.0">
+    <meta name="application-version" content="0.6.0">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -81,7 +81,7 @@
             <p class="pill"><span></span> A practical guide to OmegaForge</p>
             <h1>Build your idea with <em>an AI coding assistant.</em></h1>
             <p class="hero-description">
-              This guide shows you what to give Codex or Claude when you want to start a project, update its Forge guidance,
+              This guide shows you what to give Codex or Claude when you want to start a project, clean up its template files, update its Forge guidance,
               define its interface, audit its code, or make a change. If you are an engineer, the technical section also explains how Forge keeps the work scoped,
               consistent with the architecture, and properly checked.
             </p>
@@ -101,6 +101,7 @@
             </div>
             <ul class="dot-list">
               <li>Set up a new project from scratch</li>
+              <li>Prepare a derived project for handoff</li>
               <li>Bring the Forge guidance up to date</li>
               <li>Define or correct the interface direction</li>
               <li>Audit and repair an existing project</li>
@@ -243,9 +244,9 @@ Keep your replies short and clear, and use the same language I use in our conver
                 <p>Use this after <code>docs/product.md</code> is complete. Send the prompt once: your assistant will pause for your review before it creates anything, then continue in the same conversation after you approve the plan.</p>
 
                 <ol class="bootstrap-steps" aria-label="Bootstrap process">
-                  <li><span aria-hidden="true">1</span><div><h4>Research and recommend</h4><p>It researches suitable, current options and proposes the project structure, technology stack, interface shells, and exact planned changes.</p></div></li>
+                  <li><span aria-hidden="true">1</span><div><h4>Research and recommend</h4><p>It researches suitable, current options and proposes the project structure, technology stack, interface shells, exact planned changes, and project-handoff cleanup.</p></div></li>
                   <li><span aria-hidden="true">2</span><div><h4>Review and approve</h4><p>It waits while you approve the proposal or request alterations. Any revised proposal must be shown to you before work begins.</p></div></li>
-                  <li><span aria-hidden="true">3</span><div><h4>Build and show</h4><p>After approval, it creates the project, checks it, starts it, and opens a working sample page for you to review.</p></div></li>
+                  <li><span aria-hidden="true">3</span><div><h4>Build and show</h4><p>After approval, it creates the project, checks it, starts it, applies the approved template cleanup, and opens a working sample page for you to review.</p></div></li>
                 </ol>
 
                 <div class="skill-box"><small>TECHNICAL GUIDANCE USED</small><code dir="ltr">bootstrap-project</code></div>
@@ -260,6 +261,31 @@ Do not create or change the application yet. Show me the proposal and wait for m
 After approval, create the runnable project baseline, install what it needs, and run the relevant checks. Then start the application and open its working sample page so I can review it. Tell me the local address and briefly report what was created and verified.
 
 Keep your replies short and clear, and use the same language I use in our conversation.</pre>
+                <div class="copy-row">
+                  <button class="button primary" type="button" data-copy data-copy-label="Copy prompt" data-copied-label="Copied"><i class="ph-bold ph-copy" aria-hidden="true" data-copy-icon></i><span data-copy-text>Copy prompt</span></button>
+                  <p class="copy-status" aria-live="polite" data-copy-status data-failed="The copy button did not work. Select the text and copy it manually."></p>
+                </div>
+              </div>
+            </article>
+
+            <article class="panel prompt-card" data-prompt-card>
+              <div class="prompt-intro">
+                <span class="square-icon" aria-hidden="true"><i class="ph-bold ph-broom"></i></span>
+                <p class="eyebrow">Project handoff</p>
+                <h3>Remove leftover template files safely</h3>
+                <p>Use this after bootstrap or before handing over an older derived project. The assistant separates disposable template material from the engineering guidance and legal files the project still needs.</p>
+                <div class="skill-box"><small>TECHNICAL GUIDANCE USED</small><code dir="ltr">clean-template-residue</code></div>
+              </div>
+              <div class="prompt-output">
+                <pre data-prompt-preview>Use the clean-template-residue skill to prepare this derived OmegaForge project for handoff.
+
+Inspect the project-facing documentation, repository metadata, GitHub templates, and redundant placeholders. Do not change anything yet. Classify each exact candidate as preserve, replace, remove, or hold for owner review.
+
+Preserve AGENTS.md, CLAUDE.md, the built-in skills, docs/ai, product documentation, application code, configuration, and Git history. Do not delete, move, or rewrite LICENSE, NOTICE, copyright, or attribution material without my explicit direction.
+
+Show me the TEMPLATE CLEANUP MANIFEST with the evidence, proposed action, and recovery path for every candidate, then wait for my approval.
+
+After I approve the manifest, recheck each file and apply only the approved actions. Verify the remaining OmegaForge references, links, project identity, and foundation files. At the end, report what was removed, replaced, preserved, and held for review. Keep the answer brief and use the same language I use in our conversation.</pre>
                 <div class="copy-row">
                   <button class="button primary" type="button" data-copy data-copy-label="Copy prompt" data-copied-label="Copied"><i class="ph-bold ph-copy" aria-hidden="true" data-copy-icon></i><span data-copy-text>Copy prompt</span></button>
                   <p class="copy-status" aria-live="polite" data-copy-status data-failed="The copy button did not work. Select the text and copy it manually."></p>
@@ -399,7 +425,7 @@ At the end, report the evidence, fixes, file splits and their boundaries, checks
             <p>This page is in English, but your conversation with the assistant is not limited to English. Copy the prompt and continue in whichever language is most comfortable for you.</p>
           </div>
           <ol class="step-list">
-            <li><span>1</span><div><h3>Choose what you want to do</h3><p>Start a project, update Forge, define its interface, audit it, or change a feature.</p></div></li>
+            <li><span>1</span><div><h3>Choose what you want to do</h3><p>Start a project, clean template residue, update Forge, define its interface, audit it, or change a feature.</p></div></li>
             <li><span>2</span><div><h3>Copy the prepared text</h3><p>If you are starting a project, enter its name and location first.</p></div></li>
             <li><span>3</span><div><h3>Send it to your assistant</h3><p>From there, answer the assistant’s questions in whichever language you prefer.</p></div></li>
           </ol>
@@ -451,6 +477,7 @@ At the end, report the evidence, fixes, file splits and their boundaries, checks
             <details><summary>Does every OmegaForge project use the same stack or Docker setup?<span class="faq-icons" aria-hidden="true"><i class="ph-bold ph-plus faq-open-icon"></i><i class="ph-bold ph-minus faq-close-icon"></i></span></summary><p>No. The assistant derives the stack, application Dockerfiles, Compose topology, CI, hosting, and deployment approach from that project's product requirements and presents the complete technical profile for approval. The Compose file in OmegaForge itself only provides the optional local SeaweedFS service; it is not a production topology.</p></details>
             <details><summary>What if my admin area looks like a customer dashboard?<span class="faq-icons" aria-hidden="true"><i class="ph-bold ph-plus faq-open-icon"></i><i class="ph-bold ph-minus faq-close-icon"></i></span></summary><p>Use the interface-direction prompt. Forge records who uses each surface and derives a suitable shell. Internal operations normally use a header and responsive collapsible sidebar, while public, customer, storefront, and checkout areas keep layouts suited to their own work.</p></details>
             <details><summary>Can Forge clean up code that an AI made too large or confusing?<span class="faq-icons" aria-hidden="true"><i class="ph-bold ph-plus faq-open-icon"></i><i class="ph-bold ph-minus faq-close-icon"></i></span></summary><p>Yes. Use the audit prompt. Forge inspects the implementation and can repair confirmed behavior-preserving drift. It splits oversized files by feature and responsibility, not into arbitrary line-count chunks.</p></details>
+            <details><summary>Which OmegaForge files should remain after cleanup?<span class="faq-icons" aria-hidden="true"><i class="ph-bold ph-plus faq-open-icon"></i><i class="ph-bold ph-minus faq-close-icon"></i></span></summary><p>The cleanup keeps the engineering contract, built-in skills, and technical guidance because future assistants and Forge updates still use them. It also holds licenses, notices, and attribution until the owner explicitly decides how the derived project will handle them.</p></details>
           </div>
         </section>
 
@@ -470,7 +497,7 @@ At the end, report the evidence, fixes, file splits and their boundaries, checks
             <aside class="privacy-box"><span aria-hidden="true"><i class="ph-fill ph-shield-check"></i></span><div><h2>Keep sensitive information out of your prompts</h2><p>This site does not store what you enter. After you paste a prompt into Codex, Claude, or another service, that service’s privacy policy applies. Do not include passwords, access keys, or real customer data.</p></div></aside>
             <div class="panel version-box">
               <span aria-hidden="true"><i class="ph-bold ph-clock-counter-clockwise"></i></span>
-              <div><strong>OmegaForge Manual v0.5.0</strong><p>Aligned with OmegaForge v0.8.0</p><small>Last reviewed: August 2026</small><a href="CHANGELOG.md" target="_blank">View changelog <i class="ph-bold ph-arrow-square-out" aria-hidden="true"></i></a></div>
+              <div><strong>OmegaForge Manual v0.6.0</strong><p>Aligned with OmegaForge v0.9.0</p><small>Last reviewed: August 2026</small><a href="CHANGELOG.md" target="_blank">View changelog <i class="ph-bold ph-arrow-square-out" aria-hidden="true"></i></a></div>
             </div>
           </div>
         </section>
